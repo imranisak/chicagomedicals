@@ -32,7 +32,6 @@ if(isset($_POST['password_1']) && isset($_POST['password_2'])){
     $password2=$_POST['password_2'];
     if($password1==$password2) $password=password_hash($password1, PASSWORD_DEFAULT);
     else echo "plz check passwords";
-    die();
 }
 else "lol wut";//Add an error when data is missing
 $date=Date("Y-m-d");

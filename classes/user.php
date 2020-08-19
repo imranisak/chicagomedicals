@@ -15,7 +15,8 @@ class user{
         $sql="INSERT INTO  users (name, surname, email, password, dateAdded) VALUES ('$this->name', '$this->surname', '$this->email', '$this->password' ,'$this->dateAdded')";
         if($connection->query($sql)===TRUE)
         {
-            header($_SERVER['DOCUMENT_ROOT'].'/pages/users/welcome.php');
+            $rediredtLocation=$_SERVER['DOCUMENT_ROOT'].'/pages/users/welcome.php';
+            header("Location:/pages/welcome.php");
         }
         else
         {
