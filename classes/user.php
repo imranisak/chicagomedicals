@@ -1,7 +1,7 @@
 <?php
-use $_SERVER['DOCUMENT_ROOT'].PHPMailer\PHPMailer\PHPMailer;
-use $_SERVER['DOCUMENT_ROOT'].PHPMailer\PHPMailer\SMTP;
-use $_SERVER['DOCUMENT_ROOT'].PHPMailer\PHPMailer\Exception;
+use vendor\PHPMailer\PHPMailer\PHPMailer;
+use vendor\PHPMailer\PHPMailer\SMTP;
+use vendor\PHPMailer\PHPMailer\Exception;
 class user{
     public $name, $surname, $email, $password, $dateAdded;
     function __construct($nameInput, $surnameInput, $emailInput, $passwordInput, $dateAddedInput){
@@ -18,7 +18,7 @@ class user{
         $sql="INSERT INTO  users (name, surname, email, password, dateAdded) VALUES ('$this->name', '$this->surname', '$this->email', '$this->password' ,'$this->dateAdded')";
         if($connection->query($sql)===TRUE)
         {
-            $rediredtLocation=$_SERVER['DOCUMENT_ROOT'].'/pages/users/welcome.php';
+            $rediredtLocation=$docRoot.'/pages/users/welcome.php';
             header("Location:/pages/welcome.php");
         }
         else

@@ -18,8 +18,6 @@ if($user->num_rows>0){
             $_SESSION['email']=$row['email'];
             $_SESSION['isLoggedIn']=true;
             $location=$_SERVER['DOCUMENT_ROOT'].'/index.php';
-            echo $location;
-            //die();
             header("Location: /index.php");
         }
         else{
