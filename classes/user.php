@@ -1,4 +1,7 @@
 <?php
+use $_SERVER['DOCUMENT_ROOT'].PHPMailer\PHPMailer\PHPMailer;
+use $_SERVER['DOCUMENT_ROOT'].PHPMailer\PHPMailer\SMTP;
+use $_SERVER['DOCUMENT_ROOT'].PHPMailer\PHPMailer\Exception;
 class user{
     public $name, $surname, $email, $password, $dateAdded;
     function __construct($nameInput, $surnameInput, $emailInput, $passwordInput, $dateAddedInput){
