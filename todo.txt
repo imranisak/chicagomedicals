@@ -1,4 +1,4 @@
 TODO
+Check if user exists in DB when registering
 Add user verification - send mail when they register
-Add user registration
 Add clinics to DB - make their table
