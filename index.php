@@ -1,6 +1,7 @@
 <?php 
 session_start();
-if($_SESSION['isLoggedIn']) $isLoggedIn=true;
+if(isset($_SESSION['isLoggedIn'])) $isLoggedIn=true;
+else $isLoggedIn=false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
