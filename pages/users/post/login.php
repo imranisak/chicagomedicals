@@ -5,12 +5,11 @@ if(isset($_POST['password'])) $password=$_POST['password'];
 else echo "No password!";
 require $_SERVER['DOCUMENT_ROOT']."/includes/database.php";
 $sql="SELECT id, name, surname, password, email FROM users WHERE email='$email'";
-$password=md5($password);
 $user=$databaseConnection->query($sql);
 if($user->num_rows>0){
     while($row=$user->fetch_assoc()){
-        //echo $row['surname'];
-        if($row['password']==$password) {
+        echo $password;
+        if(password_verify($password, $row['password'])){
             session_start();
             $_SESSION['id']=$row['id'];
             $_SESSION['name']=$row['name'];
