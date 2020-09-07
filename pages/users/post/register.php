@@ -36,7 +36,7 @@ if(isset($_POST['password_1']) && isset($_POST['password_2'])){
 else "lol wut";//Add an error when data is missing
 $date=Date("Y-m-d");
 $user=new user($name, $surname, $email, $password, $date);
-$user->addToDatabase($databaseConnection);
+//$user->addToDatabase($databaseConnection);
 $user->createVerification($databaseConnection);
 $databaseConnection->close();
 }

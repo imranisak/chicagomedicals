@@ -57,7 +57,7 @@ class user{
                 // Content
                 $mail->isHTML(true);                                  // Set email format to HTML
                 $mail->Subject = 'User verification';
-                $mail->Body    = "<a href='http://chichagomedicals/users/verify.php/?hash=$hash&email=$this->email' target='_blank'>Verify email here</a>";
+                $mail->Body    = "<a href='http://chichagomedicals/pages/users/verify.php/?hash=$hash&email=$this->email' target='_blank'>Verify email here</a>";
                 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     
                 $mail->send();
