@@ -11,7 +11,6 @@ require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
         if($verification){
             while($row=$verification->fetch_assoc()){
                 $valid=true;
-                echo "whut";
                 $updatesql="UPDATE users SET verified = 1 WHERE email='$email'";
                 if($databaseConnection->query($updatesql)) $updated=true;
                 else $error=true;

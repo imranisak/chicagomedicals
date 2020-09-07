@@ -33,10 +33,13 @@ if(isset($_POST['password_1']) && isset($_POST['password_2'])){
     if($password1==$password2) $password=password_hash($password1, PASSWORD_DEFAULT);
     else echo "plz check passwords";
 }
+$checkMailInDatabaseSQL="SELECT email FROM users WHERE email='$email'";
+
+
 else "lol wut";//Add an error when data is missing
 $date=Date("Y-m-d");
 $user=new user($name, $surname, $email, $password, $date);
-//$user->addToDatabase($databaseConnection);
+$user->addToDatabase($databaseConnection);
 $user->createVerification($databaseConnection);
 $databaseConnection->close();
 }
