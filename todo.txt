@@ -1,11 +1,21 @@
 TODO
-Check if user exists in DB when registering
+Add session errors
 Add password reset
 Add clinics to DB - make their table
+Emplyees of a clinic
+Clinic reviews - 5-star system
+Share to social media
+Add error messages (wrong password, mail exists etc...)
 =====================================================
 Long TODO
-
-
+Add Google signin - maybe even Facebook?
+Detailed analytics for premium users
+Schedules?
 =====================================================
 Done
+Add backend post verification
 Add user verification - send mail when they register
+Add check on login page - if user IS logged in, don't allow login
+Check if user exists in DB when registering
+
+//imran1701d@gmail.com  - lozinka

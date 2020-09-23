@@ -39,6 +39,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
 <body>
     <?php if($error){?>
     <p>An error has occured ;-;</p>
+    <p>Plz contact admin, he fix, no problem.</p>
     <?php }?>
     <?php if(!$valid){?>
     <p>Invalid or expired verification link</p>

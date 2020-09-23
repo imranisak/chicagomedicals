@@ -1,9 +1,17 @@
 <?php
-if(isset($_POST['email'])) $email=$_POST['email'];
-else echo "no email!";
-if(isset($_POST['password'])) $password=$_POST['password'];
-else echo "No password!";
 require $_SERVER['DOCUMENT_ROOT']."/includes/database.php";
+require $_SERVER['DOCUMENT_ROOT'].'/includes/functions.php';
+
+if(isset($_POST['email'])){
+$email=$_POST['email'];
+$email=filterInput($email);
+}
+else echo "No email!";
+if(isset($_POST['password'])){
+    $password=$_POST['password'];
+    $password=filterInput($password);
+} 
+else echo "No password!";
 $sql="SELECT id, name, surname, password, email FROM users WHERE email='$email'";
 $user=$databaseConnection->query($sql);
 if($user->num_rows>0){

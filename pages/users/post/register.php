@@ -1,5 +1,5 @@
 <?php
-
+//reCaptcha stuffs
 if(isset($_POST['g-recaptcha-response'])){
     $captcha=$_POST['g-recaptcha-response'];
   }
@@ -12,38 +12,46 @@ if(isset($_POST['g-recaptcha-response'])){
   $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha."&remoteip=".$ip);
   $responseKeys = json_decode($response,true);
   if(intval($responseKeys["success"]) !== 1) {
-    return '<h2>lol, no</h2>';
+    return '<h1>lol, no</h1>';
   } else {
-
+//////////////////
 require $_SERVER['DOCUMENT_ROOT'].'/classes/user.php';
 require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
+require $_SERVER['DOCUMENT_ROOT'].'/includes/functions.php';
 
-if(isset($_POST['name'])) $name=$_POST['name'];
-else "lol wut";//Add an error when data is missing
+if(isset($_POST['name']) && $_POST['name']!="") $name=$_POST['name'];
+else exit("Name missing");//Add an error when data is missing
 
-if(isset($_POST['surname'])) $surname=$_POST['surname'];
-else "lol wut";//Add an error when data is missing
+if(isset($_POST['surname']) && $_POST['surname']!="") $surname=$_POST['surname'];
+else exit("Surname missing");//Add an error when data is missing
 
-if(isset($_POST['email'])) $email=$_POST['email'];
-else "lol wut";//Add an error when data is missing
-
-if(isset($_POST['password_1']) && isset($_POST['password_2'])){
+if(isset($_POST['email']) && $_POST['email']!=""){
+  $email=filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+  if(!filter_var($email, FILTER_VALIDATE_EMAIL)) exit("Invalid mail");
+  $email=filterInput($email);
+} 
+else {
+  exit("Email missing");//Add an error when data is missing
+}
+if(isset($_POST['password_1']) && $_POST['password_1']!="" && isset($_POST['password_2']) && $_POST['password_2']!=""){
     $password1=$_POST['password_1'];
     $password2=$_POST['password_2'];
     if($password1==$password2) $password=password_hash($password1, PASSWORD_DEFAULT);
-    else echo "plz check passwords";
+    else exit("Passwords do not match");
 }
 else "lol wut";//Add an error when data is missing
+//Checks if email is used
 $checkMailInDatabaseSQL="SELECT email FROM users WHERE email='$email'";
 $emailsInDatabase=$databaseConnection->query($checkMailInDatabaseSQL);
 if($emailsInDatabase->num_rows!=0)
 {
   echo "Email already in use!";
-  die();
+  exit();
 }
+//////////////////////////
 $date=Date("Y-m-d");
 $user=new user($name, $surname, $email, $password, $date);
-$user->addToDatabase($databaseConnection);
-$user->createVerification($databaseConnection);
+//$user->addToDatabase($databaseConnection);
+//$user->createVerification($databaseConnection);
 $databaseConnection->close();
 }
