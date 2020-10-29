@@ -21,7 +21,7 @@ class user{
         if($connection->query($sql)===TRUE)
         {
             $rediredtLocation=$docRoot.'/pages/users/welcome.php';
-            header("Location:/pages/welcome.php");
+            header("Location:/index.php");
         }
         else
         {

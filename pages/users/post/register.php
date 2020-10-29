@@ -15,9 +15,15 @@ if(isset($_POST['g-recaptcha-response'])){
     return '<h1>lol, no</h1>';
   } else {
 //////////////////
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 require $_SERVER['DOCUMENT_ROOT'].'/classes/user.php';
 require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
 require $_SERVER['DOCUMENT_ROOT'].'/includes/functions.php';
+require '../../../vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
+$msg = new \Plasticbrain\FlashMessages\FlashMessages();
+
 
 if(isset($_POST['name']) && $_POST['name']!="") $name=$_POST['name'];
 else exit("Name missing");//Add an error when data is missing
@@ -51,7 +57,8 @@ if($emailsInDatabase->num_rows!=0)
 //////////////////////////
 $date=Date("Y-m-d");
 $user=new user($name, $surname, $email, $password, $date);
-//$user->addToDatabase($databaseConnection);
-//$user->createVerification($databaseConnection);
+$user->addToDatabase($databaseConnection);
+$user->createVerification($databaseConnection);
+$msg->success("Succesfully registered! Please check your mail for the verification link!");
 $databaseConnection->close();
 }

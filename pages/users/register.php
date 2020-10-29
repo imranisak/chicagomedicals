@@ -2,7 +2,9 @@
 <html>
     <head>
         <title>Add user</title>
-        <?php require $_SERVER['DOCUMENT_ROOT']."/includes/header.php"; ?>
+        <?php require $_SERVER['DOCUMENT_ROOT']."/includes/header.php";
+        require '../../vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
+        ?>
     </head>
 
     <body>

@@ -1,6 +1,7 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT']."/includes/database.php";
-require $_SERVER['DOCUMENT_ROOT'].'/includes/functions.php';
+require "../../../includes/database.php";
+require "../../../includes/functions.php";
+
 
 if(isset($_POST['email'])){
 $email=$_POST['email'];
@@ -12,7 +13,7 @@ if(isset($_POST['password'])){
     $password=filterInput($password);
 } 
 else echo "No password!";
-$sql="SELECT id, name, surname, password, email FROM users WHERE email='$email'";
+$sql="SELECT id, name, surname, password, email FROM users WHERE email='$email' LIMIT 1";
 $user=$databaseConnection->query($sql);
 if($user->num_rows>0){
     while($row=$user->fetch_assoc()){
@@ -34,5 +35,5 @@ if($user->num_rows>0){
     }
 }
 else {
-    echo 'No email in database.'; ?><a href=<?php $_SERVER['DOCUMENT_ROOT'];?>"/pages/users/register.php">Plz register</a><?php
+    echo 'No email in database.'; ?><a href="../register.php">Plz register</a><?php
 }
