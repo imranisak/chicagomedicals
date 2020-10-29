@@ -15,50 +15,45 @@ if(isset($_POST['g-recaptcha-response'])){
     return '<h1>lol, no</h1>';
   } else {
 //////////////////
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
 require $_SERVER['DOCUMENT_ROOT'].'/classes/user.php';
 require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
 require $_SERVER['DOCUMENT_ROOT'].'/includes/functions.php';
+if (!session_id()) @session_start();
 require '../../../vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
 $msg = new \Plasticbrain\FlashMessages\FlashMessages();
 
 
 if(isset($_POST['name']) && $_POST['name']!="") $name=$_POST['name'];
-else exit("Name missing");//Add an error when data is missing
+else $msg->error('Name missing');
 
 if(isset($_POST['surname']) && $_POST['surname']!="") $surname=$_POST['surname'];
-else exit("Surname missing");//Add an error when data is missing
+else $msg->error('Surname missing');
 
 if(isset($_POST['email']) && $_POST['email']!=""){
   $email=filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-  if(!filter_var($email, FILTER_VALIDATE_EMAIL)) exit("Invalid mail");
+  if(!filter_var($email, FILTER_VALIDATE_EMAIL)) $msg->error("Invalid mail!");
   $email=filterInput($email);
 } 
 else {
-  exit("Email missing");//Add an error when data is missing
+  $msg->error('Email missling');
 }
 if(isset($_POST['password_1']) && $_POST['password_1']!="" && isset($_POST['password_2']) && $_POST['password_2']!=""){
     $password1=$_POST['password_1'];
     $password2=$_POST['password_2'];
     if($password1==$password2) $password=password_hash($password1, PASSWORD_DEFAULT);
-    else exit("Passwords do not match");
+    else $msg->error('Passwords do not match!');
 }
-else "lol wut";//Add an error when data is missing
+else $msg->error('Password missing');;//Add an error when data is missing
 //Checks if email is used
 $checkMailInDatabaseSQL="SELECT email FROM users WHERE email='$email'";
 $emailsInDatabase=$databaseConnection->query($checkMailInDatabaseSQL);
-if($emailsInDatabase->num_rows!=0)
-{
-  echo "Email already in use!";
-  exit();
-}
+if($emailsInDatabase->num_rows!=0) $msg->error('Email in use.', '../register.php');
 //////////////////////////
 $date=Date("Y-m-d");
 $user=new user($name, $surname, $email, $password, $date);
+$user->createVerification($databaseConnection); //Also send the verification email
 $user->addToDatabase($databaseConnection);
-$user->createVerification($databaseConnection);
-$msg->success("Succesfully registered! Please check your mail for the verification link!");
+if ($user->saved) $msg->success("Succesfully registered! Please check your mail for the verification link!", "../../../index.php");
+else $msg->error("An error has occured. Please try again. If the problem keeps coming back, please contat the admin!", "../register.php");
 $databaseConnection->close();
 }

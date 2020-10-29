@@ -1,13 +1,16 @@
+<?php if (!session_id()) @session_start();?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Add user</title>
-        <?php require $_SERVER['DOCUMENT_ROOT']."/includes/header.php";
+        <?php require "../../includes/header.php";
         require '../../vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
+        $msg = new \Plasticbrain\FlashMessages\FlashMessages();
         ?>
     </head>
 
     <body>
+    <?php include "../../includes/navbar.php";?>
         <form action="post/register.php" method="POST">
             <input type="text" name="name" placeholder="name" required>
             <input type="text" name="surname" placeholder="surname" required>
@@ -17,5 +20,7 @@
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
             <input type="submit" value="Submit">
         </form>
+        <?php $msg->display(); ?>
+        <?php require "../../includes/footer.php";?>
     </body>
 </html>

@@ -16,6 +16,7 @@ $msg = new \Plasticbrain\FlashMessages\FlashMessages();
     <?php require 'includes/header.php'; ?>
 </head>
 <body>
+<?php include "includes/navbar.php";?>
     <?php if (isset($msg)) $msg->display(); ?>
     <h1>Chicago Medicals</h1>
     <?php if(!$isLoggedIn) {?><a href="/pages/users/register.php"><h3>Register</h3></a><?php } ?>

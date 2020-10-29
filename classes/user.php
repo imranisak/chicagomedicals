@@ -2,10 +2,11 @@
 use \PHPMailer\PHPMailer\PHPMailer;
 use \PHPMailer\PHPMailer\SMTP;
 use \PHPMailer\PHPMailer\Exception;
+if (!session_id()) @session_start();
 
 require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 class user{
-    public $name, $surname, $email, $password, $dateAdded;
+    public $name, $surname, $email, $password, $dateAdded, $saved=false;
     function __construct($nameInput, $surnameInput, $emailInput, $passwordInput, $dateAddedInput){
         $this->name=$nameInput;
         $this->surname=$surnameInput;
@@ -18,15 +19,8 @@ class user{
     }
     function addToDatabase($connection){
         $sql="INSERT INTO  users (name, surname, email, password, dateAdded) VALUES ('$this->name', '$this->surname', '$this->email', '$this->password' ,'$this->dateAdded')";
-        if($connection->query($sql)===TRUE)
-        {
-            $rediredtLocation=$docRoot.'/pages/users/welcome.php';
-            header("Location:/index.php");
-        }
-        else
-        {
-            echo $connection->error;
-        }
+        if($connection->query($sql)===TRUE) $this->saved=true;
+        else $this->saved=false;
     }
 
     function createVerification($connection){

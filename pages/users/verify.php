@@ -1,5 +1,8 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
+require '../../includes/database.php';
+if (!session_id()) @session_start();
+require '../../vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
+$msg = new \Plasticbrain\FlashMessages\FlashMessages();
     $valid=false;
     $updated=false;
     if(isset($_GET['hash']) && isset($_GET['email'])){
@@ -15,18 +18,11 @@ require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
                 if($databaseConnection->query($updatesql)) $updated=true;
                 else $error=true;
                 $deleteVerificationSQL="DELETE FROM verifications WHERE hash='$hash'";
-                if($databaseConnection->query($deleteVerificationSQL)){
-                    //idk
-                }
-                else{
-                    //$databaseConnection->error;
-                    $error=true;
-                }
+                if($databaseConnection->query($deleteVerificationSQL)) $msg->success("Email successfully verified! You can close this tab.");
+                else $msg->error("An error has occured. Please try again. If the problem keeps coming back, contact admin.");
             }
         }
-    } else{
-        $error=true;
-    }  
+    } else $msg->error("An error has occured. Please try again. If the problem keeps coming back, contact admin.");
 ?>
 
 <!DOCTYPE html>
@@ -34,18 +30,14 @@ require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php require "../../includes/header.php"; ?>
     <title>Verify user</title>
 </head>
 <body>
-    <?php if($error){?>
-    <p>An error has occured ;-;</p>
-    <p>Plz contact admin, he fix, no problem.</p>
-    <?php }?>
-    <?php if(!$valid){?>
-    <p>Invalid or expired verification link</p>
-    <?php }?>
-    <?php if($updated){ ?>
-    <h3>User email verified.</h3>
-    <?php }?>
+    <?php 
+        if ($valid==false && $error==false) $msg->error("Email already verified");
+        $msg->display(); 
+    ?>
+    <?php require "../../includes/footer.php"; ?>
 </body>
 </html>

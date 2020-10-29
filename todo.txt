@@ -1,5 +1,4 @@
 TODO
-Add session errors/messages
 Add password reset
 Add clinics to DB - make their table
 Emplyees of a clinic
@@ -8,11 +7,14 @@ Share to social media
 Add error messages (wrong password, mail exists etc...)
 =====================================================
 Long TODO
+Add AdSense, Google analytics, tracking etc..
 Add Google signin - maybe even Facebook?
 Detailed analytics for premium users
 Schedules?
+NOT Fluf up <3
 =====================================================
 Done
+Add session errors/messages
 Add backend post verification - verify !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Add user verification - send mail when they register
 Add check on login page - if user IS logged in, don't allow login
