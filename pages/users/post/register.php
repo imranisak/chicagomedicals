@@ -15,12 +15,10 @@ if(isset($_POST['g-recaptcha-response'])){
     return '<h1>lol, no</h1>';
   } else {
 //////////////////
-require $_SERVER['DOCUMENT_ROOT'].'/classes/user.php';
-require $_SERVER['DOCUMENT_ROOT'].'/includes/database.php';
-require $_SERVER['DOCUMENT_ROOT'].'/includes/functions.php';
-if (!session_id()) @session_start();
-require '../../../vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
-$msg = new \Plasticbrain\FlashMessages\FlashMessages();
+require '../../../classes/user.php';
+require '../../../includes/database.php';
+require '../../../includes/functions.php';
+require '../../../includes/flashMessages.php';
 
 
 if(isset($_POST['name']) && $_POST['name']!="") $name=$_POST['name'];

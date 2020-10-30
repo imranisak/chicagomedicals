@@ -1,12 +1,9 @@
-<?php if (!session_id()) @session_start();?>
+<?php require '../../includes/flashMessages.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Add user</title>
-        <?php require "../../includes/header.php";
-        require '../../vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
-        $msg = new \Plasticbrain\FlashMessages\FlashMessages();
-        ?>
+        <?php require "../../includes/header.php";?>
     </head>
 
     <body>
@@ -20,7 +17,7 @@
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
             <input type="submit" value="Submit">
         </form>
-        <?php $msg->display(); ?>
+        <?php if (isset($msg)) $msg->display(); ?>
         <?php require "../../includes/footer.php";?>
     </body>
 </html>

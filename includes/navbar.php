@@ -1,3 +1,4 @@
+<?php require "sessionInfo.php" ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="<?php $_SERVER['DOCUMENT_ROOT']?>/index.php">Chicago Medicals</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,9 +15,20 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+      <?php if($isLoggedIn){ ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php $_SERVER['DOCUMENT_ROOT']?>/pages/users/post/logout.php">Log out</a>
+        </li>
+      <?php 
+      }
+      else { ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php $_SERVER['DOCUMENT_ROOT']?>/pages/users/login.php">Log in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php $_SERVER['DOCUMENT_ROOT']?>/pages/users/register.php">Register</a>
+        </li>
+      <?php } ?>
     </ul>
   </div>
 </nav>

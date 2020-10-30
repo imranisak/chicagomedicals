@@ -1,11 +1,5 @@
 <?php 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-  }
-if(isset($_SESSION['isLoggedIn'])) $isLoggedIn=true;
-else $isLoggedIn=false;
-require 'vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
-$msg = new \Plasticbrain\FlashMessages\FlashMessages();
+require 'includes/flashmessages.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +13,6 @@ $msg = new \Plasticbrain\FlashMessages\FlashMessages();
 <?php include "includes/navbar.php";?>
     <?php if (isset($msg)) $msg->display(); ?>
     <h1>Chicago Medicals</h1>
-    <?php if(!$isLoggedIn) {?><a href="/pages/users/register.php"><h3>Register</h3></a><?php } ?>
-    <?php if($isLoggedIn){?>
-        <h3>Hello, <?php echo  $_SESSION['name'];?></h3>
-        <h3><a href="/pages/users/post/logout.php">Log out</a></h3>
-    <?php } else { ?><h3><a href="/pages/users/login.php">Log in</a></h3><?php } ?>
     <?php require 'includes/footer.php'; ?>
 </body>
 </html>

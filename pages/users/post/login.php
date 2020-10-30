@@ -1,18 +1,18 @@
 <?php
 require "../../../includes/database.php";
 require "../../../includes/functions.php";
-
+require '../../../includes/flashMessages.php';
 
 if(isset($_POST['email'])){
 $email=$_POST['email'];
 $email=filterInput($email);
-}
-else echo "No email!";
+} 
+else $msg->error("Please enter email!", '../login.php');
 if(isset($_POST['password'])){
     $password=$_POST['password'];
     $password=filterInput($password);
 } 
-else echo "No password!";
+else $msg->error("Please enter password!", '../login.php');
 $sql="SELECT id, name, surname, password, email FROM users WHERE email='$email' LIMIT 1";
 $user=$databaseConnection->query($sql);
 if($user->num_rows>0){
@@ -28,12 +28,7 @@ if($user->num_rows>0){
             $location=$_SERVER['DOCUMENT_ROOT'].'/index.php';
             header("Location: /index.php");
         }
-        else{
-            echo "Incorect password";
-            die();
-        }
+        else $msg->error("Incorect password!", "../login.php");
     }
 }
-else {
-    echo 'No email in database.'; ?><a href="../register.php">Plz register</a><?php
-}
+else  $msg->warning("Not a valid email! <a href='../register.php'>Plz register</a>", "../login.php");
