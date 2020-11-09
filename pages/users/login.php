@@ -5,6 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if(isset($_SESSION["isLoggedIn"])){
     if($_SESSION["isLoggedIn"]==true) header("Location: /");
 }
+include "../../includes/flashMessages.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,10 @@ if(isset($_SESSION["isLoggedIn"])){
     <?php include "../../includes/header.php";?>
 </head>
 <body>
-<?php include "../../includes/navbar.php";?>
+<?php include "../../includes/navbar.php";
+$msg->display();
+?>
+
     <form action="post/login.php" method="post">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
