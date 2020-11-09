@@ -1,10 +1,12 @@
 TODO
 Add password reset
+!!!!!!Close all DB connections!!!!!
 Add clinics to DB - make their table
 Emplyees of a clinic
+Messages
 Clinic reviews - 5-star system
 Share to social media
-Add error messages (wrong password, mail exists etc...)
+Payments
 =====================================================
 Long TODO
 Add AdSense, Google analytics, tracking etc..
@@ -14,6 +16,7 @@ Schedules?
 NOT Fluf up <3
 =====================================================
 Done
+Add password reset - to be checked and tested more
 Add session errors/messages
 Add backend post verification - verify !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Add user verification - send mail when they register

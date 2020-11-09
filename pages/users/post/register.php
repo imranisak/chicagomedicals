@@ -19,12 +19,15 @@ require '../../../classes/user.php';
 require '../../../includes/database.php';
 require '../../../includes/functions.php';
 require '../../../includes/flashMessages.php';
+//Checks if email is used
+$checkMailInDatabaseSQL="SELECT email FROM users WHERE email='$email'";
+$emailsInDatabase=$databaseConnection->query($checkMailInDatabaseSQL);
+if($emailsInDatabase->num_rows!=0) $msg->error('Email in use.', '../register.php');
 
-
-if(isset($_POST['name']) && $_POST['name']!="") $name=$_POST['name'];
+if(isset($_POST['name']) && $_POST['name']!="") $name=filterInput($_POST['name']);
 else $msg->error('Name missing');
 
-if(isset($_POST['surname']) && $_POST['surname']!="") $surname=$_POST['surname'];
+if(isset($_POST['surname']) && $_POST['surname']!="") $surname=filterInput($_POST['surname']);
 else $msg->error('Surname missing');
 
 if(isset($_POST['email']) && $_POST['email']!=""){
@@ -38,14 +41,10 @@ else {
 if(isset($_POST['password_1']) && $_POST['password_1']!="" && isset($_POST['password_2']) && $_POST['password_2']!=""){
     $password1=$_POST['password_1'];
     $password2=$_POST['password_2'];
-    if($password1==$password2) $password=password_hash($password1, PASSWORD_DEFAULT);
+    if($password1==$password2) $password=filterInput(password_hash($password1, PASSWORD_DEFAULT));
     else $msg->error('Passwords do not match!');
 }
 else $msg->error('Password missing');;//Add an error when data is missing
-//Checks if email is used
-$checkMailInDatabaseSQL="SELECT email FROM users WHERE email='$email'";
-$emailsInDatabase=$databaseConnection->query($checkMailInDatabaseSQL);
-if($emailsInDatabase->num_rows!=0) $msg->error('Email in use.', '../register.php');
 //////////////////////////
 $date=Date("Y-m-d");
 $user=new user($name, $surname, $email, $password, $date);

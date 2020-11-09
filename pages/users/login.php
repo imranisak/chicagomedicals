@@ -21,6 +21,7 @@ if(isset($_SESSION["isLoggedIn"])){
         <input type="password" name="password" placeholder="Password" required>
         <input type="submit">
     </form>
+    <a href="resetPassword.php">Forgot password?</a>
     <?php include "../../includes/footer.php";?>
 </body>
 </html>
