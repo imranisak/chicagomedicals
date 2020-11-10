@@ -4,7 +4,7 @@ require "../../../includes/flashMessages.php";
 require "../../../includes/functions.php";
 if($_SESSION['isLoggedIn']) {
     $databaseConnection->close();
-    $msg->error("Cannot change passowrd while logged in!", "/index.php");
+    $msg->error("Cannot change passowrd while logged in! Please <a href='/pages/users/post/logout.php'>log out.</a>", "/index.php");
 }
 if(isset($_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['hash']) && $_POST['password1']!="" && $_POST['password2']!="" && $_POST['email']!="" && $_POST['hash']!=""){
     $p1=filterInput($_POST['password1']);

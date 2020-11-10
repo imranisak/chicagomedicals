@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/enterNewPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/enterNewPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/enterNewPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/enterNewPassword.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -98,7 +105,16 @@
       <workItem from="1604915041256" duration="7000" />
       <workItem from="1604945818137" duration="12621000" />
       <workItem from="1605005563020" duration="624000" />
+      <workItem from="1605009542365" duration="2100000" />
     </task>
+    <task id="LOCAL-00001" summary="Moved to laptop">
+      <created>1605009808168</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605009808168</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,5 +131,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Moved to laptop" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved to laptop" />
   </component>
 </project>

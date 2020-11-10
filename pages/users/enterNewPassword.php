@@ -9,6 +9,8 @@
     <?php require "../../includes/header.php"; ?>
     <?php require "../../includes/database.php"; ?>
     <?php
+    $email=$_GET['email'];
+    $hash=$_GET['hash'];
     $SQLselectFromPasswordsReset="SELECT email, hash FROM passwordReset WHERE email='$email' AND hash='$hash' LIMIT 1";
     $resetPasswordRow=$databaseConnection->query($SQLselectFromPasswordsReset);
     if($resetPasswordRow->num_rows==0){
