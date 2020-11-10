@@ -4,5 +4,5 @@
 //wherever flash messages are needed *taps forehead* *big brain meme*
 if (!session_id()) @session_start();
 require $_SERVER['DOCUMENT_ROOT'].'/vendor/plasticbrain/php-flash-messages/src/FlashMessages.php';
-$msg = new \Plasticbrain\FlashMessages\FlashMessages();
+if(!isset($msg)) $msg = new \Plasticbrain\FlashMessages\FlashMessages();
 ?>

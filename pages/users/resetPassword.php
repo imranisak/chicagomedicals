@@ -1,5 +1,7 @@
 <?php
 require '../../includes/flashMessages.php';
+if (!session_id()) @session_start();
+$_SESSION['goBack']='/pages/users/resetPassword.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +16,7 @@ require '../../includes/flashMessages.php';
     <form action="post/resetPassword.php" method="post">
         <p>Forgot your password? No problem. Enter your account email, and you will get an password reset link.</p>
         <input type="email" placeholder="E-mail" name="email">
+        <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
         <button type="submit">Reset password</button>
     </form>
     <?php if (isset($msg)) {

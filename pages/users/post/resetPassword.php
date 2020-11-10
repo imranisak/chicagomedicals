@@ -1,4 +1,5 @@
 <?php
+include "../../../includes/recaptcha.php";
 require "../../../includes/database.php";
 require "../../../includes/flashMessages.php";
 require "../../../includes/sendMail.php";
