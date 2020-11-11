@@ -1,5 +1,6 @@
 TODO
 Add profile pictures - generally add file upload and media or files folder - needs to be finished, almost there
+Add session - user info into the includes file, so it can be easily accessed anywhere! (vars name, surname, profilePicture etc..)
 Add gender selection
 Add "Refer to me as mr. mrs. "
 Add profile edit

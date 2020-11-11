@@ -13,7 +13,7 @@ if(isset($_POST['password'])){
     $password=filterInput($password);
 } 
 else $msg->error("Please enter password!", '../login.php');
-$sql="SELECT id, name, surname, password, email FROM users WHERE email='$email' LIMIT 1";
+$sql="SELECT id, name, surname, password, email, profilePicture FROM users WHERE email='$email' LIMIT 1";
 $user=$databaseConnection->query($sql);
 if($user->num_rows>0){
     while($row=$user->fetch_assoc()){
@@ -24,6 +24,7 @@ if($user->num_rows>0){
             $_SESSION['name']=$row['name'];
             $_SESSION['surname']=$row['surname'];
             $_SESSION['email']=$row['email'];
+            $_SESSION['profilePicture']=$row['profilePicture'];
             $_SESSION['isLoggedIn']=true;
             $location=$_SERVER['DOCUMENT_ROOT'].'/index.php';
             header("Location: /index.php");

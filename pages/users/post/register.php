@@ -33,13 +33,16 @@ if(isset($_POST['password_1']) && $_POST['password_1']!="" && isset($_POST['pass
 else $msg->error('Passwords do not match!', "/pages/users/register.php");
 }
 else $msg->error('Password missing');
-if(!$hasFile) die("No file");
+if(!is_uploaded_file($_FILES['file']['tmp_name'])) $profilePicture="/media/pictures/profilePictureMale.jpg";
+else $profilePicture=proccessFile($msg, "image");
+/*echo $_SERVER['DOCUMENT_ROOT'].$profilePicture;
+die();*/
 if($msg->hasMessages($msg::ERROR)) $msg->error("An error has happened. Please try again", "/pages/users/register.php");
 //////////////////////////
 $date=Date("Y-m-d");
-$user=new user($name, $surname, $email, $password, $date);
-/*$user->createVerification($databaseConnection); //Also send the verification email
+$user=new user($name, $surname, $email, $password, $date, $profilePicture);
 $user->addToDatabase($databaseConnection);
-if ($user->saved) $msg->success("Succesfully registered! Please check your mail for the verification link!", "../../../index.php");
-else $msg->error("An error has occured. Please try again. If the problem keeps coming back, please contact the admin!", "../register.php");
+if(!$user->saved) $msg->error("An error has occurred. Please try again. If the problem keeps coming back, please contact the admin!", "../register.php");
+$user->createVerification($databaseConnection); //Also send the verification email
+if ($user->saved) $msg->success("Successfully registered! Please check your mail for the verification link!", "../../../index.php");
 $databaseConnection->close();

@@ -1,23 +1,23 @@
 <?php
 if (!session_id()) @session_start();
 class user{
-    public $name, $surname, $email, $password, $dateAdded, $saved=false;
-    function __construct($nameInput, $surnameInput, $emailInput, $passwordInput, $dateAddedInput){
+    public $name, $surname, $email, $password, $dateAdded, $saved=false, $profilePicture;
+    function __construct($nameInput, $surnameInput, $emailInput, $passwordInput, $dateAddedInput, $profilePictureInput){
         $this->name=$nameInput;
         $this->surname=$surnameInput;
         $this->email=$emailInput;
         $this->password=$passwordInput;
         $this->dateAdded=$dateAddedInput;
+        $this->profilePicture=$profilePictureInput;
     }
     function getName(){
         return $this->name;
     }
     function addToDatabase($connection){
-        $sql="INSERT INTO  users (name, surname, email, password, dateAdded) VALUES ('$this->name', '$this->surname', '$this->email', '$this->password' ,'$this->dateAdded')";
+        $sql="INSERT INTO  users (name, surname, email, password, dateAdded, profilePicture) VALUES ('$this->name', '$this->surname', '$this->email', '$this->password' ,'$this->dateAdded', '$this->profilePicture')";
         if($connection->query($sql)===TRUE) $this->saved=true;
         else $this->saved=false;
     }
-
     function createVerification($connection){
         function generateRandomString($length = 10) {
             return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
@@ -34,6 +34,7 @@ class user{
                 $mail->Body    = "<a href='http://chichagomedicals/pages/users/verify.php/?hash=$hash&email=$this->email' target='_blank'>Verify email here</a>";
                 $mail->send();
             }
+            //TODO Add messages in case verification message could not be sent.
             catch (Exception $e) {
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
