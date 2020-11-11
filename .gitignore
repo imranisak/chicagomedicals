@@ -1,2 +1,4 @@
 vendor/
+media/
+
 includes/database.php

@@ -1,5 +1,8 @@
 TODO
-Add password reset
+Add profile pictures - generally add file upload and media or files folder - needs to be finished, almost there
+Add gender selection
+Add "Refer to me as mr. mrs. "
+Add profile edit
 !!!!!!Close all DB connections!!!!!
 Add clinics to DB - make their table
 Emplyees of a clinic
@@ -16,6 +19,7 @@ Schedules?
 NOT Fluf up <3
 =====================================================
 Done
+Add password reset
 Add password reset - to be checked and tested more
 Add session errors/messages
 Add backend post verification - verify !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
