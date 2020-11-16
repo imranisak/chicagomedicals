@@ -5,6 +5,8 @@
         $isLoggedIn=true;
         $name=$_SESSION['name'];
         $surname=$_SESSION['surname'];
+        $id=$_SESSION['id'];
         $email=$_SESSION['email'];
-    }
+        $profilePicture=$_SESSION['profilePicture'];
+    } else $isLoggedIn=false;
 ?>

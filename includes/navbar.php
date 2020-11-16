@@ -12,9 +12,15 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Clinics
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/pages/clinics">All clinics</a>
+                <a class="dropdown-item" href="/pages/clinics/addClinic.php">Add a clinis</a>
+            </div>
+        </li>
       <?php if($isLoggedIn){ ?>
         <li class="nav-item">
           <a class="nav-link" href="<?php $_SERVER['DOCUMENT_ROOT']?>/pages/users/post/logout.php">Log out</a>
