@@ -30,4 +30,5 @@ Add user verification - send mail when they register
 Add check on login page - if user IS logged in, don't allow login
 Check if user exists in DB when registering
 
-//imran1701d@gmail.com  - lozinka
+//imran1701d@gmail.com  - lozinka - admin
+//worf@starfleet.com - lozinka - user

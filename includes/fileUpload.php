@@ -28,5 +28,5 @@ function proccessFile($msg, $type)
         move_uploaded_file($_FILES["file"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'].$fileName);
         return $fileName;
     }
-else return false;//If any errors are gives, turns it false. This can be useful later on.
+else return false;//If any errors are given, turns it false. This can be useful later on.
 }

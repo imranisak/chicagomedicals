@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 11, 2020 at 08:53 PM
+-- Generation Time: Nov 16, 2020 at 09:01 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.5
 
@@ -37,13 +37,6 @@ CREATE TABLE IF NOT EXISTS `passwordreset` (
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `passwordreset`
---
-
-INSERT INTO `passwordreset` (`hash`, `email`, `requestedOn`, `ID`) VALUES
-('e9a06ef6dafc8556596fb83927836240', 'imran1701d@gmail.com', '2020-11-10 12:39:15', 9);
-
 -- --------------------------------------------------------
 
 --
@@ -60,17 +53,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `verified` tinyint(1) NOT NULL DEFAULT '0',
   `hasClinic` tinyint(1) NOT NULL DEFAULT '0',
+  `role` varchar(255) NOT NULL DEFAULT 'user',
   `dateAdded` date NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `name`, `surname`, `email`, `profilePicture`, `password`, `verified`, `hasClinic`, `dateAdded`) VALUES
-(13, 'Imran', 'Isak', 'imran1701d@gmail.com', '', '$2y$10$4K2Kini9aK2cEcpL8Gt1O.a85Oas/VH.K.Puh97gZFJbdfTzccU2.', 1, 0, '2020-09-07');
+INSERT INTO `users` (`ID`, `name`, `surname`, `email`, `profilePicture`, `password`, `verified`, `hasClinic`, `role`, `dateAdded`) VALUES
+(13, 'Imran', 'Isak', 'imran1701d@gmail.com', '', '$2y$10$4K2Kini9aK2cEcpL8Gt1O.a85Oas/VH.K.Puh97gZFJbdfTzccU2.', 1, 0, 'admin', '2020-09-07'),
+(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$cnxfyNN9hN/ug23fJ.6usurS9ffiHhX467qVL82M84GRU0O2HkjnO', 1, 0, 'user', '2020-11-11');
 
 -- --------------------------------------------------------
 
@@ -84,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `verifications` (
   `hash` varchar(1000) NOT NULL,
   `userEmail` varchar(150) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

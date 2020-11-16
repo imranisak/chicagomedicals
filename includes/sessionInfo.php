@@ -8,5 +8,9 @@
         $id=$_SESSION['id'];
         $email=$_SESSION['email'];
         $profilePicture=$_SESSION['profilePicture'];
-    } else $isLoggedIn=false;
+        $role=$_SESSION['role'];
+    } else{
+        $isLoggedIn=false;
+        $role='visitor';
+    }
 ?>
