@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 16, 2020 at 09:01 PM
+-- Generation Time: Nov 18, 2020 at 05:45 PM
 -- Server version: 5.7.26
--- PHP Version: 7.3.5
+-- PHP Version: 7.1.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,7 +35,30 @@ CREATE TABLE IF NOT EXISTS `passwordreset` (
   `requestedOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE IF NOT EXISTS `tags` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `tag` varchar(255) COLLATE utf32_bin NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`ID`, `tag`) VALUES
+(1, 'Dentist'),
+(2, 'Anesthesiologist'),
+(3, 'Cardiologist'),
+(4, 'Dermatologist');
 
 -- --------------------------------------------------------
 
@@ -65,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`ID`, `name`, `surname`, `email`, `profilePicture`, `password`, `verified`, `hasClinic`, `role`, `dateAdded`) VALUES
 (13, 'Imran', 'Isak', 'imran1701d@gmail.com', '', '$2y$10$4K2Kini9aK2cEcpL8Gt1O.a85Oas/VH.K.Puh97gZFJbdfTzccU2.', 1, 0, 'admin', '2020-09-07'),
-(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$cnxfyNN9hN/ug23fJ.6usurS9ffiHhX467qVL82M84GRU0O2HkjnO', 1, 0, 'user', '2020-11-11');
+(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$FgWFb81KiJB/XMmN93YbM.jb8TeQ6xhOT2Pov9MlMfnze.W1FKvEG', 1, 0, 'user', '2020-11-11');
 
 -- --------------------------------------------------------
 

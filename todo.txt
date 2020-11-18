@@ -1,11 +1,12 @@
 TODO
-IMPORTANT - Add admin and tags!!
+Remove "add clinics" from navbar if the user is not logged
+Add clinics to DB - make their table
+Add "delete tag", but only if it not used
 Add index.php to every folder
 Add gender selection
 Add "Refer to me as mr. mrs. "
 Add profile edit
 !!!!!!Close all DB connections!!!!!
-Add clinics to DB - make their table
 Emplyees of a clinic
 Messages
 Clinic reviews - 5-star system
@@ -20,6 +21,7 @@ Schedules?
 NOT Fluf up <3
 =====================================================
 Done
+IMPORTANT - Add admin and tags!!
 Add session - user info into the includes file, so it can be easily accessed anywhere! (vars name, surname, profilePicture etc..)
 Add profile pictures - generally add file upload and media or files folder - needs to be finished, almost there
 Add password reset
