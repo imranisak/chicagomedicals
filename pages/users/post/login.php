@@ -33,4 +33,4 @@ if($user->num_rows>0){
         else $msg->error("Incorect password!", "../login.php");
     }
 }
-else  $msg->warning("Not a valid email! <a href='../register.php'>Plz register</a>", "../login.php");
+else  $msg->warning("Not a valid email! <a href='/pages/users/register.php'>Plz register</a>", "../login.php");
