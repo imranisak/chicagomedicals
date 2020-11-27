@@ -1,4 +1,5 @@
 <?php
+
 //Code used for handling file uploads. Idea is to use this file universally, for all file uploads (pics, docs etc..)
 //Dir can be changed later if needed (maybe docs folder for .pdf)
 /**
@@ -13,6 +14,8 @@ function proccessFile($msg, $type)
     elseif ($type=="document") $targetDir="/media/documents";
     else $targetDir="/media";
     $fileName = $targetDir ."/".date("Y-m-d-H-i-s")."_". basename($_FILES["file"]["name"]);//Adds the current date and time with seconds to the file name, so you can't make a duplicate
+    $fileName=filterInput($fileName);
+    $fileName=preg_replace('/\s+/', '_', $fileName);
     $uploadOK = true;
     $fileType = strtolower(pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
@@ -29,4 +32,31 @@ function proccessFile($msg, $type)
         return $fileName;
     }
 else return false;//If any errors are given, turns it false. This can be useful later on.
+}
+/**
+ * @param string $msg Must include the flash message variable, $msg
+ * @param string $type Defines what kind of file (image, or document) it is, so it knows where to save - yes, I know there's a function for this
+ * @return string Returns the array of images saved
+ * @return bool Returns false if something goes wrong.
+ */
+function multipleFileUpload($msg, string $type){
+    /*TODO
+     * Add errors (only supported file types, sizes, and amount of files)
+     *
+     */
+    if(isset($_POST['submit'])){
+        if ($type=="image") $targetDir = "/media/pictures";
+        elseif ($type=="document") $targetDir="/media/documents";
+        else $targetDir="/media";
+        echo $targetDir;
+        $countfiles = count($_FILES['file']['name']);
+        for($i=0;$i<$countfiles;$i++){
+            $fileName = $targetDir ."/".date("Y-m-d-H-i-s")."_". basename($_FILES["file"]["name"][$i]);//Adds the current date and time with seconds to the file name, so you can't make a duplicate
+            $fileName=filterInput($fileName);
+            $fileName=preg_replace('/\s+/', '_', $fileName);
+            move_uploaded_file($_FILES['file']['tmp_name'][$i],$_SERVER['DOCUMENT_ROOT'].$fileName);
+            echo $fileName;
+        }
+    }
+
 }
