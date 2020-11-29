@@ -24,10 +24,16 @@ if($isLoggedIn){
 <body>
 <?php require "../../includes/navbar.php" ?>
 <h1>Add a clinic</h1>
+<h3>The clinic you add will be linked to your account, and you will be added as the owner!</h3>
 <form action="post/addClinic.php" method="post" enctype='multipart/form-data'>
     <input type="text" name="clinicName" placeholder="Clinic name" required><br>
     <input type="text" name="clinicAddress" placeholder="Clinic Address" required><br>
-    <input type="text" class="tagator" id="tags" placeholder="Services"><br>
+    <input type="text" class="tagator" id="tags" placeholder="Services" required><br>
+    <input type="url" name="clinicWebsite" placeholder="Website">
+    <p>Social media</p>
+    <input type="url" name="facebook" placeholder="Facebook"><br>
+    <input type="url" name="instagram" placeholder="Instagram"><br>
+    <input type="url" name="twitter" placeholder="Twitter"><br>
     <label for="pictureUpload">Upload pictures of your clinic (10 max)</label><br>
     <input type="file" name="file[]" id="pictureUpload" multiple>
     <input type="submit" value="Add clinic" name="submit">
