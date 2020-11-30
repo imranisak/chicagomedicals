@@ -1,5 +1,6 @@
 <?php
 require '../../includes/flashMessages.php';
+require '../../includes/token.php';
 if (!session_id()) @session_start();
 $_SESSION['goBack']='/pages/users/resetPassword.php';
 ?>
@@ -16,6 +17,7 @@ $_SESSION['goBack']='/pages/users/resetPassword.php';
     <form action="post/resetPassword.php" method="post">
         <p>Forgot your password? No problem. Enter your account email, and you will get an password reset link.</p>
         <input type="email" placeholder="E-mail" name="email">
+        <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token']; ?>" required>
         <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
         <button type="submit">Reset password</button>
     </form>

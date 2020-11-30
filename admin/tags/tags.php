@@ -2,6 +2,7 @@
 require "../../includes/database.php";
 require "../../includes/sessionInfo.php";
 require "../../includes/flashMessages.php";
+require "../../includes/token.php";
 if($isAdmin){
     $loadTagsFromDB="SELECT * from tags ORDER BY tag ASC";
     $tags=$databaseConnection->query($loadTagsFromDB);
@@ -23,6 +24,7 @@ if($isAdmin){
     <h3>Add and edit tags</h3>
     <form action="post/tags.php" method="post">
         <input type="text" placeholder="Tag" name="tag">
+        <input type="hidden" name="token" value="$_SESSION['csrf_token']">
         <input type="submit">
     </form>
     <table>

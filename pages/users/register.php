@@ -1,4 +1,5 @@
 <?php require '../../includes/flashMessages.php'; ?>
+<?php require '../../includes/token.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,6 +28,7 @@
             <label> Repeat password:
                 <input type="password" name="password_2" placeholder="Repeat password" required>
             </label>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token']; ?>" required>
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
             <input type="submit" value="submit" name="submit">
         </form>

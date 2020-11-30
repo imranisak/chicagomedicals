@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/includes/tagator/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/tagator/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/tagator/fm.tagator.jquery.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/tagator/fm.tagator.jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/tagator/fm.tagator.jquery.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/tagator/fm.tagator.jquery.min.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/tagator/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/tagator/jquery-1.11.0.min.js" afterDir="false" />
+    <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Small stepts...Slowly started working on the clinic system.">
+      <change afterPath="$PROJECT_DIR$/includes/token.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/fileUpload.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/fileUpload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/tags/editTags.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tags/editTags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/tags/post/editTags.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tags/post/editTags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/tags/post/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tags/post/tags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/tags/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tags/tags.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/addClinic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/enterNewPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/enterNewPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/enterNewPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/enterNewPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/resetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/resetPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/resetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/resetPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/verify.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/verify.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +87,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -118,7 +121,6 @@
       <workItem from="1605127182678" duration="7036000" />
       <workItem from="1605650193085" duration="273000" />
       <workItem from="1605713955704" duration="6726000" />
-      <workItem from="1606493511736" duration="9434000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
@@ -127,14 +129,7 @@
       <option name="project" value="LOCAL" />
       <updated>1605562840798</updated>
     </task>
-    <task id="LOCAL-00002" summary="Small bug fux">
-      <created>1606493550902</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1606493550902</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +149,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added basic admin stuff." />
-    <MESSAGE value="Small bug fux" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small bug fux" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic admin stuff." />
   </component>
 </project>

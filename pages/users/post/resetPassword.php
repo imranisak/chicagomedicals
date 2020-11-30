@@ -4,6 +4,7 @@ require "../../../includes/database.php";
 require "../../../includes/flashMessages.php";
 require "../../../includes/sendMail.php";
 require "../../../includes/functions.php";
+if($_SESSION['csrf_token']!=$_POST['token']) $msg->error("Invalid token.", "/");
 if(isset($_POST['email'])){
     $email=$_POST['email'];
     $checkMailInDatabaseSQL="SELECT email FROM users WHERE email='$email'";

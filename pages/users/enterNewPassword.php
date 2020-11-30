@@ -8,6 +8,7 @@
     <?php require "../../includes/flashMessages.php"; ?>
     <?php require "../../includes/header.php"; ?>
     <?php require "../../includes/database.php"; ?>
+    <?php require "../../includes/token.php"; ?>
     <?php
     $email=$_GET['email'];
     $hash=$_GET['hash'];
@@ -34,6 +35,7 @@
     </label><br><br>
         <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>" required>
     <input type="hidden" name="hash" value="<?php echo $_GET['hash']; ?>" required>
+    <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'] ?>" required>
     <button type="submit">Submit</button>
 </form>
 

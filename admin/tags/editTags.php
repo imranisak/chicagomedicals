@@ -2,6 +2,7 @@
 require "../../includes/database.php";
 require "../../includes/sessionInfo.php";
 require "../../includes/flashMessages.php";
+require "../../includes/token.php";
 if($isAdmin){
     $tag=$_GET['tag'];
     $id=$_GET['id'];
@@ -22,6 +23,7 @@ if($isAdmin){
     <h3>Edit tags</h3>
     <form action="/admin/tags/post/editTags.php" method="post">
         <input type="text" placeholder="Tag" name="tag" value="<?php echo $tag;?>">
+        <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>">
         <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
         <input type="submit">
     </form>

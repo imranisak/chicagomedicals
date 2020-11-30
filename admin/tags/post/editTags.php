@@ -1,6 +1,7 @@
 <?php
 require "../../../includes/flashMessages.php";
 require "../../../includes/sessionInfo.php";
+if ($_SESSION["csrf_token"]!=$_POST['token']) $msg->error("Invalid token.", "/");
 if($isAdmin) {
     if (isset($_POST['tag']) && $_POST['id']) {
         require "../../../includes/database.php";
@@ -18,4 +19,7 @@ if($isAdmin) {
         $databaseConnection->close();
         $msg->error("You did an whoopise", '../tags.php');
     }
-}else $msg->error("lol no", "/");
+}else{
+    $databaseConnection->close();
+    $msg->error("lol no", "/");
+}

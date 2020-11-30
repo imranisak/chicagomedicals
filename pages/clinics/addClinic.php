@@ -5,6 +5,7 @@ require "../../includes/recaptcha.php";
 require "../../includes/flashMessages.php";
 require "../../includes/sessionInfo.php";
 require "../../includes/database.php";
+require "../../includes/token.php";
 $SQLgetTags="SELECT * from tags ORDER BY tag ASC";
 $tags=$databaseConnection->query($SQLgetTags);
 //If it is a free users, and already has a clinic, redirect to payment page
@@ -36,6 +37,7 @@ if($isLoggedIn){
     <input type="url" name="twitter" placeholder="Twitter"><br>
     <label for="pictureUpload">Upload pictures of your clinic (10 max)</label><br>
     <input type="file" name="file[]" id="pictureUpload" multiple>
+    <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
     <input type="submit" value="Add clinic" name="submit">
 
 </form>

@@ -19,10 +19,10 @@ $msg = new \Plasticbrain\FlashMessages\FlashMessages();
                 else $error=true;
                 $deleteVerificationSQL="DELETE FROM verifications WHERE hash='$hash'";
                 if($databaseConnection->query($deleteVerificationSQL)) $msg->success("Email successfully verified! You can close this tab.");
-                else $msg->error("An error has occured. Please try again. If the problem keeps coming back, contact admin.");
+                else $msg->error("An error has occurred. Please try again. If the problem keeps coming back, contact admin.");
             }
         }
-    } else $msg->error("An error has occured. Please try again. If the problem keeps coming back, contact admin.");
+    } else $msg->error("An error has occurred. Please try again. If the problem keeps coming back, contact admin.");
 ?>
 
 <!DOCTYPE html>
