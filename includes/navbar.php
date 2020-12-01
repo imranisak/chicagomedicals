@@ -20,7 +20,7 @@ if($role!='admin'){
                 Clinics
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/pages/clinics">All clinics</a>
+                <a class="dropdown-item" href="/pages/clinics">All clinic</a>
                 <a class="dropdown-item" href="/pages/clinics/addClinic.php">Add a clinis</a>
             </div>
         </li>

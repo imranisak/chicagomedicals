@@ -6,6 +6,7 @@ require "../../../includes/fileUpload.php";
 require "../../../includes/recaptcha.php";
 require "../../../includes/functions.php";
 require "../../../includes/sessionInfo.php";
+require "../../../classes/clinic.php";
 /*TODO
 **Add reCaptcha
  * Add profile picture / logo
@@ -19,7 +20,7 @@ if(isset($_POST['submit'])){
     if(isset($_POST['clinicName'])) $clinicName=filter_var($_POST['clinicName'], FILTER_SANITIZE_STRING);
     else $msg->error("Clinic must have a name!");
     //Clinic address
-    if(isset($_POST['clinicAddress'])) $clinisAddress=filter_var($_POST['clinicAddress'], FILTER_SANITIZE_STRING);
+    if(isset($_POST['clinicAddress'])) $clinicAddress=filter_var($_POST['clinicAddress'], FILTER_SANITIZE_STRING);
     else $msg->error("Clinic must have an address!");
     //Clinic email
     if(isset($_POST['clinicEmail'])) $clinicEmail=filter_var($_POST['clinicEmail'], FILTER_SANITIZE_EMAIL);
@@ -45,7 +46,20 @@ if(isset($_POST['submit'])){
     //Images
     if(!multipleFileUpload($msg, "image")) $msg->error("Must select at least one image, or invalid image name!");
     else $images=multipleFileUpload($msg, "image");
-    $msg->display();
+    $images=json_encode($images);//Converts the image array to json so it can be saved to the database
+    if($msg->hasErrors()) $msg->error("An error has occured!", '../addClinic'); //If there are no errors, go back
+    $clinic=new clinic($clinicName, $clinicOwner, $clinicOwnerID, $clinicEmail, $clinicAddress, $clinicZIPcode, $clinicServices, $clinicWebsite, $images, $clinicFacebook, $clinicTwitter, $clinicInstagram);
+    $clinicAdded=$clinic->addToDatabase($databaseConnection);
+    if($clinicAdded===true){
+        if(!isset($mail)) $mail=new PHPMailer(true);
+        $clinic->sendNotificationToOwner($email, $name, $mail);
+        $clinic->sendNotificationToAdmin("info@imranisak.com", $mail);//TODO - figure out how to load ALL admin mails ;-;
+        $msg->success("Your clinic has been submitted for review. We will let you know by mail if it has been approved - usually within 24h.", "../addClinic.php");
+    }
+    else{
+        $databaseConnection->close();
+        $msg->error("An error has occured. Please try again. If the error persists, please report this error to admin", "../addClinic.php");
+    }
 }
 else{
     $databaseConnection->close();
