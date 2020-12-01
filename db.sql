@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 18, 2020 at 05:45 PM
+-- Generation Time: Dec 01, 2020 at 02:24 PM
 -- Server version: 5.7.26
--- PHP Version: 7.1.29
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `chmeds`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clinics`
+--
+
+DROP TABLE IF EXISTS `clinics`;
+CREATE TABLE IF NOT EXISTS `clinics` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf32_bin NOT NULL,
+  `owner` varchar(255) COLLATE utf32_bin NOT NULL,
+  `ownerID` int(11) NOT NULL,
+  `address` text COLLATE utf32_bin NOT NULL,
+  `zip` int(11) NOT NULL,
+  `services` text COLLATE utf32_bin NOT NULL,
+  `website` text COLLATE utf32_bin,
+  `images` text COLLATE utf32_bin,
+  `facebook` text COLLATE utf32_bin,
+  `twitter` text COLLATE utf32_bin,
+  `instagram` text COLLATE utf32_bin,
+  `approved` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 -- --------------------------------------------------------
 
@@ -80,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `dateAdded` date NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -102,7 +126,14 @@ CREATE TABLE IF NOT EXISTS `verifications` (
   `hash` varchar(1000) NOT NULL,
   `userEmail` varchar(150) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `verifications`
+--
+
+INSERT INTO `verifications` (`ID`, `hash`, `userEmail`) VALUES
+(47, '72d6adee48a066abed00f3c896d1b5df', 'elbaridi@gmail.com');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
