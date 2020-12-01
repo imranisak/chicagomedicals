@@ -1,4 +1,6 @@
 TODO
+!!Use filters_var()
+Add csrf stuff
 Remove "add clinics" from navbar if the user is not logged
 Add clinics to DB - make their table
 Add "delete tag", but only if it not used

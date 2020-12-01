@@ -45,18 +45,21 @@ function multipleFileUpload($msg, string $type){
      *
      */
     if(isset($_POST['submit'])){
+        $files=[];
         if ($type=="image") $targetDir = "/media/pictures";
         elseif ($type=="document") $targetDir="/media/documents";
         else $targetDir="/media";
-        echo $targetDir;
         $countfiles = count($_FILES['file']['name']);
         for($i=0;$i<$countfiles;$i++){
+            if($_FILES["file"]["name"][$i]=="") return false;
             $fileName = $targetDir ."/".date("Y-m-d-H-i-s")."_". basename($_FILES["file"]["name"][$i]);//Adds the current date and time with seconds to the file name, so you can't make a duplicate
             $fileName=filterInput($fileName);
             $fileName=preg_replace('/\s+/', '_', $fileName);
+            $fileName=filter_var($fileName, FILTER_SANITIZE_STRING);
             move_uploaded_file($_FILES['file']['tmp_name'][$i],$_SERVER['DOCUMENT_ROOT'].$fileName);
-            echo $fileName;
+            array_push($files, $fileName);
         }
+        return $files;
     }
 
 }

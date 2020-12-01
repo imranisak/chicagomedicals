@@ -29,14 +29,16 @@ if($isLoggedIn){
 <form action="post/addClinic.php" method="post" enctype='multipart/form-data'>
     <input type="text" name="clinicName" placeholder="Clinic name" required><br>
     <input type="text" name="clinicAddress" placeholder="Clinic Address" required><br>
-    <input type="text" class="tagator" id="tags" placeholder="Services" required><br>
+    <input type="email" name="clinicEmail" placeholder="Clinic Email" required><br>
+    <input type="number" name="zip" placeholder="Clinic ZIP code" required><br>
+    <input type="text" name="services" class="tagator" id="tags" placeholder="Services" required><br>
     <input type="url" name="clinicWebsite" placeholder="Website">
     <p>Social media</p>
     <input type="url" name="facebook" placeholder="Facebook"><br>
     <input type="url" name="instagram" placeholder="Instagram"><br>
     <input type="url" name="twitter" placeholder="Twitter"><br>
     <label for="pictureUpload">Upload pictures of your clinic (10 max)</label><br>
-    <input type="file" name="file[]" id="pictureUpload" multiple>
+    <input type="file" name="file[]" id="pictureUpload" multiple required>
     <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
     <input type="submit" value="Add clinic" name="submit">
 

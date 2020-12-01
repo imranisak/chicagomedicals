@@ -796,126 +796,116 @@ SELECT|sys.sys_config
       <ObjectGrants>ALL PRIVILEGES!
 </ObjectGrants>
     </user>
-    <table id="248" parent="4" name="passwordreset">
+    <table id="248" parent="4" name="clinics"/>
+    <table id="249" parent="4" name="passwordreset">
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <table id="249" parent="4" name="tags"/>
-    <table id="250" parent="4" name="users">
+    <table id="250" parent="4" name="tags"/>
+    <table id="251" parent="4" name="users">
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <table id="251" parent="4" name="verifications">
+    <table id="252" parent="4" name="verifications">
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <column id="252" parent="248" name="hash">
+    <column id="253" parent="248" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="254" parent="248" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="255" parent="248" name="owner">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="256" parent="248" name="address">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="257" parent="248" name="city">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="258" parent="248" name="zip">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="259" parent="248" name="services">
+      <Position>7</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="260" parent="248" name="website">
+      <Position>8</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="261" parent="248" name="facebook">
+      <Position>9</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="262" parent="248" name="twitter">
+      <Position>10</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="263" parent="248" name="instagram">
+      <Position>11</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="264" parent="248" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="265" parent="249" name="hash">
       <Position>1</Position>
       <DataType>varchar(150)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="253" parent="248" name="email">
+    <column id="266" parent="249" name="email">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="254" parent="248" name="requestedOn">
+    <column id="267" parent="249" name="requestedOn">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <column id="255" parent="248" name="ID">
+    <column id="268" parent="249" name="ID">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <key id="256" parent="248" name="PRIMARY">
+    <key id="269" parent="249" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="257" parent="249" name="ID">
+    <column id="270" parent="250" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="258" parent="249" name="tag">
+    <column id="271" parent="250" name="tag">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="259" parent="249" name="PRIMARY">
+    <key id="272" parent="250" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
-    </key>
-    <column id="260" parent="250" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="261" parent="250" name="name">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="262" parent="250" name="surname">
-      <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="263" parent="250" name="email">
-      <Position>4</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="264" parent="250" name="profilePicture">
-      <Position>5</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="265" parent="250" name="password">
-      <Position>6</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="266" parent="250" name="verified">
-      <Position>7</Position>
-      <DataType>tinyint(1)|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>0</DefaultExpression>
-    </column>
-    <column id="267" parent="250" name="hasClinic">
-      <Position>8</Position>
-      <DataType>tinyint(1)|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>0</DefaultExpression>
-    </column>
-    <column id="268" parent="250" name="role">
-      <Position>9</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;user&apos;</DefaultExpression>
-    </column>
-    <column id="269" parent="250" name="dateAdded">
-      <Position>10</Position>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="270" parent="250" name="email">
-      <ColNames>email</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="271" parent="250" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="272" parent="250" name="email">
-      <ColNames>email</ColNames>
-      <UnderlyingIndexName>email</UnderlyingIndexName>
     </key>
     <column id="273" parent="251" name="ID">
       <Position>1</Position>
@@ -923,17 +913,85 @@ SELECT|sys.sys_config
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="274" parent="251" name="hash">
+    <column id="274" parent="251" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="275" parent="251" name="surname">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="276" parent="251" name="email">
+      <Position>4</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="277" parent="251" name="profilePicture">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="278" parent="251" name="password">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="279" parent="251" name="verified">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="280" parent="251" name="hasClinic">
+      <Position>8</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="281" parent="251" name="role">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;user&apos;</DefaultExpression>
+    </column>
+    <column id="282" parent="251" name="dateAdded">
+      <Position>10</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="283" parent="251" name="email">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="284" parent="251" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="285" parent="251" name="email">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>email</UnderlyingIndexName>
+    </key>
+    <column id="286" parent="252" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="287" parent="252" name="hash">
       <Position>2</Position>
       <DataType>varchar(1000)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="275" parent="251" name="userEmail">
+    <column id="288" parent="252" name="userEmail">
       <Position>3</Position>
       <DataType>varchar(150)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="276" parent="251" name="PRIMARY">
+    <key id="289" parent="252" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
