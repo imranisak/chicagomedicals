@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 01, 2020 at 02:24 PM
--- Server version: 5.7.26
--- PHP Version: 7.3.5
+-- Generation Time: Dec 01, 2020 at 05:58 PM
+-- Server version: 8.0.21
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,21 +29,22 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `clinics`;
 CREATE TABLE IF NOT EXISTS `clinics` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf32_bin NOT NULL,
-  `owner` varchar(255) COLLATE utf32_bin NOT NULL,
-  `ownerID` int(11) NOT NULL,
-  `address` text COLLATE utf32_bin NOT NULL,
-  `zip` int(11) NOT NULL,
-  `services` text COLLATE utf32_bin NOT NULL,
-  `website` text COLLATE utf32_bin,
-  `images` text COLLATE utf32_bin,
-  `facebook` text COLLATE utf32_bin,
-  `twitter` text COLLATE utf32_bin,
-  `instagram` text COLLATE utf32_bin,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
+  `owner` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
+  `ownerID` int NOT NULL,
+  `email` varchar(255) COLLATE utf32_bin NOT NULL,
+  `address` text CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
+  `zip` int NOT NULL,
+  `services` text CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
+  `website` text CHARACTER SET utf32 COLLATE utf32_bin,
+  `images` json NOT NULL,
+  `facebook` text CHARACTER SET utf32 COLLATE utf32_bin,
+  `twitter` text CHARACTER SET utf32 COLLATE utf32_bin,
+  `instagram` text CHARACTER SET utf32 COLLATE utf32_bin,
   `approved` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 -- --------------------------------------------------------
 
@@ -57,9 +57,9 @@ CREATE TABLE IF NOT EXISTS `passwordreset` (
   `hash` varchar(150) NOT NULL,
   `email` varchar(50) NOT NULL,
   `requestedOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `passwordreset` (
 
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `tag` varchar(255) COLLATE utf32_bin NOT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `tag` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
@@ -92,7 +92,7 @@ INSERT INTO `tags` (`ID`, `tag`) VALUES
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `surname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `dateAdded` date NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
@@ -122,11 +122,11 @@ INSERT INTO `users` (`ID`, `name`, `surname`, `email`, `profilePicture`, `passwo
 
 DROP TABLE IF EXISTS `verifications`;
 CREATE TABLE IF NOT EXISTS `verifications` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int NOT NULL AUTO_INCREMENT,
   `hash` varchar(1000) NOT NULL,
   `userEmail` varchar(150) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `verifications`
