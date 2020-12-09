@@ -52,8 +52,8 @@ if(isset($_POST['submit'])){
     $clinicAdded=$clinic->addToDatabase($databaseConnection);
     if($clinicAdded===true){
         if(!isset($mail)) $mail=new PHPMailer(true);
-        $clinic->sendNotificationToOwner($email, $name, $mail);
-        $clinic->sendNotificationToAdmin("info@imranisak.com", $mail);//TODO - figure out how to load ALL admin mails ;-;
+        //$clinic->sendNotificationToOwner($email, $name, $mail);
+        //$clinic->sendNotificationToAdmin("info@imranisak.com", $mail);//TODO - figure out how to load ALL admin mails ;-;
         $msg->success("Your clinic has been submitted for review. We will let you know by mail if it has been approved - usually within 24h.", "../addClinic.php");
     }
     else{

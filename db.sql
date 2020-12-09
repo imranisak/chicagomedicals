@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 01, 2020 at 05:58 PM
+-- Generation Time: Dec 09, 2020 at 10:20 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.4.9
 
@@ -44,7 +44,17 @@ CREATE TABLE IF NOT EXISTS `clinics` (
   `instagram` text CHARACTER SET utf32 COLLATE utf32_bin,
   `approved` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+
+--
+-- Dumping data for table `clinics`
+--
+
+INSERT INTO `clinics` (`ID`, `name`, `owner`, `ownerID`, `email`, `address`, `zip`, `services`, `website`, `images`, `facebook`, `twitter`, `instagram`, `approved`) VALUES
+(20, 'Ćenifa', 'Lt. Worf', 35, 'kucaa@kuca.com', 'Kod kuce', 123, 'Anesthesiologist,Dentist,Alergist', 'http://site.com', '[\"/media/pictures/2020-12-08-14-02-07_clinic.jpg\"]', 'http://facebook.com/clinic', '', '', 0),
+(19, 'Podrumm', 'Lt. Worf', 35, 'mail@mail.com', 'Kod kuce', 123321, 'Anesthesiologist,Dentist,Dermatologist', 'http://site.com', '[\"/media/pictures/2020-12-08-13-56-17_clinic.jpg\"]', 'http://facebook.com/clinic', '', '', 0),
+(18, 'Ćumez', 'Lt. Worf', 35, 'imran1701d@gmail.com', 'Zije Dizdarevica 24', 72000, 'psychologist', 'http://site.com', '[\"/media/pictures/2020-12-07-20-42-21_ovaj_pise.png\", \"/media/pictures/2020-12-07-20-42-21_puno_prica.png\", \"/media/pictures/2020-12-07-20-42-21_pukla.png\"]', '', '', '', 0),
+(17, 'Špajz', 'Lt. Worf', 35, 'web.webmedia@gmail.com', 'Azize Šaćirbegović 2', 7100, 'Anesthesiologist', 'http://site.com', '[\"/media/pictures/2020-12-07-17-11-15_slika.png\"]', 'http://facebook.com/clinic', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -72,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `tag` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 --
 -- Dumping data for table `tags`
