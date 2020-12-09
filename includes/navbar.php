@@ -20,8 +20,8 @@ if($role!='admin'){
                 Clinics
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/pages/clinics">All clinics</a>
-                <a class="dropdown-item" href="/pages/clinics/addClinic.php">Add a clinis</a>
+                <a class="dropdown-item" href="/pages/clinics">All clinic</a>
+                <a class="dropdown-item" href="/pages/clinics/addClinic.php">Add a clinic</a>
             </div>
         </li>
       <?php if($isLoggedIn){ ?>
@@ -57,7 +57,7 @@ if($role!='admin'){
                 <a class="nav-link" href="#">Comments</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Clinics</a>
+                <a class="nav-link" href="/admin/clinics/clinicreview">Clinics</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/tags/tags.php">Tags</a>

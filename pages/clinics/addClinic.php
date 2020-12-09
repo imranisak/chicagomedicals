@@ -24,6 +24,7 @@ if($isLoggedIn){
 </head>
 <body>
 <?php require "../../includes/navbar.php" ?>
+<?php if($msg->hasMessages()) $msg->display() ?>
 <h1>Add a clinic</h1>
 <h3>The clinic you add will be linked to your account, and you will be added as the owner!</h3>
 <form action="post/addClinic.php" method="post" enctype='multipart/form-data'>

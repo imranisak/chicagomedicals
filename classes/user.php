@@ -1,5 +1,5 @@
 <?php
-if (!session_id()) @session_start();
+if (!session_id()) @session_start();//Why is this here?
 class user{
     public $name, $surname, $email, $password, $dateAdded, $saved=false, $profilePicture;
     function __construct($nameInput, $surnameInput, $emailInput, $passwordInput, $dateAddedInput, $profilePictureInput){
