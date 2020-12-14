@@ -18,14 +18,15 @@ $allServices=$databaseConnection->query($SQLloadServices);
 $servicesTemp=[];
 foreach($allServices as $service) array_push($servicesTemp, strtolower($service['tag']));
 $allServices=$servicesTemp;
-//foreach($allServices as $service) echo $service."<br>";
-//Loads the services that the user has sent, and converts them all to lower case
+//Loads the services that the user has sent, and converts them all to lower case - probably a terrible way to do this, but worksssss
 $userInput=[];
 array_push($userInput, strtolower($clinics->fetch_assoc()['services'])); 
-var_dump($userInput);
-foreach($userInput as $input){
-    echo $input;
-}
+$userInputTemp=[];
+$userInputTemp=explode(",", $userInput[0]);
+$userInput=$userInputTemp;
+$notInDB=[];
+foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($notInDB, $input);
+
 ?>
 <html lang="en">
 <head>
@@ -71,6 +72,12 @@ foreach($userInput as $input){
 <p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
 <p>Instagram: <?php echo "<a href='".$instagram."' target='_blank'>".$instagram."</a>" ?></p>
 <p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
+<?php 
+if(!empty($notInDB)){
+    echo "<p>These tags are not in the database, but the user has submitted them. <br>Click on each of them to add them to the database, so they can be used later.</p>";
+    foreach ($notInDB as $input) echo "<a class='addTagToDatabse' href='#'>".$input."</a><br>";
+}
+?>
 <!--Images and gallery-->
 <?php
     $images=substr($images, 1, -1);
@@ -92,7 +99,22 @@ foreach($userInput as $input){
     });
     </script>
 <!--End of images-->
-
+<script type="text/javascript">
+    $(".addTagToDatabse").click(function(){
+        var $this = $(this);
+        var tagToAdd=$this.text();
+       /* $.post( "post/addTag.php", { tag:"tagToAdd" })
+          .done(function( data ) {
+            alert( "Data Loaded: " + data );
+          });*/
+          $.ajax({
+            url:"post/addTag.php",
+            data: tagToAdd,
+            method: "POST",
+            success: function
+          })
+    })
+</script>
 <?php require "../../includes/footer.php"; ?>
 
 
