@@ -99,7 +99,9 @@ if(!empty($notInDB)){
     });
     </script>
 <!--End of images-->
+<!--Add tags to DB-->
 <script type="text/javascript">
+    var token="<?php echo $_SESSION['csrf_token'] ?>";
     $(".addTagToDatabse").click(function(e){
         e.preventDefault()
         var $this = $(this);
@@ -107,10 +109,12 @@ if(!empty($notInDB)){
         if(confirm("Are you sure you want to add "+tagToAdd+" to database?")){
           $.ajax({
             url:"post/addTag.php",
-            data: {'tag': tagToAdd},
+            data: {'tag': tagToAdd, 
+                    'token' : token},
             method: "POST",
             success: function(data){
-                if(data===true){
+                alert(data);
+                if(data==true){
                     $this.remove();
                     alert(tagToAdd + " has been added to the database!");
                 }
