@@ -82,7 +82,7 @@ if(!empty($notInDB)){
 <?php
     $images=substr($images, 1, -1);
     $images=explode(", ", $images);?>
-    <div class='galleria col-md-5'">
+    <div class='galleria col-md-5'>
     <?php foreach($images as $image) echo "<img src=".$image.">";?>
     </div>
 
@@ -100,19 +100,24 @@ if(!empty($notInDB)){
     </script>
 <!--End of images-->
 <script type="text/javascript">
-    $(".addTagToDatabse").click(function(){
+    $(".addTagToDatabse").click(function(e){
+        e.preventDefault()
         var $this = $(this);
         var tagToAdd=$this.text();
-       /* $.post( "post/addTag.php", { tag:"tagToAdd" })
-          .done(function( data ) {
-            alert( "Data Loaded: " + data );
-          });*/
+        if(confirm("Are you sure you want to add "+tagToAdd+" to database?")){
           $.ajax({
             url:"post/addTag.php",
-            data: tagToAdd,
+            data: {'tag': tagToAdd},
             method: "POST",
-            success: function
+            success: function(data){
+                if(data===true){
+                    $this.remove();
+                    alert(tagToAdd + " has been added to the database!");
+                }
+                else alert("Something went wrong. Plese try again, or contact admin");
+            }
           })
+        }
     })
 </script>
 <?php require "../../includes/footer.php"; ?>
