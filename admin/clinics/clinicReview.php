@@ -23,6 +23,7 @@ else echo $databaseConnection->error;
     <?php require "../../includes/navbar.php" ?>
     
 <h3>Clinics</h3>
+<?php if($msg->hasMessages())$msg->display(); ?>
 <div class="col-md-10">
 
 

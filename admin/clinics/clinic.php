@@ -7,6 +7,7 @@ if(!$isAdmin){
     $databaseConnection->close();
     $msg->error("Must be logged in as admin!", "/");
 }
+$token=$_SESSION['csrf_token'];
 //Loads the clinic
 $clinicID=$_GET['ID'];
 $SQLselectClinic="SELECT * FROM clinics WHERE ID = '$clinicID' LIMIT 1";
@@ -48,6 +49,7 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
 <?php require "../../includes/navbar.php"; ?>
 <?php 
         foreach($clinics as $clinic){
+            $clinicID=$clinic['ID'];
             $name=$clinic['name'];
             $owner=$clinic['owner'];
             $address=$clinic['address'];
@@ -59,9 +61,11 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
             $twitter=$clinic['twitter'];
             $instagram=$clinic['instagram'];
             $images=$clinic['images'];
+            $clinicIsApproved=$clinic['approved'];
         }
     ?>
-<h1>Clinic -<?php echo $name ?></h1>
+<?php if($msg->hasMessages()) $msg->display(); ?>
+<h1>Clinic - <?php echo $name ?></h1>
 <p>Name: <?php echo $name ?></p>
 <p>Owner: <?php echo $owner ?></p>
 <p>Address: <?php echo $address ?></p>
@@ -72,6 +76,17 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
 <p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
 <p>Instagram: <?php echo "<a href='".$instagram."' target='_blank'>".$instagram."</a>" ?></p>
 <p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
+<?php if(!$clinicIsApproved) echo "<p>This clinic has not yet been approved, and is not publiclly visible!</p>" ?>
+<?php //yes, the csrf token in visible in the link - but since it is randomlly generated with every load, it should not be a problem...right? ?>
+<a href="post/approveOrDenyClinic.php?token=<?php echo $token ?>&ID=<?php echo $clinicID ?>&action=approve"><button class="btn btn-success">Approve</button></a><span><button class="btn btn-danger" style="margin-left: 10px;" id="denyButton">Deny</button></span>
+<form style="display: none" id="reasonForDenial" method="POST" action="post/approveOrDenyClinic.php">
+    <textarea name="reasonForDenial" rows='10' cols='30'></textarea><br>
+    <p>Please explain why the clinic is being denied. The notification will be sent to the owner.</p>
+    <input type="hidden" name="token" value="<?php echo $token ?>">
+    <input type="hidden" name="action" value="deny">
+    <input type="hidden" name="ID" value="<?php echo $clinicID ?>">
+    <button value="submit" type="submit">Submit</button>
+</form>
 <?php 
 if(!empty($notInDB)){
     echo "<p>These tags are not in the database, but the user has submitted them. <br>Click on each of them to add them to the database, so they can be used later.</p>";
@@ -122,6 +137,13 @@ if(!empty($notInDB)){
             }
           })
         }
+    })
+</script>
+<!--Displays the form for denying-->
+<script type="text/javascript">
+    $("#denyButton").click(function(){
+        console.log("boop");
+        $("#reasonForDenial").css("display", "block");
     })
 </script>
 <?php require "../../includes/footer.php"; ?>

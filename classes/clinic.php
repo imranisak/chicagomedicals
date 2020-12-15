@@ -32,7 +32,7 @@ class clinic
     function sendNotificationToAdmin($adminMail, $mail){
         $mail->addAddress($adminMail, 'Admin');     // Add a recipient
         $mail->Subject = 'New clinic added!';
-        $mail->Body    = file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/newClinicOwnerNotification.html");
+        $mail->Body    = file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/newClinicAdminNotification.html");
         $mail->send();
     }
 }

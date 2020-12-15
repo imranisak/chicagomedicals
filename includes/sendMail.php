@@ -19,3 +19,10 @@ $mail->Port       = 587;                                    // TCP port to conne
 $mail->setFrom('info@chicagomedicals.com', 'Chicago Medicals');
 $mail->addReplyTo('info@chicagomedicals.com', 'Chicago Medicals');
 $mail->isHTML(true);
+/*
+if(!isset($mail)) $mail=new PHPMailer(true);
+$mail->addAddress($ownerEmail, $owner);     // Add a recipient
+$mail->Subject = 'Clinic submitted!';
+$mail->Body    = file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/newClinicOwnerNotification.html");
+$mail->send();
+*/
