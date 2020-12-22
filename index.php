@@ -23,7 +23,7 @@ $tags=$databaseConnection->query($SQLloadTags);
     <img src="<?php echo $_SESSION['profilePicture'] ?>" alt="Profile pic" width="10%">
     <?php } ?>
 
-<form method="GET" action="pages/clinics/search.php">
+<form method="GET" action="pages/clinics/index.php">
     <label for="services">I need services of a </label>
     <input type="text" name="services" class="tagator" id="tags" placeholder="" required>
     <button class="btn btn-primary">Search</button>
