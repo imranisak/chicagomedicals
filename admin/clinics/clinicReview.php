@@ -7,7 +7,7 @@ if(!$isAdmin){
     $databaseConnection->close();
     $msg->error("Must be logged in as admin!", "/");
 }
-$SQLselectClinics="SELECT * from clinics";
+$SQLselectClinics="SELECT * from clinics ORDER BY approved ASC";
 if($databaseConnection->query($SQLselectClinics)) $clinics=$databaseConnection->query($SQLselectClinics);
 else echo $databaseConnection->error;
 ?>

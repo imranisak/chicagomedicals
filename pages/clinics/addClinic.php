@@ -1,7 +1,7 @@
 <?php
 if (!session_id()) @session_start();
 $_SESSION['goBack']='/pages/clinics/addClinic.php';
-require "../../includes/recaptcha.php";
+//require "../../includes/recaptcha.php";
 require "../../includes/flashMessages.php";
 require "../../includes/sessionInfo.php";
 require "../../includes/database.php";
@@ -41,6 +41,7 @@ if($isLoggedIn){
     <label for="pictureUpload">Upload pictures of your clinic (10 max)</label><br>
     <input type="file" name="file[]" id="pictureUpload" multiple required>
     <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
+    <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
     <input type="submit" value="Add clinic" name="submit">
 
 </form>

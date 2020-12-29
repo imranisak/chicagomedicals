@@ -7,14 +7,14 @@ if($role!='admin'){
     <div class="col-xl-12">
       <!--These DIVs are closed in the footer-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="<?php $_SERVER['DOCUMENT_ROOT']?>/index.php">Chicago Medicals</a>
+      <a class="navbar-brand" href="/"><img src="/media/pictures/logo_200x100.png" id="logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
@@ -24,7 +24,7 @@ if($role!='admin'){
                     Clinics
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/pages/clinics">All clinic</a>
+                    <a class="dropdown-item" href="/pages/clinics">All clinics</a>
                     <a class="dropdown-item" href="/pages/clinics/addClinic.php">Add a clinic</a>
                 </div>
             </li>
@@ -48,7 +48,7 @@ if($role!='admin'){
     <?php } else{ ?>
         <!-- ADMIN NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/admin">Chicago Medicals Admin</a>
+        <a class="navbar-brand" href="/admin"><img src="/media/pictures/logo_200x100.png" id="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

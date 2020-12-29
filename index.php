@@ -20,7 +20,7 @@ $tags=$databaseConnection->query($SQLloadTags);
     <h1>Chicago Medicals</h1>
     <?php if(isset($_SESSION['isLoggedIn'])){?>
     <p>Welcome, <?php echo $_SESSION['name']." ".$_SESSION['surname']." ".$_SESSION['role'];; ?></p>
-    <img src="<?php echo $_SESSION['profilePicture'] ?>" alt="Profile pic" width="10%">
+    <img src="<?php echo $_SESSION['profilePicture'] ?>" alt="Profile pic" id="profilePicture">
     <?php } ?>
 
 <form method="GET" action="pages/clinics/index.php">
@@ -56,7 +56,7 @@ $('#tags').tagator({
     }*/
     //This bit here should randomly change the placeholder for the search form
     //But it ain't working as it should...eh, I'll tend to it later
-    $("#tags").attr("placeholder", "help");
+   /* $("#tags").attr("placeholder", "help");
     var tags=[<?php foreach ($tags as $tag) echo "'".$tag['tag']."',"; ?>];
     var whut=setInterval(changeServicesPlaceholder, 500);
     var arrayLenght=tags.length;
@@ -67,7 +67,7 @@ $('#tags').tagator({
         $("#tags").attr("placeholder", tag);
         console.log(tag);
     }
-
+*/
     
 </script>
     <?php require 'includes/footer.php'; 

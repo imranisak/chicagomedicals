@@ -130,7 +130,6 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
                     'token' : token},
             method: "POST",
             success: function(data){
-                alert(data);
                 if(data==true){
                     $this.remove();
                     alert(tagToAdd + " has been added to the database!");
