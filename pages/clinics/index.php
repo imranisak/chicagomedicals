@@ -24,10 +24,10 @@ if($services){
 	$services=strtolower($services);
 	$services=ucfirst($services);
 	echo $services;
-	$SQLselectClinics="SELECT * FROM clinics WHERE services like '%$services%' AND approved = true  LIMIT $offset, $clinicsPerPage";
+	$SQLselectClinics="SELECT * FROM clinics WHERE services like '%$services%' AND approved = true ORDER BY featured DESC, name ASC LIMIT $offset, $clinicsPerPage";
 }
 else {
-	$SQLselectClinics="SELECT * FROM clinics WHERE approved = true LIMIT $offset, $clinicsPerPage";
+	$SQLselectClinics="SELECT * FROM clinics WHERE approved = true  ORDER BY featured DESC, name ASC LIMIT $offset, $clinicsPerPage";
 	$services=false;
 }
 $clinics=$databaseConnection->query($SQLselectClinics);
@@ -45,11 +45,24 @@ echo $databaseConnection->error;
 	if($msg->hasMessages()) $msg->display();
 	foreach($clinics as $clinic){
 		if($clinic['approved']){
+			$featured=$clinic['featured'];
 			$featuredImage=$clinic['images'];
 			$featuredImage=explode(",", $featuredImage);
 			$featuredImage=$featuredImage[0];
 			$featuredImage=str_replace(['[', ']', '"'], "", $featuredImage);
-			echo "
+			if ($featured) echo "
+			<div class='container'>
+			    <div class='row clinicBox featured'>
+			        <div class='col-xs-3'><img src='".$featuredImage."' class='featuredImage'></div>
+			        <div class='col-xs-9'>
+			        	<h3 class='clinicNameInBox'>FEATURED: ".$clinic['name']."</h3>
+			        	<p class='ownerInBox'>Owner: ".$clinic['owner']."</p>
+			        	<p class='adrressInBox'>Address: ".$clinic['address']."</p>
+			        	<a href='/pages/clinics/clinic.php?ID=".$clinic['ID']."'><button class='btn btn-primary'><span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>Read more</button></a>
+			        </div>
+			    </div>
+			</div>";
+			else echo "
 			<div class='container'>
 			    <div class='row clinicBox'>
 			        <div class='col-xs-3'><img src='".$featuredImage."' class='featuredImage'></div>
@@ -60,10 +73,7 @@ echo $databaseConnection->error;
 			        	<a href='/pages/clinics/clinic.php?ID=".$clinic['ID']."'><button class='btn btn-primary'><span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>Read more</button></a>
 			        </div>
 			    </div>
-			</div>
-			";
-			/*echo "<h3>".$clinic['name']."</h3><br><p>Owner:".$clinic['owner']."<br>".
-			"Services: ".$clinic['services']."<hr style='width:100%'>";*/
+			</div>";
 		}
 	}
 	?>
