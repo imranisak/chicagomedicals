@@ -1,6 +1,6 @@
 <?php
 require "../../includes/database.php";
-//require "../../includes/database.php";
+require "../../includes/flashMessages.php";
 //require "../../includes/database.php";
 //Gets the number of approved clinics
 $SQLnumberOfClinics="SELECT COUNT(*) FROM clinics WHERE approved = true";
@@ -8,7 +8,7 @@ $numberOfclinics=$databaseConnection->query($SQLnumberOfClinics);
 $numberOfclinics=mysqli_fetch_row($numberOfclinics);
 $numberOfclinics=$numberOfclinics[0];
 //How many clinics to show
-$clinicsPerPage=1;
+$clinicsPerPage=5;
 $totalPages=ceil($numberOfclinics / $clinicsPerPage);
 //echo "total pages: ".$totalPages;
 //Get the current page or set a default
@@ -42,6 +42,7 @@ echo $databaseConnection->error;
 <body>
 	<?php require '../../includes/navbar.php'; ?>
 	<?php 
+	if($msg->hasMessages()) $msg->display();
 	foreach($clinics as $clinic){
 		if($clinic['approved']){
 			$featuredImage=$clinic['images'];

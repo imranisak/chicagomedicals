@@ -62,6 +62,6 @@ if($isLoggedIn){
 
 
 <?php
-}else $msg->error("You must be logged in to access this page.", "/");
+}else $msg->warning("You must be logged in to add clinics.", "/pages/users/login.php");
 ?>
 
