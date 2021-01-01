@@ -46,10 +46,10 @@ echo $databaseConnection->error;
 	foreach($clinics as $clinic){
 		if($clinic['approved']){
 			$featured=$clinic['featured'];
-			$featuredImage=$clinic['images'];
-			$featuredImage=explode(",", $featuredImage);
+			$featuredImage=unserialize($clinic['images']);
+			//$featuredImage=explode(",", $featuredImage);
 			$featuredImage=$featuredImage[0];
-			$featuredImage=str_replace(['[', ']', '"'], "", $featuredImage);
+			//$featuredImage=str_replace(['[', ']', '"'], "", $featuredImage);
 			if ($featured) echo "
 			<div class='container'>
 			    <div class='row clinicBox featured'>

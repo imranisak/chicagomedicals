@@ -26,13 +26,13 @@ $services=$clinic['services'];
 $facebook=$clinic['facebook'];
 $twitter=$clinic['twitter'];
 $instagram=$clinic['instagram'];
-$images=$clinic['images'];
+$images=unserialize($clinic['images']);
 //Loads the tags
 $SQLloadTags="SELECT * FROM tags ORDER BY tag ASC";
 $tags=$databaseConnection->query($SQLloadTags); 
 //Takes the loaded images and turns them into an array
-$images=substr($images, 1, -1);
-$images=explode(", ", $images);
+//$images=substr($images, 1, -1);
+//$images=explode(", ", $images);
 //Go back, used if recaptcha fails
 $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
 ?>

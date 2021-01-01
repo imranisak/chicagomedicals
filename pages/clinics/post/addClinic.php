@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
     //Images
     if(!multipleFileUpload($msg, "image")) $msg->error("Must select at least one image, or invalid image name!");
     else $images=multipleFileUpload($msg, "image");
-    $images=json_encode($images);//Converts the image array to json so it can be saved to the database
+    $images=serialize($images);//Converts the image array to json so it can be saved to the database
     if($msg->hasErrors()) $msg->error("An error has occured!", '../addClinic'); //If there are no errors, go back
     $clinic=new clinic($clinicName, $clinicOwner, $clinicOwnerID, $clinicEmail, $clinicAddress, $clinicZIPcode, $clinicServices, $clinicWebsite, $images, $clinicFacebook, $clinicTwitter, $clinicInstagram);
     $clinicAdded=$clinic->addToDatabase($databaseConnection);

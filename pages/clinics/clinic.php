@@ -21,7 +21,7 @@ $services=$clinic['services'];
 $facebook=$clinic['facebook'];
 $twitter=$clinic['twitter'];
 $instagram=$clinic['instagram'];
-$images=$clinic['images'];
+$images=unserialize($clinic['images']);
 $clinicIsApproved=$clinic['approved'];
 ?>
 <!DOCTYPE html>
@@ -54,8 +54,8 @@ $clinicIsApproved=$clinic['approved'];
 	<p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
 	<!--Images and gallery-->
 <?php
-    $images=substr($images, 1, -1);
-    $images=explode(", ", $images);?>
+    //$images=substr($images, 1, -1);
+    //$images=explode(", ", $images);?>
     <div class='galleria col-md-5'>
     <?php foreach($images as $image) echo "<img src=".$image.">";?>
     </div>

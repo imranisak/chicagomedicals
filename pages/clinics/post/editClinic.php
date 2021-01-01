@@ -48,26 +48,32 @@ if(isset($_POST['submit'])){
     if(isset($_POST['imagesToRemove'])) $imagesToRemove=filter_var($_POST['imagesToRemove'], FILTER_SANITIZE_STRING);
     else $imagesToRemove=false;
     //Gets uploaded already uploaded, storem them in an array
-    $imagesAlreadyUploaded=$clinic['images'];
-    $imagesAlreadyUploaded=substr($imagesAlreadyUploaded, 1, -1);
-    $imagesAlreadyUploaded=str_replace('"', "", $imagesAlreadyUploaded);
-    $imagesAlreadyUploaded=explode(", ", $imagesAlreadyUploaded);
+    $imagesAlreadyUploaded=unserialize($clinic['images']);
+    //$imagesAlreadyUploaded=substr($imagesAlreadyUploaded, 1, -1);
+    //$imagesAlreadyUploaded=str_replace('"', "", $imagesAlreadyUploaded);
+    //$imagesAlreadyUploaded=explode(", ", $imagesAlreadyUploaded);
     //Takes the images that need to be removed - if any - and removes them from the array
+    //die(var_dump($imagesAlreadyUploaded));
     if($imagesToRemove){
     	$imagesToRemove=str_replace('"', "", $imagesToRemove);
     	$imagesToRemove=explode(",", $imagesToRemove);
     	$counter=0;
     	foreach($imagesAlreadyUploaded as $imageUploaded){
-    		if(in_array($imageUploaded, $imagesToRemove)) unset($imagesAlreadyUploaded[$counter]);
-    		$counter++;
+            foreach($imagesToRemove as $imageToRemove){
+                $indexOfImageToRemove=array_search($imageToRemove, $imagesAlreadyUploaded);
+                if($indexOfImageToRemove){
+                    unlink($_SERVER["DOCUMENT_ROOT"].$imagesAlreadyUploaded[$indexOfImageToRemove]);
+                    unset($imagesAlreadyUploaded[$indexOfImageToRemove]);
+                } 
+            }
     	}
-    	foreach($imagesToRemove as $imageToRemove) unlink($_SERVER["DOCUMENT_ROOT"].$imageToRemove);
+    	//foreach($imagesToRemove as $imageToRemove) unlink($_SERVER["DOCUMENT_ROOT"].$imageToRemove);
     }
-    //die();
+    //die(var_dump($imagesAlreadyUploaded));
     //Takes the uploaded images and stores them in the array - if any are uploade
     $uploadedImages=multipleFileUpload($msg, "image");
     if($uploadedImages) foreach($uploadedImages as $image) array_push($imagesAlreadyUploaded, $image);
-    $imagesAlreadyUploaded=json_encode($imagesAlreadyUploaded);
+    $imagesAlreadyUploaded=serialize($imagesAlreadyUploaded);
 	$SQLupdateClinic="UPDATE clinics SET name='$clinicName', email='$clinicEmail', address='$clinicAddress', zip='$clinicZIPcode', services='$clinicServices', website='$clinicWebsite', images='$imagesAlreadyUploaded', facebook='$clinicFacebook', instagram='$clinicInstagram', twitter='$clinicTwitter' WHERE ID=$clinicID ";
 	if($msg->hasErrors()) $msg->error("An error has occured!", "/pages/clinics/editclinic.php?ID='$clinicID'");
 	if($databaseConnection->query($SQLupdateClinic)){
