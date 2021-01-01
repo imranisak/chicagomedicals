@@ -16,7 +16,6 @@ if($_SESSION['csrf_token']==$_POST['token']) {
     $user = $databaseConnection->query($sql);
     if ($user->num_rows > 0) {
         while ($row = $user->fetch_assoc()) {
-            echo $password;
             if (password_verify($password, $row['password'])) {
                 session_start();
                 $_SESSION['id'] = $row['id'];
@@ -27,6 +26,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['isLoggedIn'] = true;
                 $location = $_SERVER['DOCUMENT_ROOT'] . '/index.php';
+                $databaseConnection->close();
                 header("Location: /index.php");
             } else $msg->error("Incorect password!", "../login.php");
         }

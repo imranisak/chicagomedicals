@@ -24,7 +24,7 @@ $tags=$databaseConnection->query($SQLloadTags);
     <?php } ?>
 
 <form method="GET" action="pages/clinics/index.php">
-    <label for="services">I need services of a </label>
+    <label for="services">I need services of a, or I need services for </label>
     <input type="text" name="services" class="tagator" id="tags" placeholder="" required>
     <button class="btn btn-primary">Search</button>
 </form>
@@ -35,14 +35,14 @@ $('#tags').tagator({
     height: 'auto',               // auto or element
     useDimmer: false,             // dims the screen when result list is visible
     showAllOptionsOnFocus: true, // shows all options even if input box is empty
-    allowAutocompleteOnly: false, // only allow the autocomplete options
+    allowAutocompleteOnly: true, // only allow the autocomplete options
     autocomplete: [<?php foreach ($tags as $tag) echo "'".$tag['tag']."',"; ?>]              // this is an array of autocomplete options
 });
 </script>
 
 <script type="text/javascript">
 //Script for changing text in input
-    /*function getRandomNumber(currentNumber, arrayLenght){
+    function getRandomNumber(currentNumber, arrayLenght){
         var randomIndex=Math.floor(Math.random() * arrayLenght);
         console.log("Current num:"+currentNumber+" generated num: "+randomIndex);
         if(currentNumber==randomIndex) {
@@ -53,21 +53,21 @@ $('#tags').tagator({
             console.log("=======");
             return randomIndex;
         }
-    }*/
+    }
     //This bit here should randomly change the placeholder for the search form
     //But it ain't working as it should...eh, I'll tend to it later
-   /* $("#tags").attr("placeholder", "help");
+   $("#tags").attr("placeholder", "Dentist");
     var tags=[<?php foreach ($tags as $tag) echo "'".$tag['tag']."',"; ?>];
-    var whut=setInterval(changeServicesPlaceholder, 500);
+    var whut=setInterval(changeServicesPlaceholder, 1000);
     var arrayLenght=tags.length;
     function changeServicesPlaceholder(){
         var randomNumber=(Math.floor(Math.random() * arrayLenght));
-        //$("#tags").attr("placeholder", "");
+        $("#tags").attr("placeholder", "");
         var tag=tags[randomNumber]
         $("#tags").attr("placeholder", tag);
-        console.log(tag);
+        $('#tags').tagator('refresh');
     }
-*/
+
     
 </script>
     <?php require 'includes/footer.php'; 

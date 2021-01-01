@@ -23,11 +23,13 @@
 #logo{
 	height: 50px;
 }
-
 #profilePicture{
 	width: 10%;
 }
 
 .featured{
 	background-color: rgba(0, 255, 247, 0.2);
+}
+.imageToRemove{
+	opacity: 0.5;
 }

@@ -54,11 +54,12 @@ if(isset($_POST['submit'])){
         if(!isset($mail)) $mail=new PHPMailer(true);
         $clinic->sendNotificationToOwner($email, $name, $mail);//$ownerEmail, $owner, $mail
         $clinic->sendNotificationToAdmin("info@imranisak.com", $mail);//TODO - figure out how to load ALL admin mails ;-;
+        $databaseConnection->close();
         $msg->success("Your clinic has been submitted for review. We will let you know by mail if it has been approved - usually within 24h.", "../addClinic.php");
     }
     else{
-        $databaseConnection->close();
-        $msg->error("An error has occured. Please try again. If the error persists, please report this error to admin", "../addClinic.php");
+        //$databaseConnection->close();
+        $msg->error("An error has occured. Please try again. If the error persists, please report this error to admin - ".$databaseConnection->error, "../addClinic.php");
     }
 }
 else{

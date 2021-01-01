@@ -11,11 +11,11 @@ if(!$clinic) $msg->error("There has been an internal error. Please, try again, o
 if(mysqli_num_rows($clinic)==0) $msg->error("No clinics found.", "/pages/clinics");
 $clinic=$clinic->fetch_assoc();
 if(!$clinic['approved']) $msg->error("Clinic has not yet been approved!", "/pages/clinics");
-$name=$clinic['name'];
+$clinicName=$clinic['name'];
 $owner=$clinic['owner'];
 $address=$clinic['address'];
 $zip=$clinic['zip'];
-$email=$clinic['email'];
+$clinicMail=$clinic['email'];
 $website=$clinic['website'];
 $services=$clinic['services'];
 $facebook=$clinic['facebook'];
@@ -27,7 +27,7 @@ $clinicIsApproved=$clinic['approved'];
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $name ?></title>
+	<title><?php echo $clinicName ?></title>
 	<?php include "../../includes/header.php" ?>
 	<link type="text/css" rel="stylesheet" href="/includes/galleria/themes/classic/galleria.classic.css">
 <script type="text/javascript" src="/includes/galleria/galleria.js"></script>
@@ -41,12 +41,12 @@ $clinicIsApproved=$clinic['approved'];
 </head>
 <body>
 	<?php include "../../includes/navbar.php" ?>
-	<h1>Clinic - <?php echo $name ?></h1>
-	<p>Name: <?php echo $name ?></p>
+	<h1><?php echo $clinicName ?></h1>
+	<p>Name: <?php echo $clinicName ?></p>
 	<p>Owner: <?php echo $owner ?></p>
 	<p>Address: <?php echo $address ?></p>
 	<p>ZIP: <?php echo $zip ?></p>
-	<p>Email: <?php echo $email ?></p>
+	<p>Email: <?php echo $clinicMail ?></p>
 	<p>Website: <?php echo "<a href='".$website."' target='_blank'>".$website."</a>" ?></p>
 	<p>Services: <?php echo $services ?></p>
 	<p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
