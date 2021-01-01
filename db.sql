@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 09, 2020 at 10:20 AM
--- Server version: 8.0.21
--- PHP Version: 7.4.9
+-- Generation Time: Jan 01, 2021 at 10:56 PM
+-- Server version: 8.0.22
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,28 +33,26 @@ CREATE TABLE IF NOT EXISTS `clinics` (
   `name` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   `owner` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   `ownerID` int NOT NULL,
-  `email` varchar(255) COLLATE utf32_bin NOT NULL,
+  `email` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   `address` text CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   `zip` int NOT NULL,
   `services` text CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   `website` text CHARACTER SET utf32 COLLATE utf32_bin,
-  `images` json NOT NULL,
+  `images` text COLLATE utf32_bin NOT NULL,
   `facebook` text CHARACTER SET utf32 COLLATE utf32_bin,
   `twitter` text CHARACTER SET utf32 COLLATE utf32_bin,
   `instagram` text CHARACTER SET utf32 COLLATE utf32_bin,
   `approved` tinyint(1) NOT NULL DEFAULT '0',
+  `featured` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 --
 -- Dumping data for table `clinics`
 --
 
-INSERT INTO `clinics` (`ID`, `name`, `owner`, `ownerID`, `email`, `address`, `zip`, `services`, `website`, `images`, `facebook`, `twitter`, `instagram`, `approved`) VALUES
-(20, 'Ćenifa', 'Lt. Worf', 35, 'kucaa@kuca.com', 'Kod kuce', 123, 'Anesthesiologist,Dentist,Alergist', 'http://site.com', '[\"/media/pictures/2020-12-08-14-02-07_clinic.jpg\"]', 'http://facebook.com/clinic', '', '', 0),
-(19, 'Podrumm', 'Lt. Worf', 35, 'mail@mail.com', 'Kod kuce', 123321, 'Anesthesiologist,Dentist,Dermatologist', 'http://site.com', '[\"/media/pictures/2020-12-08-13-56-17_clinic.jpg\"]', 'http://facebook.com/clinic', '', '', 0),
-(18, 'Ćumez', 'Lt. Worf', 35, 'imran1701d@gmail.com', 'Zije Dizdarevica 24', 72000, 'psychologist', 'http://site.com', '[\"/media/pictures/2020-12-07-20-42-21_ovaj_pise.png\", \"/media/pictures/2020-12-07-20-42-21_puno_prica.png\", \"/media/pictures/2020-12-07-20-42-21_pukla.png\"]', '', '', '', 0),
-(17, 'Špajz', 'Lt. Worf', 35, 'web.webmedia@gmail.com', 'Azize Šaćirbegović 2', 7100, 'Anesthesiologist', 'http://site.com', '[\"/media/pictures/2020-12-07-17-11-15_slika.png\"]', 'http://facebook.com/clinic', '', '', 0);
+INSERT INTO `clinics` (`ID`, `name`, `owner`, `ownerID`, `email`, `address`, `zip`, `services`, `website`, `images`, `facebook`, `twitter`, `instagram`, `approved`, `featured`) VALUES
+(25, 'Kliknika', 'Jean-Luc Picard', 37, 'imran1701d@gmail.com', 'Zije Dizdarevica 24', 72000, 'Anesthesiologist', 'http://site.com', 'a:1:{i:0;s:53:\"/media/pictures/2021-01-01-22-25-24_covid_testing.jpg\";}', 'http://facebook.com/clinic', '', '', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -82,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `tag` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 --
 -- Dumping data for table `tags`
@@ -92,7 +90,15 @@ INSERT INTO `tags` (`ID`, `tag`) VALUES
 (1, 'Dentist'),
 (2, 'Anesthesiologist'),
 (3, 'Cardiologist'),
-(4, 'Dermatologist');
+(4, 'Dermatologist'),
+(6, 'Anesthesia care'),
+(7, 'Nicu'),
+(8, 'Apnea'),
+(9, 'Asthma'),
+(10, 'Neurology'),
+(11, 'Transplant'),
+(12, 'Urology'),
+(13, 'Psychologist');
 
 -- --------------------------------------------------------
 
@@ -114,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `dateAdded` date NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
@@ -122,7 +128,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`ID`, `name`, `surname`, `email`, `profilePicture`, `password`, `verified`, `hasClinic`, `role`, `dateAdded`) VALUES
 (13, 'Imran', 'Isak', 'imran1701d@gmail.com', '', '$2y$10$4K2Kini9aK2cEcpL8Gt1O.a85Oas/VH.K.Puh97gZFJbdfTzccU2.', 1, 0, 'admin', '2020-09-07'),
-(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$FgWFb81KiJB/XMmN93YbM.jb8TeQ6xhOT2Pov9MlMfnze.W1FKvEG', 1, 0, 'user', '2020-11-11');
+(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$FgWFb81KiJB/XMmN93YbM.jb8TeQ6xhOT2Pov9MlMfnze.W1FKvEG', 1, 0, 'user', '2020-11-11'),
+(37, 'Jean-Luc', 'Picard', 'picard@starfleet.com', '/media/pictures/2020-12-28-18-09-23_jean-luc.jpg', '$2y$10$rhyrz96BqyYEYtdGYKNRPOJf0ADKc28c32uDWZxDcbWuL8fvaAS8.', 1, 0, 'user', '2020-12-28'),
+(38, 'Top', 'Paris', 'tomparis@starfleet.com', '/media/pictures/2020-12-28-18-45-01_Top_Paris.jpg', '$2y$10$lz7V2EliL7oNm0YuZR9g/urlQxwcMDSgEhXREmc37OW2oAV11wsgi', 1, 0, 'user', '2020-12-28'),
+(39, 'Benjamin', 'Sisko', 'badass@starfleet.com', '/media/pictures/2020-12-28-18-47-21_benjamin_sisko.jpg', '$2y$10$XIdRCbtb5NJlWIEw766KZOfjUBaMtLmJG.bMYUnXP1RgMliyu6Pra', 1, 0, 'user', '2020-12-28');
 
 -- --------------------------------------------------------
 
@@ -136,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `verifications` (
   `hash` varchar(1000) NOT NULL,
   `userEmail` varchar(150) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `verifications`
