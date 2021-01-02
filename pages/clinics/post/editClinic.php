@@ -54,22 +54,25 @@ if(isset($_POST['submit'])){
     //$imagesAlreadyUploaded=explode(", ", $imagesAlreadyUploaded);
     //Takes the images that need to be removed - if any - and removes them from the array
     //die(var_dump($imagesAlreadyUploaded));
+    var_dump($imagesAlreadyUploaded);
     if($imagesToRemove){
     	$imagesToRemove=str_replace('"', "", $imagesToRemove);
     	$imagesToRemove=explode(",", $imagesToRemove);
-    	$counter=0;
-    	foreach($imagesAlreadyUploaded as $imageUploaded){
+    	//$counter=0;
+    	//foreach($imagesAlreadyUploaded as $imageUploaded){
             foreach($imagesToRemove as $imageToRemove){
+                echo $imageToRemove;
                 $indexOfImageToRemove=array_search($imageToRemove, $imagesAlreadyUploaded);
-                if($indexOfImageToRemove){
+                if($indexOfImageToRemove>=0){
+                    //echo $indexOfImageToRemove."<br>";
                     unlink($_SERVER["DOCUMENT_ROOT"].$imagesAlreadyUploaded[$indexOfImageToRemove]);
                     unset($imagesAlreadyUploaded[$indexOfImageToRemove]);
                 } 
             }
-    	}
+    	//}
     	//foreach($imagesToRemove as $imageToRemove) unlink($_SERVER["DOCUMENT_ROOT"].$imageToRemove);
     }
-    //die(var_dump($imagesAlreadyUploaded));
+    //die();
     //Takes the uploaded images and stores them in the array - if any are uploade
     $uploadedImages=multipleFileUpload($msg, "image");
     if($uploadedImages) foreach($uploadedImages as $image) array_push($imagesAlreadyUploaded, $image);
