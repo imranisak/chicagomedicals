@@ -24,7 +24,7 @@ if($isAdmin){
     <h3>Add and edit tags</h3>
     <form action="post/tags.php" method="post">
         <input type="text" placeholder="Tag" name="tag">
-        <input type="hidden" name="token" value="$_SESSION['csrf_token']">
+        <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'] ?>">
         <input type="submit">
     </form>
     <table>
@@ -40,7 +40,7 @@ if($isAdmin){
                 ?><tr><?php
                 $displayTag=$tag['tag'];
                 $id=$tag['ID'];
-                echo "<td>".$displayTag."</td>";
+                echo "<td>".ucfirst($displayTag)."</td>";
                 echo "<td><a href='editTags.php/?tag=$displayTag&id=$id'><i class='fas fa-edit'></i></a></td>";
                 ?></tr><?php
             }

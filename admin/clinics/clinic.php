@@ -76,7 +76,12 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
 <p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
 <p>Instagram: <?php echo "<a href='".$instagram."' target='_blank'>".$instagram."</a>" ?></p>
 <p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
-<?php if(!$clinicIsApproved) {
+<?php
+        if(!empty($notInDB)){
+            echo "<p>These tags are not in the database, but the user has submitted them. <br>Click on each of them to add them to the database, so they can be used later.</p>";
+            foreach ($notInDB as $input) echo "<a class='addTagToDatabse' href='#'>".$input."</a><br>";
+        }
+         if(!$clinicIsApproved) {
         echo "<p>This clinic has not yet been approved, and is not publiclly visible!</p>" ?>
         <?php //yes, the csrf token in visible in the link - but since it is randomlly generated with every load, it should not be a problem...right? ?>
         <a href="post/approveOrDenyClinic.php?token=<?php echo $token ?>&ID=<?php echo $clinicID ?>&action=approve"><button class="btn btn-success">Approve</button></a><span><button class="btn btn-danger" style="margin-left: 10px;" id="denyButton">Deny</button></span>
@@ -89,16 +94,14 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
             <button value="submit" type="submit">Submit</button>
         </form>
         <?php 
-        if(!empty($notInDB)){
-            echo "<p>These tags are not in the database, but the user has submitted them. <br>Click on each of them to add them to the database, so they can be used later.</p>";
-            foreach ($notInDB as $input) echo "<a class='addTagToDatabse' href='#'>".$input."</a><br>";
-        }
 }
 ?>
 <!--Images and gallery-->
 <?php
-    $images=substr($images, 1, -1);
-    $images=explode(", ", $images);?>
+    //$images=substr($images, 1, -1);
+    //$images=explode(", ", $images);
+    $images=unserialize($images);
+?>
     <div class='galleria col-md-5'>
     <?php foreach($images as $image) echo "<img src=".$image.">";?>
     </div>

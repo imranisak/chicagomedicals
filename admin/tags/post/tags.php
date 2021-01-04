@@ -5,7 +5,7 @@ if($_SESSION['csrf_token']!=$_POST['token']) $msg->error("Invalid token.", "/");
 if($isAdmin) {
     require "../../../includes/database.php";
     if (isset($_POST['tag'])) {
-        $tag = $_POST['tag'];
+        $tag = strtolower($_POST['tag']);
         $insertTagToDatabase = "INSERT INTO tags (tag) VALUES ('$tag')";
         if ($databaseConnection->query($insertTagToDatabase)) {
             $databaseConnection->close();

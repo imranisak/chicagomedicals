@@ -53,7 +53,7 @@ if($isLoggedIn){
         useDimmer: false,             // dims the screen when result list is visible
         showAllOptionsOnFocus: true, // shows all options even if input box is empty
         allowAutocompleteOnly: false, // only allow the autocomplete options
-        autocomplete: [<?php foreach ($tags as $tag) echo "'".$tag['tag']."',"; ?>]              // this is an array of autocomplete options
+        autocomplete: [<?php foreach ($tags as $tag) echo "'".ucfirst($tag['tag'])."',"; ?>]              // this is an array of autocomplete options
     });
 </script>
 

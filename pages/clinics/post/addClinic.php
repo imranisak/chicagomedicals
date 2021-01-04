@@ -48,6 +48,7 @@ if(isset($_POST['submit'])){
     else $images=multipleFileUpload($msg, "image");
     $images=serialize($images);//Converts the image array to json so it can be saved to the database
     if($msg->hasErrors()) $msg->error("An error has occured!", '../addClinic'); //If there are no errors, go back
+    $clinicServices=strtolower($clinicServices);
     $clinic=new clinic($clinicName, $clinicOwner, $clinicOwnerID, $clinicEmail, $clinicAddress, $clinicZIPcode, $clinicServices, $clinicWebsite, $images, $clinicFacebook, $clinicTwitter, $clinicInstagram);
     $clinicAdded=$clinic->addToDatabase($databaseConnection);
     if($clinicAdded===true){

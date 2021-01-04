@@ -5,7 +5,7 @@ if($_POST['token']==$_SESSION['csrf_token']){
 	require "../../../includes/flashMessages.php";
 	require "../../../includes/sessionInfo.php";
 	if(!$isAdmin) die("Must be admin!");
-	$tag=ucfirst($_POST['tag']);
+	$tag=strtolower($_POST['tag']);
 	$SQLinsertTag="INSERT INTO tags (tag) VALUES ('$tag')";
 	if($databaseConnection->query($SQLinsertTag)){
 		$databaseConnection->close();

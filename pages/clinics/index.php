@@ -17,12 +17,12 @@ else $currentpage = 1;
 if($currentpage>$totalPages || $currentpage<1) $currentpage=1;
 $offset = ($currentpage - 1) * $clinicsPerPage;
 //Loads the clinics. If no services are selected, load all clinics
-if(isset($_GET['services'])) $services=$_GET['services'];
+if(isset($_GET['services'])) $services=strtolower($_GET['services']);
 else $services=false;
 if($services){
 	$services=filter_var($services, FILTER_SANITIZE_STRING);
 	$services=strtolower($services);
-	$services=ucfirst($services);
+	//$services=ucfirst($services);
 	echo $services;
 	$SQLselectClinics="SELECT * FROM clinics WHERE services like '%$services%' AND approved = true ORDER BY featured DESC, name ASC LIMIT $offset, $clinicsPerPage";
 }
