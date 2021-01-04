@@ -47,7 +47,21 @@ if($_GET['action']=='approve'){
 	else{
 		$reason=$_POST['reasonForDenial'];
 		$clinicID=$_POST['ID'];
-		$SQLremoveClinic="DELETE FROM clinics WHERE ID = 999";
+		$SQLgetClinicImages="SELECT images FROM clinics WHERE ID=$clinicID";
+		$clinicImages=$databaseConnection->query($SQLgetClinicImages);
+		if(!$clinicImages) $msg->error("Error loading clinic images!");
+		$clinicImages=mysqli_fetch_array($clinicImages);
+		$clinicImages=$clinicImages[0];
+		$clinicImages=unserialize($clinicImages);
+		//die(var_dump($clinicImages));
+		foreach($clinicImages as $clinicImage){
+			if(!unlink($_SERVER['DOCUMENT_ROOT'].$clinicImage)) {
+				$msg->error("Error deleting clinic images");
+				//exit();
+			}
+		}
+		$SQLremoveClinic="DELETE FROM clinics WHERE ID = $clinicID";
+		if($msg->hasErrors()) $msg->error("An error has occured!", "/admin/clinics/clinicReview.php");
 		if($databaseConnection->query($SQLremoveClinic)){
 			$mailContent=file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/clinicDenyNotification.php")." ".$reason;
 			if(!isset($mail)) $mail=new PHPMailer(true);
@@ -60,7 +74,7 @@ if($_GET['action']=='approve'){
 		}
 		else{
 			$databaseConnection->close();
-			$msg->error("An error has occured, please try again! POST", "/admin/clinics/clinic?ID=$clinicID");
+			$msg->error("An error has occured, please try again!", "/admin/clinics/clinic?ID=$clinicID");
 		}
 	}
 }
