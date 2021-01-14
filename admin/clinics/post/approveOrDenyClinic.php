@@ -53,11 +53,10 @@ if($_GET['action']=='approve'){
 		$clinicImages=mysqli_fetch_array($clinicImages);
 		$clinicImages=$clinicImages[0];
 		$clinicImages=unserialize($clinicImages);
-		//die(var_dump($clinicImages));
+		//Deletes the uploaded images
 		foreach($clinicImages as $clinicImage){
 			if(!unlink($_SERVER['DOCUMENT_ROOT'].$clinicImage)) {
 				$msg->error("Error deleting clinic images");
-				//exit();
 			}
 		}
 		$SQLremoveClinic="DELETE FROM clinics WHERE ID = $clinicID";

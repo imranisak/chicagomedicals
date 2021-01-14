@@ -1,15 +1,11 @@
 TODO
-Add csrf stuff
-Remove "add clinics" from navbar if the user is not logged
-Add "delete tag", but only if it not used
+Clinic reviews - 5-star system
+Add profile edit
+Add profile view - if the user has clinics, link them
 Add index.php to every folder
 Add gender selection
-Add "Refer to me as mr. mrs. "
-Add profile edit
-!!!!!!Close all DB connections!!!!!
 Emplyees of a clinic
 Messages
-Clinic reviews - 5-star system
 Share to social media
 Payments
 =====================================================
@@ -21,8 +17,10 @@ Schedules?
 NOT Fluf up <3
 =====================================================
 Done
+Add csrf stuff
 Add clinics to DB - make their table
 !!Use filters_var()
+!!!!!!Close all DB connections!!!!!
 IMPORTANT - Add admin and tags!!
 Add session - user info into the includes file, so it can be easily accessed anywhere! (vars name, surname, profilePicture etc..)
 Add profile pictures - generally add file upload and media or files folder - needs to be finished, almost there

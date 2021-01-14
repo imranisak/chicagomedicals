@@ -1,6 +1,9 @@
 <?php
 require "../../includes/database.php";
 require "../../includes/flashMessages.php";
+require "../../includes/token.php";
+require "../../includes/recaptcha.php";
+require "../../includes/sessionInfo.php";
 //require "../../includes/galleria.php";
 if(isset($_GET['ID'])) $clinicID=$_GET['ID'];
 else $msg->error("No ID provided!", "/pages/clinics");
@@ -48,7 +51,7 @@ $clinicIsApproved=$clinic['approved'];
 	<p>ZIP: <?php echo $zip ?></p>
 	<p>Email: <?php echo $clinicMail ?></p>
 	<p>Website: <?php echo "<a href='".$website."' target='_blank'>".$website."</a>" ?></p>
-	<p>Services: <?php echo $services ?></p>
+	<p>Services: <?php echo join(',', array_map('ucfirst', explode(',', $services))); ?></p>
 	<p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
 	<p>Instagram: <?php echo "<a href='".$instagram."' target='_blank'>".$instagram."</a>" ?></p>
 	<p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
@@ -73,6 +76,7 @@ $clinicIsApproved=$clinic['approved'];
     });
     </script>
 <!--End of images-->
+<?php require "../../includes/reviewBox.php"; ?>
 <?php
 $databaseConnection->close();
 require "../../includes/footer.php"

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 01, 2021 at 10:56 PM
+-- Generation Time: Jan 14, 2021 at 10:47 PM
 -- Server version: 8.0.22
 -- PHP Version: 8.0.0
 
@@ -44,15 +44,17 @@ CREATE TABLE IF NOT EXISTS `clinics` (
   `instagram` text CHARACTER SET utf32 COLLATE utf32_bin,
   `approved` tinyint(1) NOT NULL DEFAULT '0',
   `featured` tinyint(1) NOT NULL DEFAULT '0',
+  `score` float NOT NULL DEFAULT '0',
+  `numberOfReviews` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 --
 -- Dumping data for table `clinics`
 --
 
-INSERT INTO `clinics` (`ID`, `name`, `owner`, `ownerID`, `email`, `address`, `zip`, `services`, `website`, `images`, `facebook`, `twitter`, `instagram`, `approved`, `featured`) VALUES
-(25, 'Kliknika', 'Jean-Luc Picard', 37, 'imran1701d@gmail.com', 'Zije Dizdarevica 24', 72000, 'Anesthesiologist', 'http://site.com', 'a:1:{i:0;s:53:\"/media/pictures/2021-01-01-22-25-24_covid_testing.jpg\";}', 'http://facebook.com/clinic', '', '', 1, 0);
+INSERT INTO `clinics` (`ID`, `name`, `owner`, `ownerID`, `email`, `address`, `zip`, `services`, `website`, `images`, `facebook`, `twitter`, `instagram`, `approved`, `featured`, `score`, `numberOfReviews`) VALUES
+(30, 'Med Bay', 'Jean-Luc Picard', 37, 'medbayent@starfleet.com', 'Everywhere', 1, 'anesthesiologist,dermatologist,nicu,novi jeje,nezz ni ja', 'http://site.com', 'a:3:{i:0;s:43:\"/media/pictures/2021-01-09-01-37-11_ds9.jpg\";i:1;s:47:\"/media/pictures/2021-01-09-01-37-11_slika_1.jpg\";i:2;s:47:\"/media/pictures/2021-01-09-01-37-11_slika_2.jpg\";}', 'http://facebook.com/clinic', '', '', 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -72,6 +74,22 @@ CREATE TABLE IF NOT EXISTS `passwordreset` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+DROP TABLE IF EXISTS `reviews`;
+CREATE TABLE IF NOT EXISTS `reviews` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `review` text NOT NULL,
+  `clinicID` int NOT NULL,
+  `personID` int NOT NULL,
+  `score` int NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tags`
 --
 
@@ -80,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `tag` varchar(255) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 --
 -- Dumping data for table `tags`
@@ -98,7 +116,11 @@ INSERT INTO `tags` (`ID`, `tag`) VALUES
 (10, 'Neurology'),
 (11, 'Transplant'),
 (12, 'Urology'),
-(13, 'Psychologist');
+(13, 'Psychologist'),
+(14, 'New tag'),
+(15, 'testt'),
+(16, 'novi jeje'),
+(17, 'nezz ni ja');
 
 -- --------------------------------------------------------
 
