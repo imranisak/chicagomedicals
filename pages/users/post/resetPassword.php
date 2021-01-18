@@ -25,7 +25,7 @@ if(isset($_POST['email'])){
             if(!isset($mail)) $mail=new PHPMailer(true);
             $mail->addAddress($email);
             $mail->Subject="Password reset";
-            $mail->Body="<a href='http://chichagomedicals/pages/users/enterNewPassword.php/?hash=$hash&email=$email'>Click here to reset your password on Chicago Medicals!</a>";
+            $mail->Body="<a href='http://".$_SERVER['HTTP_HOST']."/pages/users/enterNewPassword.php/?hash=$hash&email=$email'>Click here to reset your password on Chicago Medicals!</a>";
             $mail->send();
             $msg->success("Please check your mail for the password reset link.","../resetPassword");
         } else if (isset($msg)) $msg->error("An error has happened. Please try again.", "../resetPassword");

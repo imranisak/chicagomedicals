@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'includes/flashmessages.php';
 require 'includes/database.php';
 $SQLloadTags="SELECT * FROM tags ORDER BY tag ASC";
@@ -49,8 +49,8 @@ $('#tags').tagator({
             getRandomNumber(currentNumber, arrayLenght);
         }
         else {
-            console.log("Returned "+randomIndex);
-            console.log("=======");
+            //console.log("Returned "+randomIndex);
+            //console.log("=======");
             return randomIndex;
         }
     }

@@ -11,6 +11,7 @@ require "../../../classes/clinic.php";
 **Add reCaptcha
  * Add profile picture / logo
  */
+if(!$isVerified) $msg->warning("You must first verify your profile before adding a clinic.", "/");
 if($_SESSION['csrf_token']!=$_POST['token']) $msg->error('Invalid token.', '/');
 if(!$isLoggedIn) $msg->error("You must be logged in to submit a clinic!", "/");
 $clinicOwner=$name." ".$surname;

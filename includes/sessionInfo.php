@@ -10,6 +10,7 @@
         $email=$_SESSION['email'];
         $profilePicture=$_SESSION['profilePicture'];
         $role=$_SESSION['role'];
+        $isVerified=$_SESSION['verified'];
         if($role==="admin") $isAdmin=true;
         else $isAdmin=false;
     } else{

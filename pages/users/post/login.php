@@ -25,6 +25,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
                 $_SESSION['profilePicture'] = $row['profilePicture'];
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['isLoggedIn'] = true;
+                $_SESSION['verified'] = $row['verified'];
                 $location = $_SERVER['DOCUMENT_ROOT'] . '/index.php';
                 $databaseConnection->close();
                 header("Location: /index.php");
