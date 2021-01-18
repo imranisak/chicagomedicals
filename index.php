@@ -1,6 +1,7 @@
 <?php
-require 'includes/flashmessages.php';
+require 'includes/flashMessages.php';
 require 'includes/database.php';
+require 'includes/sessionInfo.php';
 $SQLloadTags="SELECT * FROM tags ORDER BY tag ASC";
 $tags=$databaseConnection->query($SQLloadTags); 
 ?>
@@ -22,12 +23,12 @@ $tags=$databaseConnection->query($SQLloadTags);
     <p>Welcome, <?php echo $_SESSION['name']." ".$_SESSION['surname']." ".$_SESSION['role'];; ?></p>
     <img src="<?php echo $_SESSION['profilePicture'] ?>" alt="Profile pic" id="profilePicture">
     <?php } ?>
-
 <form method="GET" action="pages/clinics/index.php">
     <label for="services">I need services of a, or I need services for </label>
     <input type="text" name="services" class="tagator" id="tags" placeholder="" required>
     <button class="btn btn-primary">Search</button>
 </form>
+    <?php var_dump($_SESSION['verified']); ?>
 <script>
 //Tagator script
 $('#tags').tagator({

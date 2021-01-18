@@ -31,7 +31,7 @@ class user{
                 if(!isset($mail)) $mail=new PHPMailer(true);
                 $mail->addAddress($this->email, $nameAndSurname);     // Add a recipient
                 $mail->Subject = 'User verification';
-                $mail->Body    = "<a href='http://chichagomedicals/pages/users/verify.php/?hash=$hash&email=$this->email' target='_blank'>Verify email here</a>";
+                $mail->Body    = "<a href='http://".$_SERVER['HTTP_HOST']."/pages/users/verify.php/?hash=$hash&email=$this->email' target='_blank'>Verify email here</a>";
                 $mail->send();
             }
             //TODO Add messages in case verification message could not be sent.

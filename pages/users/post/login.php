@@ -12,7 +12,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
         $password = $_POST['password'];
         $password = filterInput($password);
     } else $msg->error("Please enter password!", '../login.php');
-    $sql = "SELECT id, name, surname, password, email, profilePicture, role FROM users WHERE email='$email' LIMIT 1";
+    $sql = "SELECT id, name, surname, password, email, profilePicture, role, verified FROM users WHERE email='$email' LIMIT 1";
     $user = $databaseConnection->query($sql);
     if ($user->num_rows > 0) {
         while ($row = $user->fetch_assoc()) {
