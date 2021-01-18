@@ -7,7 +7,6 @@ require "../../includes/sessionInfo.php";
 //require "../../includes/galleria.php";
 if(isset($_GET['ID'])) $clinicID=$_GET['ID'];
 else $msg->error("No ID provided!", "/pages/clinics");
-
 $SQLseletClinic="SELECT * FROM clinics WHERE ID = '$clinicID'";
 $clinic=$databaseConnection->query($SQLseletClinic);
 if(!$clinic) $msg->error("There has been an internal error. Please, try again, or contact admin!", "/pages/clinics");
@@ -44,6 +43,7 @@ $clinicIsApproved=$clinic['approved'];
 </head>
 <body>
 	<?php include "../../includes/navbar.php" ?>
+    <?php if($msg->hasMessages()) $msg->display(); ?>
 	<h1><?php echo $clinicName ?></h1>
 	<p>Name: <?php echo $clinicName ?></p>
 	<p>Owner: <?php echo $owner ?></p>

@@ -28,7 +28,6 @@ $tags=$databaseConnection->query($SQLloadTags);
     <input type="text" name="services" class="tagator" id="tags" placeholder="" required>
     <button class="btn btn-primary">Search</button>
 </form>
-    <?php var_dump($_SESSION['verified']); ?>
 <script>
 //Tagator script
 $('#tags').tagator({
@@ -64,7 +63,8 @@ $('#tags').tagator({
     function changeServicesPlaceholder(){
         var randomNumber=(Math.floor(Math.random() * arrayLenght));
         $("#tags").attr("placeholder", "");
-        var tag=tags[randomNumber]
+        var tag=tags[randomNumber];
+        tag = tag.charAt(0).toUpperCase() + tag.slice(1)
         $("#tags").attr("placeholder", tag);
         $('#tags').tagator('refresh');
     }

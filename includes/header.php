@@ -6,3 +6,5 @@
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="/includes/style.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="/includes/sweetalert2.all.min.js"></script>
