@@ -58,6 +58,7 @@ echo $databaseConnection->error;
 			        	<h3 class='clinicNameInBox'>FEATURED: ".$clinic['name']."</h3>
 			        	<p class='ownerInBox'>Owner: ".$clinic['owner']."</p>
 			        	<p class='adrressInBox'>Address: ".$clinic['address']."</p>
+			        	<p class='adrressInBox'>User rating: ".$clinic['rating']." (based on ".$clinic['numberOfReviews']." reviews)</p>
 			        	<a href='/pages/clinics/clinic.php?ID=".$clinic['ID']."'><button class='btn btn-primary'><span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>Read more</button></a>
 			        </div>
 			    </div>
@@ -70,6 +71,7 @@ echo $databaseConnection->error;
 			        	<h3 class='clinicNameInBox'>".$clinic['name']."</h3>
 			        	<p class='ownerInBox'>Owner: ".$clinic['owner']."</p>
 			        	<p class='adrressInBox'>Address: ".$clinic['address']."</p>
+			        	<p class='adrressInBox'>User rating: ".$clinic['rating']." (based on ".$clinic['numberOfReviews']." reviews)</p>
 			        	<a href='/pages/clinics/clinic.php?ID=".$clinic['ID']."'><button class='btn btn-primary'><span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>Read more</button></a>
 			        </div>
 			    </div>
