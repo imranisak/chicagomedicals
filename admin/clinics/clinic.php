@@ -105,7 +105,6 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
     <div class='galleria col-md-5'>
     <?php foreach($images as $image) echo "<img src=".$image.">";?>
     </div>
-
     <script>
                 (function() {
                     Galleria.loadTheme('/includes/galleria/themes/classic/galleria.classic.js');

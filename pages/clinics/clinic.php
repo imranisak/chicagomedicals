@@ -62,7 +62,6 @@ $clinicIsApproved=$clinic['approved'];
     <div class='galleria col-md-5'>
     <?php foreach($images as $image) echo "<img src=".$image.">";?>
     </div>
-
     <script>
                 (function() {
                     Galleria.loadTheme('/includes/galleria/themes/classic/galleria.classic.js');
@@ -76,7 +75,68 @@ $clinicIsApproved=$clinic['approved'];
     });
     </script>
 <!--End of images-->
-<?php require "../../includes/reviewBox.php"; ?>
+<?php
+if($isLoggedIn){
+$SQLcountReviews="SELECT COUNT(review) FROM reviews WHERE clinicID=$clinicID AND personID=$id";
+$numberOfReviewsFromThisPersonForThisClinic=$databaseConnection->query($SQLcountReviews);
+$numberOfReviewsFromThisPersonForThisClinic=$numberOfReviewsFromThisPersonForThisClinic->fetch_assoc();
+$numberOfReviewsFromThisPersonForThisClinic=$numberOfReviewsFromThisPersonForThisClinic["COUNT(review)"];
+if($numberOfReviewsFromThisPersonForThisClinic==0) require "../../includes/reviewBox.php";
+else{
+    $SQLloadTheReview="SELECT * FROM reviews WHERE personID=$id AND clinicID=$clinicID";
+    $review=$databaseConnection->query($SQLloadTheReview);
+    if(!$review) echo "<h3>$databaseConnection->error</h3>";
+    else{
+        $review=$review->fetch_assoc();
+            echo "
+            <p>You have already posted a review for ".$clinicName."</p>
+            <div class='row'>
+                <div class='col-md-1'>
+                    <img src='".$profilePicture."' class='profilePictureOnReview'>
+                </div>
+                <div class='col-md-10'>
+                    <p>".$name." ".$surname."</p>
+                    <p>".$review['review']."</p>
+                    <p>".$review['score']." / 5</p>
+                </div>
+            </div>
+            ";
+        }
+    }
+}
+?>
+    <div class="allReviews">
+        <div class="col-md-12">
+            <p><?php echo $clinicName." has ".$clinic['numberOfReviews']." reviews!" ?></p>
+        </div>
+    </div>
+
+    <script>
+        var clinicID=<?php echo $clinicID;?>;
+        $(document).ready(function(){
+            loadReviews();
+        })
+        function loadReviews(){
+            var numberOfLoadedReviews=$('.singleReview').length;
+            $.ajax({
+                url:'post/loadReviews.php',
+                data:{
+                    'clinicID':clinicID,
+                    'offset':numberOfLoadedReviews
+                },
+                success: function (data){
+                    $(".allReviews").append(data);
+                },
+                method: "POST"
+            });
+
+        }
+        $(window).scroll(function() {
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                loadReviews();
+            }
+        });
+    </script>
 <?php
 $databaseConnection->close();
 require "../../includes/footer.php"

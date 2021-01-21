@@ -4,7 +4,7 @@ if($role!='admin'){
 <!-- USER NAVBAR-->
 <div>
   <div class="row">
-    <div class="col-xl-12">
+    <div class="col-md-10 offset-md-1">
       <!--These DIVs are closed in the footer-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="/"><img src="/media/pictures/logo_200x100.png" id="logo"></a>

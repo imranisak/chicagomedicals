@@ -1,5 +1,4 @@
 TODO
-Clinic reviews - 5-star system
 Add profile edit
 Add profile view - if the user has clinics, link them
 Add index.php to every folder
@@ -17,6 +16,7 @@ Schedules?
 NOT Fluf up <3
 =====================================================
 Done
+Clinic reviews - 5-star system
 Add csrf stuff
 Add clinics to DB - make their table
 !!Use filters_var()
