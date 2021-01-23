@@ -44,24 +44,33 @@ $clinicIsApproved=$clinic['approved'];
 <body>
 	<?php include "../../includes/navbar.php" ?>
     <?php if($msg->hasMessages()) $msg->display(); ?>
-	<h1><?php echo $clinicName ?></h1>
-	<p>Name: <?php echo $clinicName ?></p>
-	<p>Owner: <?php echo $owner ?></p>
-	<p>Address: <?php echo $address ?></p>
-	<p>ZIP: <?php echo $zip ?></p>
-	<p>Email: <?php echo $clinicMail ?></p>
-	<p>Website: <?php echo "<a href='".$website."' target='_blank'>".$website."</a>" ?></p>
-	<p>Services: <?php echo join(',', array_map('ucfirst', explode(',', $services))); ?></p>
-	<p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
-	<p>Instagram: <?php echo "<a href='".$instagram."' target='_blank'>".$instagram."</a>" ?></p>
-	<p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class='galleria'>
+                <?php foreach($images as $image) echo "<img src=".$image.">";?>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h1><?php echo $clinicName ?></h1>
+            <p>Name: <?php echo $clinicName ?></p>
+            <p>Owner: <?php echo $owner ?></p>
+            <p>Address: <?php echo $address ?></p>
+            <p>ZIP: <?php echo $zip ?></p>
+            <p>Email: <?php echo $clinicMail ?></p>
+            <p>Website: <?php echo "<a href='".$website."' target='_blank'>".$website."</a>" ?></p>
+            <p>Services: <?php echo join(',', array_map('ucfirst', explode(',', $services))); ?></p>
+            <p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
+            <p>Instagram: <?php echo "<a href='".$instagram."' target='_blank'>".$instagram."</a>" ?></p>
+            <p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
+        </div>
+    </div>
+</div>
 	<!--Images and gallery-->
 <?php
     //$images=substr($images, 1, -1);
     //$images=explode(", ", $images);?>
-    <div class='galleria col-md-5'>
-    <?php foreach($images as $image) echo "<img src=".$image.">";?>
-    </div>
+
     <script>
                 (function() {
                     Galleria.loadTheme('/includes/galleria/themes/classic/galleria.classic.js');
@@ -70,8 +79,8 @@ $clinicIsApproved=$clinic['approved'];
     </script>
     <script type="text/javascript">
     $('.galleria').galleria({
-    width: auto,
-    height: 500
+    width: 50%,
+    height: auto
     });
     </script>
 <!--End of images-->
@@ -104,6 +113,8 @@ else{
         }
     }
 }
+else echo "<h3>You must be logged in to submit a review!</h3>";
+
 ?>
     <div class="allReviews">
         <div class="col-md-12">
