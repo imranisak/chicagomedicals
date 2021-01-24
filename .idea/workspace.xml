@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="">
+    <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
+      <change afterPath="$PROJECT_DIR$/includes/gallery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="composer.json" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -68,6 +69,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -126,7 +128,8 @@
       <workItem from="1611225304431" duration="8668000" />
       <workItem from="1611258321504" duration="6000" />
       <workItem from="1611260662216" duration="652000" />
-      <workItem from="1611411348688" duration="2682000" />
+      <workItem from="1611411348688" duration="7332000" />
+      <workItem from="1611512092712" duration="6043000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
