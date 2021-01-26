@@ -2,7 +2,7 @@
 require "../../includes/database.php";
 require "../../includes/flashMessages.php";
 require "../../includes/token.php";
-require "../../includes/recaptcha.php";
+// require "../../includes/recaptcha.php";
 require "../../includes/sessionInfo.php";
 //require "../../includes/galleria.php";
 if(isset($_GET['ID'])) $clinicID=$_GET['ID'];
@@ -25,6 +25,7 @@ $twitter=$clinic['twitter'];
 $instagram=$clinic['instagram'];
 $images=unserialize($clinic['images']);
 $clinicIsApproved=$clinic['approved'];
+$_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
 ?>
 <!DOCTYPE html>
 <html>
