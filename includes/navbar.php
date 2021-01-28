@@ -58,7 +58,7 @@ if($role!='admin'){
                     <a class="nav-link" href="#">Comments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/clinics/clinicreview">Clinics</a>
+                    <a class="nav-link" href="/admin/clinics/">Clinics</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/tags/tags.php">Tags</a>

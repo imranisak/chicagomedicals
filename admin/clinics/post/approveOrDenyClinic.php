@@ -60,7 +60,7 @@ if($_GET['action']=='approve'){
 			}
 		}
 		$SQLremoveClinic="DELETE FROM clinics WHERE ID = $clinicID";
-		if($msg->hasErrors()) $msg->error("An error has occured!", "/admin/clinics/clinicReview.php");
+		if($msg->hasErrors()) $msg->error("An error has occured!", "/admin/clinics/index.php");
 		if($databaseConnection->query($SQLremoveClinic)){
 			$mailContent=file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/clinicDenyNotification.php")." ".$reason;
 			if(!isset($mail)) $mail=new PHPMailer(true);

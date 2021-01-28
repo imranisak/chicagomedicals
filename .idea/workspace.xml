@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/recaptcha.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/recaptcha.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chichagomedicals.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +132,7 @@
       <workItem from="1611512092712" duration="6352000" />
       <workItem from="1611596832352" duration="3597000" />
       <workItem from="1611611856396" duration="967000" />
-      <workItem from="1611661576268" duration="751000" />
+      <workItem from="1611661576268" duration="1243000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
