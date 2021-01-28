@@ -8,7 +8,7 @@ $numberOfclinics=$databaseConnection->query($SQLnumberOfClinics);
 $numberOfclinics=mysqli_fetch_row($numberOfclinics);
 $numberOfclinics=$numberOfclinics[0];
 //How many clinics to show
-$clinicsPerPage=5;
+$clinicsPerPage=3;
 $totalPages=ceil($numberOfclinics / $clinicsPerPage);
 //echo "total pages: ".$totalPages;
 //Get the current page or set a default
@@ -23,7 +23,6 @@ if($services){
 	$services=filter_var($services, FILTER_SANITIZE_STRING);
 	$services=strtolower($services);
 	//$services=ucfirst($services);
-	echo $services;
 	$SQLselectClinics="SELECT * FROM clinics WHERE services like '%$services%' AND approved = true ORDER BY featured DESC, name ASC LIMIT $offset, $clinicsPerPage";
 }
 else {
@@ -36,7 +35,8 @@ echo $databaseConnection->error;
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
 	<?php require '../../includes/header.php'; ?>
 </head>
 <body>
@@ -53,12 +53,12 @@ echo $databaseConnection->error;
 			if ($featured) echo "
 			<div class='container'>
 			    <div class='row clinicBox featured'>
-			        <div class='col-xs-3'><img src='".$featuredImage."' class='featuredImage'></div>
-			        <div class='col-xs-9'>
+			        <div class='col-md-3'><img src='".$featuredImage."' class='featuredImage'></div>
+			        <div class='col-md-9'>
 			        	<h3 class='clinicNameInBox'>FEATURED: ".$clinic['name']."</h3>
 			        	<p class='ownerInBox'>Owner: ".$clinic['owner']."</p>
 			        	<p class='ratingInBox'>User rating: ".$clinic['rating']." / 5 (based on ".$clinic['numberOfReviews']." reviews)</p>
-                        <div class='stars' style='--rating: ".$clinic['rating'].";' aria-label='Rating of this product is ".$clinic['rating']." out of 5'><br>
+                        <div class='stars' style='--rating: ".$clinic['rating'].";' aria-label='Rating of this product is ".$clinic['rating']." out of 5'></div><br>
 			        	<a href='/pages/clinics/clinic.php?ID=".$clinic['ID']."'><button class='btn btn-primary'><span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>Read more</button></a>
 			        </div>
 			    </div>
@@ -66,13 +66,13 @@ echo $databaseConnection->error;
 			else echo "
 			<div class='container'>
 			    <div class='row clinicBox'>
-			        <div class='col-xs-3'><img src='".$featuredImage."' class='featuredImage'></div>
-			        <div class='col-xs-9'>
+			        <div class='col-md-3'><img src='".$featuredImage."' class='featuredImage'></div>
+			        <div class='col-md-9'>
 			        	<h3 class='clinicNameInBox'>".$clinic['name']."</h3>
 			        	<p class='ownerInBox'>Owner: ".$clinic['owner']."</p>
 			        	<p class='adrressInBox'>Address: ".$clinic['address']."</p>
 			        	<p class='ratingInBox'>User rating: ".$clinic['rating']." / 5 (based on ".$clinic['numberOfReviews']." reviews)</p>
-                        <div class='stars' style='--rating: ".$clinic['rating'].";' aria-label='Rating of this product is ".$clinic['rating']." out of 5'><br>
+                        <div class='stars' style='--rating: ".$clinic['rating'].";' aria-label='Rating of this product is ".$clinic['rating']." out of 5'></div><br>
 			        	<a href='/pages/clinics/clinic.php?ID=".$clinic['ID']."'><button class='btn btn-primary'><span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>Read more</button></a>
 			        </div>
 			    </div>

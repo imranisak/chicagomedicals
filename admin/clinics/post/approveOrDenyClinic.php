@@ -36,7 +36,7 @@ if($_GET['action']=='approve'){
 		$mail->Body=file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/clinicApprovedNotification.html");
 		$mail->send();
 		$databaseConnection->close();
-		$msg->success("Clinis succesfully approved!", "/admin/clinics/clinicReview");
+		$msg->success("Clinis succesfully approved!", "/admin/clinics/");
 	}
 	else $msg->error("An error has occured. Please try again. GET", "/admin/clinics/clinic?ID=$clinicID");
 } elseif ($_POST['action']=="deny") {
@@ -69,11 +69,11 @@ if($_GET['action']=='approve'){
 			$mail->Body=$mailContent;
 			$mail->send();
 			$databaseConnection->close();
-			$msg->success("Clinic has been decnined, and removed from database.", "/admin/clinics/clinicReview");
+			$msg->success("Clinic has been declined, and removed from database.", "/admin/clinics/");
 		}
 		else{
 			$databaseConnection->close();
-			$msg->error("An error has occured, please try again!", "/admin/clinics/clinic?ID=$clinicID");
+			$msg->error("An error has occurred, please try again!", "/admin/clinics/clinic?ID=$clinicID");
 		}
 	}
 }

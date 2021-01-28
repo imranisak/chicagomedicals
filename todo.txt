@@ -1,9 +1,15 @@
+BUGS TO KILL
+- ' in user name or surname does not work - probably in other places, too!
+- Last batch of reviews does no load
+=====================================================
 TODO
+Add date added to reviews, so they can be ordered by date - WHY did I not do this earlier!?
+Add payments to feature a clinic!!!
 Add profile edit
 Add profile view - if the user has clinics, link them
 Add index.php to every folder
 Add gender selection
-Emplyees of a clinic
+Employees of a clinic
 Messages
 Share to social media
 Payments
@@ -13,7 +19,7 @@ Add AdSense, Google analytics, tracking etc..
 Add Google signin - maybe even Facebook?
 Detailed analytics for premium users
 Schedules?
-NOT Fluf up <3
+NOT Fluff up <3
 =====================================================
 Done
 Clinic reviews - 5-star system
@@ -34,3 +40,7 @@ Check if user exists in DB when registering
 
 //imran1701d@gmail.com  - lozinka - admin
 //worf@starfleet.com - lozinka - user
+//EdwardSHarmon@jourrapide.com - lozinka - user
+//TelpehGrendle@teleworm.us - lozinka - user
+//TehanaKupresak@jourrapide.com - lozinka - user
+//hrle@thesecond.com - lozinka - user

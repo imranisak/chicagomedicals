@@ -30,7 +30,8 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $clinicName ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $clinicName ?></title>
     <?php include "../../includes/header.php" ?>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -228,6 +229,7 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
         }
         $(window).scroll(function() {
             if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                console.log("Bottom");
                 loadReviews();
             }
         });

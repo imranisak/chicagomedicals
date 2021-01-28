@@ -20,7 +20,7 @@ $tags=$databaseConnection->query($SQLloadTags);
     <?php if (isset($msg)) $msg->display(); ?>
     <h1>Chicago Medicals</h1>
     <?php if(isset($_SESSION['isLoggedIn'])){?>
-    <p>Welcome, <?php echo $_SESSION['name']." ".$_SESSION['surname']." ".$_SESSION['role'];; ?></p>
+    <p>Welcome, <?php echo $_SESSION['name']." ".$_SESSION['surname']." "; ?></p>
     <img src="<?php echo $_SESSION['profilePicture'] ?>" alt="Profile pic" id="profilePicture">
     <?php } ?>
 <form method="GET" action="pages/clinics/index.php">
@@ -28,6 +28,61 @@ $tags=$databaseConnection->query($SQLloadTags);
     <input type="text" name="services" class="tagator" id="tags" placeholder="" required>
     <button class="btn btn-primary">Search</button>
 </form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 style="text-align: center;">Latest added</h3>
+            <?php $SQLloadLatestClinics="SELECT * FROM clinics ORDER BY dateAdded DESC LIMIT 3";
+                $latestClinics=$databaseConnection->query($SQLloadLatestClinics);
+                if(!$latestClinics) echo "Error loading latest clinics";
+                else{
+                    foreach ($latestClinics as $bestClinic) {
+                        $featuredImage=unserialize($bestClinic['images']);
+                        $featuredImage=$featuredImage[0];
+                        echo "
+                <div class='container'>
+			        <div class='row clinicBox'>
+			        <div class='col-md-3'><img src='" .$featuredImage. "' class='featuredImage'></div>
+                        <div class='col-md-9'>
+                            <p class='clinicNameInBox'>" . $bestClinic['name'] . "</p>
+                            <p class='ownerInBox'>Owner: " . $bestClinic['owner'] . "</p>
+                            <a href='/pages/clinics/clinic.php?ID=" . $bestClinic['ID'] . "'><button class='btn btn-primary'><span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>Read more</button></a>
+			            </div>
+                    </div>
+			    </div>";
+                    }
+                }
+            ?>
+        </div>
+        <div class="col-md-6">
+            <h3 style="text-align: center">Best rated</h3>
+            <?php
+                $SQLloadBestClinics="SELECT * FROM clinics ORDER BY rating DESC LIMIT 3";
+                $bestClinics=$databaseConnection->query($SQLloadBestClinics);
+                if(!$bestClinics) echo "<p>Error loading best clinics. Guess they are too good, huh...</p>";
+                else{
+                    foreach ($bestClinics as $clinic){
+                        $featuredImage=unserialize($clinic['images']);
+                        $featuredImage=$featuredImage[0];
+                        echo "
+                        <div class='container'>
+                            <div class='row clinicBox'>
+                            <div class='col-md-3'><img src='" .$featuredImage. "' class='featuredImage'></div>
+                                <div class='col-md-9'>
+                                    <p class='clinicNameInBox'>" . $clinic['name'] . "</p>
+                                    <p class='ownerInBox'>Owner: " . $clinic['owner'] . "</p>
+                                    <a href='/pages/clinics/clinic.php?ID=" . $clinic['ID'] . "'><button class='btn btn-primary'><span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>Read more</button></a>
+                                </div>
+                            </div>
+                        </div>";
+                    }
+                }
+            ?>
+        </div>
+    </div>
+</div>
+
 <script>
 //Tagator script
 $('#tags').tagator({

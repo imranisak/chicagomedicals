@@ -13,7 +13,8 @@ if($_SESSION['csrf_token']==$_POST['token']) {
     if (isset($_POST['email']) && $_POST['email'] != "") {
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $msg->error("Invalid mail!", "/pages/users/register.php");
-        $email = filterInput($email);
+        $email = filter_var($email);
+        $email = strtolower($email);
     } else {
         $msg->error('Email missing', "/pages/users/register.php");
     }
@@ -33,7 +34,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
         if ($password1 == $password2) $password = filterInput(password_hash($password1, PASSWORD_DEFAULT));
         else $msg->error('Passwords do not match!', "/pages/users/register.php");
     } else $msg->error('Password missing');
-    if (!is_uploaded_file($_FILES['file']['tmp_name'])) $profilePicture = "/media/pictures/profilePictureMale.jpg";
+    if (!is_uploaded_file($_FILES['file']['tmp_name'])) $profilePicture = "/media/pictures/profilepicture.jpg";
     else $profilePicture = proccessFile($msg, "image");
     /*echo $_SERVER['DOCUMENT_ROOT'].$profilePicture;
     die();*/

@@ -6,6 +6,7 @@ require "../../includes/flashMessages.php";
 require "../../includes/sessionInfo.php";
 require "../../includes/database.php";
 require "../../includes/token.php";
+if(!$isLoggedIn) $msg->warning("You must be logged in to add a clinic.", "/");
 if(!$isVerified) $msg->warning("You must first verify your profile before adding a clinic.", "/");
 $SQLgetTags="SELECT * from tags ORDER BY tag ASC";
 $tags=$databaseConnection->query($SQLgetTags);
