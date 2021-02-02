@@ -45,7 +45,7 @@ if(!$databaseConnection->query($SQLinsertReview)) {
     $databaseConnection->close();
     $msg->error("There has been an error submiting your review.", $goBackClinicLink);
 }
-//This bit here below updated the rating of the clinic
+//This bit here below updates the rating of the clinic
 //I have no idea how this works, I was half asleep writing this
 $SQLloadClinic="SELECT * FROM clinics WHERE ID = '$clinicID'";
 $clinic=$databaseConnection->query($SQLloadClinic);

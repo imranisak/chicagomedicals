@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/clinics/post/approveOrDenyClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/post/approveOrDenyClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/recaptcha.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/recaptcha.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/addClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/post/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/post/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/post/addReview.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/addReview.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +87,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -145,7 +135,10 @@
       <workItem from="1611596832352" duration="3597000" />
       <workItem from="1611611856396" duration="967000" />
       <workItem from="1611661576268" duration="1243000" />
-      <workItem from="1611856932469" duration="10248000" />
+      <workItem from="1611856932469" duration="10978000" />
+      <workItem from="1611879517789" duration="450000" />
+      <workItem from="1611920023012" duration="3316000" />
+      <workItem from="1611929649623" duration="218000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

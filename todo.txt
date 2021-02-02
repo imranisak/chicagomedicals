@@ -3,6 +3,7 @@ BUGS TO KILL
 - Last batch of reviews does no load
 =====================================================
 TODO
+User, clinic and comment report
 Add date added to reviews, so they can be ordered by date - WHY did I not do this earlier!?
 Add payments to feature a clinic!!!
 Add profile edit
