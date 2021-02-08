@@ -9,3 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/includes/sweetalert2.all.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<DIV STYLE="text-align: center; background-color: red;">
+    <h3>THIS APP IS STILL IN THE EARLY TESTING PHASE - NOT FOR USE...</h3>
+    <p>That said, you can take it for a spin if you want - if you find bugs - and you most likelly will - send me a mail to <a href="mailto:info@imranisak.com">info@imranisak.com</a></p>
+</DIV>
