@@ -223,6 +223,9 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
                 success: function (data){
                     $(".allReviews").append(data);
                 },
+                error: function (data){
+                    console.log(data);
+                },
                 method: "POST"
             });
 

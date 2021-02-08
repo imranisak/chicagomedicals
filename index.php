@@ -33,7 +33,7 @@ $tags=$databaseConnection->query($SQLloadTags);
     <div class="row">
         <div class="col-md-6">
             <h3 style="text-align: center;">Latest added</h3>
-            <?php $SQLloadLatestClinics="SELECT * FROM clinics ORDER BY dateAdded DESC LIMIT 3";
+            <?php $SQLloadLatestClinics="SELECT * FROM clinics WHERE approved = '1' ORDER BY dateAdded DESC LIMIT 3";
                 $latestClinics=$databaseConnection->query($SQLloadLatestClinics);
                 if(!$latestClinics) echo "Error loading latest clinics";
                 else{

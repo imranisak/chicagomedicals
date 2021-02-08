@@ -8,3 +8,4 @@
 <link rel="stylesheet" type="text/css" href="/includes/style.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/includes/sweetalert2.all.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">

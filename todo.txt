@@ -1,6 +1,6 @@
 BUGS TO KILL
 - ' in user name or surname does not work - probably in other places, too!
-- Last batch of reviews does no load
+- Last batch of reviews does no load...sometimes
 =====================================================
 TODO
 User, clinic and comment report
