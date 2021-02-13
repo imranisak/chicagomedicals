@@ -20,8 +20,9 @@ $tags=$databaseConnection->query($SQLloadTags);
     <?php if (isset($msg)) $msg->display(); ?>
     <h1>Chicago Medicals</h1>
     <?php if(isset($_SESSION['isLoggedIn'])){?>
-    <p>Welcome, <?php echo $_SESSION['name']." ".$_SESSION['surname']." "; ?></p>
-    <img src="<?php echo $_SESSION['profilePicture'] ?>" alt="Profile pic" id="profilePicture">
+        <p>Welcome, <?php echo $_SESSION['name']." ".$_SESSION['surname']." "; ?></p>
+        <img src="<?php echo $_SESSION['profilePicture'] ?>" alt="Profile pic" id="profilePicture">
+        <a href="/pages/users/editProfile.php?ID=<?php echo $id ?>">Edit profile</a>
     <?php } ?>
 <form method="GET" action="pages/clinics/index.php">
     <label for="services">I need services of a, or I need services for </label>

@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
+      <change afterPath="$PROJECT_DIR$/pages/users/editProfile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/users/post/editProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/recaptcha.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/recaptcha.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/users/payments/success.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/success.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +98,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\chichagomedicals\pages\users" />
       <recent name="C:\wamp64\www\chichagomedicals\admin\tags\post" />
       <recent name="C:\wamp64\www\chichagomedicals\admin\tags" />
     </key>
@@ -140,7 +149,9 @@
       <workItem from="1612273117980" duration="2616000" />
       <workItem from="1612359959797" duration="1182000" />
       <workItem from="1612362392943" duration="4452000" />
-      <workItem from="1612781807280" duration="2104000" />
+      <workItem from="1612781807280" duration="6855000" />
+      <workItem from="1612800374565" duration="1492000" />
+      <workItem from="1612880181666" duration="424000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
