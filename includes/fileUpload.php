@@ -14,7 +14,7 @@ function proccessFile($msg, $type)
     elseif ($type=="document") $targetDir="/media/documents";
     else $targetDir="/media";
     $fileName = $targetDir ."/".date("Y-m-d-H-i-s")."_". basename($_FILES["file"]["name"]);//Adds the current date and time with seconds to the file name, so you can't make a duplicate
-    $fileName=filterInput($fileName);
+    $fileName=filter_var($fileName, FILTER_SANITIZE_STRING);
     $fileName=preg_replace('/\s+/', '_', $fileName);
     $uploadOK = true;
     $fileType = strtolower(pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION));

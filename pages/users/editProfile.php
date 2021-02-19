@@ -14,7 +14,7 @@ if($id!=$_GET["ID"]){
     $databaseConnection->close();
     $msg->error("You can only edit your own profile.", "/");
 }
-$SQLloadUser="SELECT * FROM users WHERE ID=$id";
+$SQLloadUser="SELECT * FROM users WHERE ID=$id LIMIT 1";
 $user=$databaseConnection->query($SQLloadUser);
 if(!$user){
     $databaseConnection->close();
@@ -42,24 +42,17 @@ $user=$user->fetch_assoc();?>
         </label><br><br>
         <label> E-mail:
             <input type="email" name="email" placeholder="E-mail" required value="<?php echo $user["email"]; ?>"><br>
-            <small>You will have to verify your mail again if you choose to change it.</small>
         </label><br><br>
         <label>Profile picture:<br>
             <img src="<?php echo $user['profilePicture']; ?>" alt="" style="width: 200px;"><br>
             <input type="file" name="file" id="picture">
         </label><br><sub>Max file size: 1MB<br>.jpg .jpeg .png only allowed</sub><br><br>
-        <label> Enter password:
-            <input type="password" name="password_1" placeholder="Enter new password">
-        </label><br><br>
-        <label> Repeat password:
-            <input type="password" name="password_2" placeholder="Repeat password">
-        </label>
         <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token']; ?>" required>
         <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
         <input type="hidden" value="<?php echo $id ?>" name="profileToEditID">
-        <input type="submit" value="submit" name="Submit">
+        <input type="submit" value="submit" name="submit">
     </form>
-
+    <p>Need to change your password? <a href="/pages/users/resetPassword.php">Click here!</a></p>
     <?php
     require "../../includes/footer.php";
     $databaseConnection->close();

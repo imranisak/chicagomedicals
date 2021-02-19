@@ -14,10 +14,10 @@
     </script>
         <form action="post/register.php" method="POST" enctype="multipart/form-data">
             <label> Name:
-                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="name" placeholder="Name" required autocomplete="given-name">
             </label><br><br>
             <label> Surname:
-                <input type="text" name="surname" placeholder="Surname" required>
+                <input type="text" name="surname" placeholder="Surname" required autocomplete="family-name">
             </label><br><br>
             <label> E-mail:
                 <input type="email" name="email" placeholder="E-mail" required>

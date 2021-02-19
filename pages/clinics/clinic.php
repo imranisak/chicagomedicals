@@ -149,6 +149,7 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
         </div>
         <div class="col-md-7">
             <h1><?php echo $clinicName ?></h1>
+            <?php if($id==$clinic['ownerID']) echo "<a href='/pages/clinics/editClinic.php?ID=".$clinic['ID']."'>Edit clinic</a>" ?>
             <p>Name: <?php echo $clinicName ?></p>
             <p>Owner: <?php echo $owner ?></p>
             <p>Address: <?php echo $address ?></p>

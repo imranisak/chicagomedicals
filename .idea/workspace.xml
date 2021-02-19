@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change afterPath="$PROJECT_DIR$/pages/users/editProfile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/users/post/editProfile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/recaptcha.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/recaptcha.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/payments/success.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/success.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/post/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/fileUpload.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/fileUpload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/editProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/editProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/editProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/editProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/resetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/resetPassword.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +150,9 @@
       <workItem from="1612781807280" duration="6855000" />
       <workItem from="1612800374565" duration="1492000" />
       <workItem from="1612880181666" duration="424000" />
+      <workItem from="1613482779460" duration="4881000" />
+      <workItem from="1613573073540" duration="3599000" />
+      <workItem from="1613740656661" duration="3338000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
