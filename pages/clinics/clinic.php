@@ -59,6 +59,7 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
 
 <div class="container">
     <div class="row">
+        <!--SLIDER-->
         <div class="col-md-5">
                 <div class="swiper-container col-md-12">
                     <!-- Additional required wrapper -->
@@ -145,7 +146,7 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
                     </div>
                 </div>
             <br>
-            <buton class="btn btn-danger reportClinicButton">Report clinic</buton>
+            <buton class="btn btn-danger reportClinicButton <?php echo $clinicID; ?>">Report clinic</buton>
         </div>
         <div class="col-md-7">
             <h1><?php echo $clinicName ?></h1>
@@ -206,8 +207,8 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
         </div>
     </div>
 
+    <!--This bit here loads the reviews-->
     <script>
-        //This bit here loads the reviews
         var clinicID=<?php echo $clinicID;?>;
         $(document).ready(function(){
             loadReviews();
@@ -236,21 +237,41 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
                 loadReviews();
             }
         });
-        //This bit here is responsible for comment / review reporting
+    </script>
+    <!--This bit here is responsible for clinic / review reporting-->
+    <script>
+
         $(".reportClinicButton").click(function (){
-            var reportReason="";
+            var selectedElementClass=$(this).attr("class");
+            var clinicID=selectedElementClass.split(" ").pop();
+            report("clinic", clinicID);
+        });
+
+        /*$(".reportReviewButton").click(function (){
+            var selectedElementClass=$(this).attr("class");
+            var reviewID=selectedElementClass.split(" ").pop();
+            report("review", reviewID);
+        });*/
+        function reportReview(data){
+            var input=data.substring(1);
+            console.log(input);
+        }
+
+        function report(reportType, ID){
+            alert("hop");
+            var reportReason="", type=reportType;
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Do you really want to report this clinic?",
+                text: "Do you really want to report this?",
                 icon: 'warning',
                 input: 'text',
-                inputLabel: 'Please explain why are you reporting this clinic.',
+                inputLabel: 'Please explain why are you reporting this.',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, report it!',
                 inputValidator: (value) => {
-                    if (!value) return 'You need to write a reason for reporting the clinic!'
+                    if (!value) return 'You need to write a reason for reporting!'
                     else reportReason=value;
                 }
             }).then((result) => {
@@ -260,51 +281,60 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
                         url: "post/reportClinic",
                         data: {
                             'reportReason':reportReason,
-                            'ID': clinicID,
-                            'type': 'clinic',
+                            'ID': ID,
+                            'type': type,
                             'token': '<?php echo $_SESSION['csrf_token']; ?>'
                         },
-                    success: function(data){
-                        if(data=="true") {//<---Don't ask
-                            Swal.fire(
-                                'Reported!',
-                                'The clinic has been reported. <br> Thank you for your feedback.',
-                                'success'
-                            )
-                        }
-                        else if(data=="token"){
+                        success: function(data){
+                            console.log(data);
+                            if(data=="true") {//<---Don't ask
+                                Swal.fire(
+                                    'Reported!',
+                                    'The clinic has been reported. <br> Thank you for your feedback.',
+                                    'success'
+                                )
+                            }
+                            else if(data=="token"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Invalid token!',
+                                })
+                            }
+                            else if(data=="input"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Invalid input!',
+                                })
+                            }
+                            else if(data=="sql"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Error saving your report!',
+                                })
+                            }
+                            else if(data=="send mail error"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Error saving your report!',
+                                })
+                            }
+                        },
+                        error: function(data){
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'Invalid token!',
+                                text: 'Something went wrong!',
                             })
                         }
-                        else if(data=="input"){
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Invalid input!',
-                            })
-                        }
-                        else if(data=="sql"){
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Error saving your report!',
-                            })
-                        }
-                    },
-                    error: function(data){
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Something went wrong!',
-                        })
-                    }
                     })
                 }
             })
-        });
+
+        }
     </script>
 <?php
 $databaseConnection->close();

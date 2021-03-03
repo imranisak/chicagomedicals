@@ -12,6 +12,7 @@ foreach($reviews as $review) {
     $datePosted=new DateTime($review['dateAdded']);
     //$datePosted=$review['dateAdded'];
     $datePosted=$datePosted->format('Y-m-d');
+    $reivewID=$review['ID'];
     $SQLloadReviewAuthor="SELECT * FROM users WHERE ID='$authorID'";
     $reviewAuthor=$databaseConnection->query($SQLloadReviewAuthor);
     if(!$reviewAuthor) echo "Error loading review author! ".$databaseConnection->error;
@@ -21,6 +22,7 @@ foreach($reviews as $review) {
         $surname=$reviewAuthor['surname'];
         $profilePicture=$reviewAuthor['profilePicture'];
     }
+    $reviewForJS="review";
     $boxOfReviews.="
             <div class='row singleReview'>
                 <div class='col-md-1'>
@@ -31,6 +33,7 @@ foreach($reviews as $review) {
                     <p>Posted on: ".$datePosted."</p>
                     <p>".$review['review']."</p>
                     <p>".$review['score']." / 5</p>
+                    <p class='reportReviewButton ".$reivewID."' onclick='report(&quot;".$reviewForJS."&quot;, ".$reivewID.")'>"."Report review!"."</p>
                 </div>
             </div>
             ";

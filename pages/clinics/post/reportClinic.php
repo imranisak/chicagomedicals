@@ -32,11 +32,18 @@ if($saveReport) echo "true";//<---Don't ask
 else echo "sql";
 if($admins) {
     foreach ($admins as $admin) {
-        if (!isset($mail)) $mail = new PHPMailer(true);
-        $mail->addAddress($admin['email']);     // Add a recipient
-        $mail->Subject = 'User report!';
-        $mail->Body = "New content has been reported. Please check the admin panel for more details";
-        $mail->send();
+        try{
+            if (!isset($mail)) $mail = new PHPMailer(true);
+            $mail->addAddress($admin['email']);     // Add a recipient
+            $mail->Subject = 'User report!';
+            $mail->Body = "New content has been reported. Please check the admin panel for more details";
+            $mail->send();
+        }
+        catch (Exception $e){
+            echo "send mail error";
+        }
+
     }
 }
+else echo "send mail error";
 $databaseConnection->close();

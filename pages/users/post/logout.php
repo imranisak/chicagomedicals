@@ -4,5 +4,5 @@ session_unset();
 session_destroy();
 //echo "Logged out";
 //die();
-//header("Location: /index.php");
-$msg->success("You have been logged out.", "/");
+header("Location: /index.php");
+//$msg->success("You have been logged out.", "/");

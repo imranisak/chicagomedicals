@@ -161,4 +161,6 @@ ul.swiper-wrapper {
 #mojBox{
     background-color: #CE272D;
 }
-
+.reportReviewButton{
+    color:red;
+}
