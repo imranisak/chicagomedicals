@@ -113,7 +113,7 @@ if ($msg->hasMessages()) $msg->display(); ?>
             if (result.isConfirmed) {
                 $.ajax({
                     method: "POST",
-                    url: "/pages/clinics/post/reportClinic",
+                    url: "/pages/clinics/post/reportClinic.php",
                     data: {
                         'reportReason':reportReason,
                         'ID': ID,

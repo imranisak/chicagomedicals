@@ -278,7 +278,7 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
                 if (result.isConfirmed) {
                     $.ajax({
                         method: "POST",
-                        url: "post/reportClinic",
+                        url: "post/reportClinic.php",
                         data: {
                             'reportReason':reportReason,
                             'ID': ID,
