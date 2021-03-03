@@ -15,6 +15,7 @@ $clinic=$clinic->fetch_assoc();
 if(!$clinic['approved']) $msg->error("Clinic has not yet been approved!", "/pages/clinics");
 $clinicName=$clinic['name'];
 $owner=$clinic['owner'];
+$ownerID=$clinic['ownerID'];
 $address=$clinic['address'];
 $zip=$clinic['zip'];
 $clinicMail=$clinic['email'];
@@ -152,7 +153,7 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
             <h1><?php echo $clinicName ?></h1>
             <?php if(isset($id)) if($id==$clinic['ownerID']) echo "<a href='/pages/clinics/editClinic.php?ID=".$clinic['ID']."'>Edit clinic</a>" ?>
             <p>Name: <?php echo $clinicName ?></p>
-            <p>Owner: <?php echo $owner ?></p>
+            <p>Owner: <a href="/pages/users/user.php?ID=<?php echo $ownerID ?>"><?php echo $owner ?></a></p>
             <p>Address: <?php echo $address ?></p>
             <p>ZIP: <?php echo $zip ?></p>
             <p>Email: <?php echo $clinicMail ?></p>
@@ -258,7 +259,6 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
         }
 
         function report(reportType, ID){
-            alert("hop");
             var reportReason="", type=reportType;
             Swal.fire({
                 title: 'Are you sure?',

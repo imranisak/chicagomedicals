@@ -81,13 +81,13 @@ label.star:before {
 .reviewOnClinic{
 
 }
-.profilePictureOnReview{
+.profilePictureOnReview, .previewPicOfClinicOnProfileView{
     width: 100px;
 }
 .allReviews{
 
 }
-.singleReview{
+.singleReview, .singleClinic{
     padding: 5px;
     border: solid #3399ff;
     margin: 10px;
@@ -163,4 +163,7 @@ ul.swiper-wrapper {
 }
 .reportReviewButton{
     color:red;
+}
+.infoOnProfileView{
+    font-weight: bold;
 }

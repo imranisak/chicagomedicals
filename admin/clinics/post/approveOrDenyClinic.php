@@ -28,17 +28,23 @@ if($_GET['action']=='approve'){
 	$msg->error("no", '/');
 	}
 	$SQLapproveClinic="UPDATE clinics SET approved = '1' WHERE ID = $clinicID";
-	if($databaseConnection->query($SQLapproveClinic)) {;
+	if($databaseConnection->query($SQLapproveClinic)) {
 		//Sends the mail
 		if(!isset($mail)) $mail=new PHPMailer(true);
 		$mail->addAddress($ownerEmail);
 		$mail->Subject='Clinic approved!';
 		$mail->Body=file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/clinicApprovedNotification.html");
 		$mail->send();
+		//Updates user info
+        $SQLupdateUserInfo="UPDATE users SET hasClinic = '1' WHERE ID='$ownerID'";
+        if(!$databaseConnection->query($SQLupdateUserInfo)){
+            $databaseConnection->close();
+            $msg->error("Clinic approved, but error updating user info.", "/admin/clinics/clinic?ID=$clinicID");
+        }
 		$databaseConnection->close();
-		$msg->success("Clinis succesfully approved!", "/admin/clinics/");
+		$msg->success("Clinics successfully approved!", "/admin/clinics/");
 	}
-	else $msg->error("An error has occured. Please try again. GET", "/admin/clinics/clinic?ID=$clinicID");
+	else $msg->error("An error has occurred. Please try again. GET", "/admin/clinics/clinic?ID=$clinicID");
 } elseif ($_POST['action']=="deny") {
 	if($_SESSION['csrf_token']!=$_POST['token']){
 		$databaseConnection->close();
