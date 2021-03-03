@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
+      <change afterPath="$PROJECT_DIR$/pages/clinics/post/reportClinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/fileUpload.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/fileUpload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/editProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/editProfile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/post/editProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/editProfile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/resetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/resetPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +151,11 @@
       <workItem from="1612880181666" duration="424000" />
       <workItem from="1613482779460" duration="4881000" />
       <workItem from="1613573073540" duration="3599000" />
-      <workItem from="1613740656661" duration="3338000" />
+      <workItem from="1613740656661" duration="3929000" />
+      <workItem from="1613950557186" duration="762000" />
+      <workItem from="1613951606054" duration="1594000" />
+      <workItem from="1613994136706" duration="4977000" />
+      <workItem from="1614615103152" duration="2648000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
