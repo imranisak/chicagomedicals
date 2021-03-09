@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 09, 2021 at 10:15 AM
+-- Generation Time: Mar 09, 2021 at 04:07 PM
 -- Server version: 8.0.22
 -- PHP Version: 8.0.0
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `clinics` (
   `numberOfReviews` int NOT NULL DEFAULT '0',
   `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 --
 -- Dumping data for table `clinics`
@@ -59,7 +59,8 @@ INSERT INTO `clinics` (`ID`, `name`, `owner`, `ownerID`, `email`, `address`, `zi
 (30, 'Med Bay', 'Jean-Luc Picard', 37, 'medbayent@starfleet.com', 'Everywhere', 1, 'anesthesiologist,dermatologist,nicu,novi jeje,nezz ni ja', 'http://site.com', 'a:3:{i:0;s:43:\"/media/pictures/2021-01-09-01-37-11_ds9.jpg\";i:1;s:47:\"/media/pictures/2021-01-09-01-37-11_slika_1.jpg\";i:2;s:47:\"/media/pictures/2021-01-09-01-37-11_slika_2.jpg\";}', 'http://facebook.com/clinic', '', '', 1, 1, 3.6, 5, '2021-01-26 22:37:08'),
 (32, 'Twin Mountains Clinic', 'Edward Harmon', 41, 'info@twmc.com', 'Ritter Avenue 1183', 48066, 'pain managment,neurology', 'http://site.com', 'a:4:{i:0;s:65:\"/media/pictures/2021-01-28-21-02-07_Twin_Mountains_Clinic_(1).jpg\";i:1;s:65:\"/media/pictures/2021-01-28-21-02-07_Twin_Mountains_Clinic_(2).jpg\";i:2;s:65:\"/media/pictures/2021-01-28-21-02-07_Twin_Mountains_Clinic_(3).jpg\";i:3;s:65:\"/media/pictures/2021-01-28-21-02-07_Twin_Mountains_Clinic_(4).jpg\";}', '', '', '', 1, 0, 2.5, 4, '2021-01-05 22:37:08'),
 (34, 'Kids clinic', 'Telpeh Grendle', 43, 'info@kc.com', 'S Albany Ave', 60623, 'pediatric care', 'http://chicagokids.com', 'a:4:{i:0;s:56:\"/media/pictures/2021-01-28-21-57-35_Kids_clinic_(1).jfif\";i:1;s:55:\"/media/pictures/2021-01-28-21-57-35_Kids_clinic_(1).jpg\";i:2;s:55:\"/media/pictures/2021-01-28-21-57-35_Kids_clinic_(2).jpg\";i:3;s:55:\"/media/pictures/2021-01-28-21-57-35_Kids_clinic_(3).jpg\";}', '', '', '', 1, 0, 4.6, 5, '2021-01-01 22:37:08'),
-(36, 'Glory Hole', 'Lt. Worf', 35, 'glory@hole.com', 'Holy Glory', 123, 'apnea,transplant,psychologist,anesthesiologist', 'http://site.com', 'a:1:{i:0;s:50:\"/media/pictures/2021-03-03-15-34-25_glory_hole.jpg\";}', '', '', '', 1, 0, 5, 1, '2021-03-03 15:34:25');
+(36, 'Glory Hole', 'Lt. Worf', 35, 'glory@hole.com', 'Holy Glory', 123, 'apnea,transplant,psychologist,anesthesiologist', 'http://site.com', 'a:1:{i:0;s:50:\"/media/pictures/2021-03-03-15-34-25_glory_hole.jpg\";}', '', '', '', 1, 0, 5, 1, '2021-03-03 15:34:25'),
+(37, 'My awesome clinic', 'Lt. Worf', 35, 'place@home.com', 'a-sda 33Aa', 123, 'anesthesia care,dentist,dermatologist', 'http://site.com', 'a:1:{i:0;s:47:\"/media/pictures/2021-03-09-14-11-06_clinic1.jpg\";}', '', '', '', 1, 0, 0, 0, '2021-03-09 14:11:06');
 
 -- --------------------------------------------------------
 

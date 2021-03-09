@@ -92,15 +92,14 @@ $('#tags').tagator({
     useDimmer: false,             // dims the screen when result list is visible
     showAllOptionsOnFocus: true, // shows all options even if input box is empty
     allowAutocompleteOnly: true, // only allow the autocomplete options
-    autocomplete: [<?php foreach ($tags as $tag) echo "'".ucfirst($tag['tag'])."',"; ?>]              // this is an array of autocomplete options
+    autocomplete: [<?php foreach ($tags as $tag) echo "'".($tag['tag'])."',"; ?>]              // this is an array of autocomplete options
 });
 </script>
-
 <script type="text/javascript">
 //Script for changing text in input
     function getRandomNumber(currentNumber, arrayLenght){
         var randomIndex=Math.floor(Math.random() * arrayLenght);
-        console.log("Current num:"+currentNumber+" generated num: "+randomIndex);
+        //console.log("Current num:"+currentNumber+" generated num: "+randomIndex);
         if(currentNumber==randomIndex) {
             getRandomNumber(currentNumber, arrayLenght);
         }
@@ -111,18 +110,20 @@ $('#tags').tagator({
         }
     }
     //This bit here should randomly change the placeholder for the search form
-    //But it ain't working as it should...eh, I'll tend to it later
+    //But it ain't working as it should...eh, I'll tend to it later *proceeds to never tend to it*
    $("#tags").attr("placeholder", "Dentist");
     var tags=[<?php foreach ($tags as $tag) echo "'".$tag['tag']."',"; ?>];
     var whut=setInterval(changeServicesPlaceholder, 1000);
     var arrayLenght=tags.length;
     function changeServicesPlaceholder(){
-        var randomNumber=(Math.floor(Math.random() * arrayLenght));
-        $("#tags").attr("placeholder", "");
-        var tag=tags[randomNumber];
-        tag = tag.charAt(0).toUpperCase() + tag.slice(1)
-        $("#tags").attr("placeholder", tag);
-        $('#tags').tagator('refresh');
+        if(!$(".tagator_input").val()) {
+            var randomNumber = (Math.floor(Math.random() * arrayLenght));
+            $("#tags").attr("placeholder", "");
+            var tag = tags[randomNumber];
+            tag = tag.charAt(0).toUpperCase() + tag.slice(1)
+            $("#tags").attr("placeholder", tag);
+            $('#tags').tagator('refresh');
+        }
     }
 
     

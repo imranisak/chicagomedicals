@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change afterPath="$PROJECT_DIR$/admin/clinics/post/deleteClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/clinic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/clinics/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/clinics/post/deleteClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/deleteClinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/editClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/editClinic.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +84,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/clinics/post" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -99,6 +99,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\chichagomedicals\pages\clinics\post" />
       <recent name="C:\wamp64\www\chichagomedicals\pages\users" />
       <recent name="C:\wamp64\www\chichagomedicals\admin\tags\post" />
       <recent name="C:\wamp64\www\chichagomedicals\admin\tags" />
@@ -165,6 +166,7 @@
       <workItem from="1614844967807" duration="4353000" />
       <workItem from="1614863007362" duration="1150000" />
       <workItem from="1615123514713" duration="14000" />
+      <workItem from="1615298928135" duration="6938000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

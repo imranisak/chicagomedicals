@@ -57,7 +57,6 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
 	<?php include "../../includes/navbar.php" ?>
     <?php if($msg->hasMessages()) $msg->display(); ?>
     <!--Images and gallery-->
-
 <div class="container">
     <div class="row">
         <!--SLIDER-->
@@ -151,7 +150,7 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
         </div>
         <div class="col-md-7">
             <h1><?php echo $clinicName ?></h1>
-            <?php if(isset($id)) if($id==$clinic['ownerID']) echo "<a href='/pages/clinics/editClinic.php?ID=".$clinic['ID']."'>Edit clinic</a>" ?>
+            <?php if(isset($id) && $isLoggedIn) if($id==$clinic['ownerID']) echo "<a href='/pages/clinics/editClinic.php?ID=".$clinic['ID']."'>Edit clinic</a>" ?>
             <p>Name: <?php echo $clinicName ?></p>
             <p>Owner: <a href="/pages/users/user.php?ID=<?php echo $ownerID ?>"><?php echo $owner ?></a></p>
             <p>Address: <?php echo $address ?></p>
@@ -234,7 +233,6 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
         }
         $(window).scroll(function() {
             if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                console.log("Bottom");
                 loadReviews();
             }
         });
@@ -248,11 +246,6 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
             report("clinic", clinicID);
         });
 
-        /*$(".reportReviewButton").click(function (){
-            var selectedElementClass=$(this).attr("class");
-            var reviewID=selectedElementClass.split(" ").pop();
-            report("review", reviewID);
-        });*/
         function reportReview(data){
             var input=data.substring(1);
             console.log(input);

@@ -67,11 +67,16 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
     <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
     <input type="submit" value="Save changes" name="submit">
 </form>
+<form action="post/deleteClinic.php" id="deleteClinicForm" method="post">
+    <input type="hidden" name="clinicID" value="<?php echo $_GET['ID'] ?>" required>
+    <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
+</form>
 <p>These are your current images. Click on them to remove them. Click again to undo.</p>
 <?php
 foreach($images as $image) echo "<img src=".$image." style='width:200px;' class='imagePreview'><br><br>";?>
+<buton class="btn btn-danger" id="deleteClinicButton">Delete clinic</buton>
+<!--Tagator script-->
 <script>
-    //Tagator script
     $('#tags').tagator({
         prefix: 'tagator_',           // CSS class prefix
         height: 'auto',               // auto or element
@@ -83,6 +88,7 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
     $('#tags').val(<?php echo "'".$services."',";  ?>);
     $('#tags').tagator('refresh');
 </script>
+<!--This bit here is responsible for adding/selecting images that will be removed-->
 <script type="text/javascript">
     $(document).ready(function(){
         var imagesToRemove=[];
@@ -104,6 +110,26 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
             $("#imagesToRemoveInput").attr("value", imagesToRemove);;
         });
     })
+</script>
+<!--This bit here yeets the clinic through the window-->
+<script>
+    $("#deleteClinicButton").click(function(){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#deleteClinicForm").submit();
+            }
+        })
+    })
+
+
 </script>
 <?php 
 $databaseConnection->close();

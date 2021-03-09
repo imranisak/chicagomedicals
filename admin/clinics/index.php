@@ -60,7 +60,7 @@ else echo $databaseConnection->error;
     </tbody>
 </table>
 </div>
-    <form action="post/deleteClinic.php" ID="removeClinicForm" method="post">
+    <form action="../../pages/clinics/post/deleteClinic.php" ID="removeClinicForm" method="post">
         <input type="hidden" value="" name="clinicID" ID="removeClinicFormInput">
         <input type="hidden" value="<?php echo $_SESSION['csrf_token'] ?>" name="token">
     </form>
@@ -83,8 +83,10 @@ $(".fas").click(function (){
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
-        $("#removeClinicFormInput").attr("value", ID);
-        $("#removeClinicForm").submit();
+        if(result.isConfirmed) {
+            $("#removeClinicFormInput").attr("value", ID);
+            $("#removeClinicForm").submit();
+        }
     })
 })
 function deleteClinic(ID){

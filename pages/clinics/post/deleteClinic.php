@@ -4,14 +4,24 @@ require "../../../includes/sessionInfo.php";
 require "../../../includes/flashMessages.php";
 function errorRedirect($message, $databaseConnection, $msg){
     $databaseConnection->close();
-    $msg->error($message, "/admin/clinics");
+    if($isAdmin) $msg->error($message, "/admin/clinics");
+    else $msg->error($message, "/pages/clinics");
 }
 //Various checks
-if(!$isAdmin) errorRedirect("Must be admin", $databaseConnection, $msg);
-if(!isset($_POST['token']) || !isset($_POST['clinicID'])) errorRedirect("Token or ID missing", $databaseConnection, $msg);
-if($_POST['token']!=$_SESSION['csrf_token']) errorRedirect("Invalid token", $databaseConnection, $msg);
 $clinicID=filter_var($_POST['clinicID'], FILTER_SANITIZE_NUMBER_INT);
 if(!$clinicID) errorRedirect("Invalid ID", $databaseConnection, $msg);
+if(!$isLoggedIn) errorRedirect("Must be logged in", $databaseConnection, $msg);
+if(!$isAdmin){
+    $SQLloadClinicForCheck="SELECT ownerID FROM clinics WHERE ID='$clinicID'";
+    $clinicOwnerID=$databaseConnection->query($SQLloadClinicForCheck);
+    if(!$clinicOwnerID) errorRedirect("Error checking ownership", $databaseConnection, $msg);
+    $clinicOwnerID=$clinicOwnerID->fetch_assoc();
+    $clinicOwnerID=$clinicOwnerID['ownerID'];
+    if($clinicOwnerID!=$id) errorRedirect("You can only delete your own clinic...duh!", $databaseConnection, $msg);
+    //errorRedirect("Must be logged in", $databaseConnection, $msg);
+}
+if(!isset($_POST['token']) || !isset($_POST['clinicID'])) errorRedirect("Token or ID missing", $databaseConnection, $msg);
+if($_POST['token']!=$_SESSION['csrf_token']) errorRedirect("Invalid token", $databaseConnection, $msg);
 //Deletes reviews
 $SQLdeleteReviews="DELETE FROM reviews WHERE clinicID='$clinicID'";
 $deletedReviews=$databaseConnection->query($SQLdeleteReviews);
@@ -23,7 +33,7 @@ if(!$clinic) errorRedirect("Error loading clinic", $databaseConnection, $msg);
 //Loads images, then deletes them
 $clinic=$clinic->fetch_assoc();
 $clinicImages=unserialize($clinic['images']);
-foreach ($clinicImages as $image) if(file_exists($image)) unlink($image);
+foreach ($clinicImages as $image) if(file_exists($_SERVER['DOCUMENT_ROOT'].$image)) unlink($_SERVER['DOCUMENT_ROOT'].$image);
 //Removes clinic from reports
 $SQLdeleteFromReports="DELETE FROM reports WHERE propertyID='$clinicID' AND type='clinic'";
 $deletedReports=$databaseConnection->query($SQLdeleteFromReports);
@@ -37,5 +47,6 @@ $deletedClinic=$databaseConnection->query($SQLdeleteClinic);
 if(!$deletedClinic) errorRedirect("Error deleting clinic", $databaseConnection, $msg);
 else{
     $databaseConnection->close();
-    $msg->success("Clinic removed!", "/admin/clinics");
+    if($isAdmin) $msg->success("Clinic removed!", "/admin/clinics");
+    else $msg->success("Clinic removed!", '/pages/clinics');
 }
