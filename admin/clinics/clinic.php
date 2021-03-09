@@ -136,7 +136,7 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
                     $this.remove();
                     alert(tagToAdd + " has been added to the database!");
                 }
-                else alert("Something went wrong. Plese try again, or contact admin");
+                else alert("Something went wrong. Please try again, or contact admin");
             }
           })
         }

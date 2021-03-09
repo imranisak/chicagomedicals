@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change afterPath="$PROJECT_DIR$/admin/reports/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/clinics/post/deleteClinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/clinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/clinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/clinics/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

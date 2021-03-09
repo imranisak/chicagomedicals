@@ -39,24 +39,31 @@ else echo $databaseConnection->error;
             <th>
                 Approved
             </th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
     <?php 
         foreach($clinics as $clinic){
-            //var_dump($clinic);
+            $clinicID=$clinic['ID'];
             echo "<tr>"."<td>"."<a href='/admin/clinics/clinic?ID=".$clinic['ID']."'>".
             $clinic['name']."</a></td>".
             "<td>".$clinic['owner']."</td>";
             if($clinic['approved']) echo "<td><i class='fas fa-check'></i></td>";
             else echo "<td><i class='fas fa-times'></i></td>";
+            echo "<td><i class='fas fa-trash-alt' ID='$clinicID'></i></td>";
             "</tr>";
         }
     ?>
     </tbody>
 </table>
 </div>
-
+    <form action="post/deleteClinic.php" ID="removeClinicForm" method="post">
+        <input type="hidden" value="" name="clinicID" ID="removeClinicFormInput">
+        <input type="hidden" value="<?php echo $_SESSION['csrf_token'] ?>" name="token">
+    </form>
     <?php require "../../includes/footer.php"; ?>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
@@ -64,6 +71,26 @@ else echo $databaseConnection->error;
 $(document).ready( function () {
     $('#table').DataTable();
 } );
+$(".fas").click(function (){
+    var ID=$(this).attr("ID");
+    //$(this).hide();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        $("#removeClinicFormInput").attr("value", ID);
+        $("#removeClinicForm").submit();
+    })
+})
+function deleteClinic(ID){
+
+
+}
 </script>
 </body>
 </html>
