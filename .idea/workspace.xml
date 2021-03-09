@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change afterPath="$PROJECT_DIR$/pages/users/user.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/reports/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/clinics/post/approveOrDenyClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/post/approveOrDenyClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/clinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/user.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +82,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -160,7 +159,10 @@
       <workItem from="1613994136706" duration="4977000" />
       <workItem from="1614615103152" duration="2648000" />
       <workItem from="1614784360456" duration="15000" />
-      <workItem from="1614784395490" duration="6830000" />
+      <workItem from="1614784395490" duration="7363000" />
+      <workItem from="1614844967807" duration="4353000" />
+      <workItem from="1614863007362" duration="1150000" />
+      <workItem from="1615123514713" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

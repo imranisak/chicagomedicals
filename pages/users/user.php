@@ -48,7 +48,7 @@ if ($msg->hasMessages()) $msg->display(); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <img src="<?php echo $userProfilePicture ?>" alt="Profile Picture">
+            <img src="<?php echo $userProfilePicture ?>" alt="Profile Picture"  style='width: 200px'>
         </div>
         <div class="col-md-8">
             <p> <strong>Name:</strong> <?php echo $userName ?></p>

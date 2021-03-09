@@ -35,4 +35,5 @@ class clinic
         $mail->Body    = file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/newClinicAdminNotification.html");
         $mail->send();
     }
+
 }

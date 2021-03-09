@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 03, 2021 at 11:04 AM
--- Server version: 8.0.21
--- PHP Version: 7.4.9
+-- Generation Time: Mar 09, 2021 at 10:15 AM
+-- Server version: 8.0.22
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `clinics` (
   `numberOfReviews` int NOT NULL DEFAULT '0',
   `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
 --
 -- Dumping data for table `clinics`
@@ -59,7 +59,7 @@ INSERT INTO `clinics` (`ID`, `name`, `owner`, `ownerID`, `email`, `address`, `zi
 (30, 'Med Bay', 'Jean-Luc Picard', 37, 'medbayent@starfleet.com', 'Everywhere', 1, 'anesthesiologist,dermatologist,nicu,novi jeje,nezz ni ja', 'http://site.com', 'a:3:{i:0;s:43:\"/media/pictures/2021-01-09-01-37-11_ds9.jpg\";i:1;s:47:\"/media/pictures/2021-01-09-01-37-11_slika_1.jpg\";i:2;s:47:\"/media/pictures/2021-01-09-01-37-11_slika_2.jpg\";}', 'http://facebook.com/clinic', '', '', 1, 1, 3.6, 5, '2021-01-26 22:37:08'),
 (32, 'Twin Mountains Clinic', 'Edward Harmon', 41, 'info@twmc.com', 'Ritter Avenue 1183', 48066, 'pain managment,neurology', 'http://site.com', 'a:4:{i:0;s:65:\"/media/pictures/2021-01-28-21-02-07_Twin_Mountains_Clinic_(1).jpg\";i:1;s:65:\"/media/pictures/2021-01-28-21-02-07_Twin_Mountains_Clinic_(2).jpg\";i:2;s:65:\"/media/pictures/2021-01-28-21-02-07_Twin_Mountains_Clinic_(3).jpg\";i:3;s:65:\"/media/pictures/2021-01-28-21-02-07_Twin_Mountains_Clinic_(4).jpg\";}', '', '', '', 1, 0, 2.5, 4, '2021-01-05 22:37:08'),
 (34, 'Kids clinic', 'Telpeh Grendle', 43, 'info@kc.com', 'S Albany Ave', 60623, 'pediatric care', 'http://chicagokids.com', 'a:4:{i:0;s:56:\"/media/pictures/2021-01-28-21-57-35_Kids_clinic_(1).jfif\";i:1;s:55:\"/media/pictures/2021-01-28-21-57-35_Kids_clinic_(1).jpg\";i:2;s:55:\"/media/pictures/2021-01-28-21-57-35_Kids_clinic_(2).jpg\";i:3;s:55:\"/media/pictures/2021-01-28-21-57-35_Kids_clinic_(3).jpg\";}', '', '', '', 1, 0, 4.6, 5, '2021-01-01 22:37:08'),
-(35, 'ivan', 'Chad Ivan', 46, 'info@klinika.com', 'adres 123', 123, 'nesto novo', 'http://site.com', 'a:4:{i:0;s:56:\"/media/pictures/2021-01-29-13-38-55_Kids_clinic_(1).jfif\";i:1;s:55:\"/media/pictures/2021-01-29-13-38-55_Kids_clinic_(1).jpg\";i:2;s:55:\"/media/pictures/2021-01-29-13-38-55_Kids_clinic_(2).jpg\";i:3;s:55:\"/media/pictures/2021-01-29-13-38-55_Kids_clinic_(3).jpg\";}', '', '', '', 0, 0, 0, 0, '2021-01-29 13:38:55');
+(36, 'Glory Hole', 'Lt. Worf', 35, 'glory@hole.com', 'Holy Glory', 123, 'apnea,transplant,psychologist,anesthesiologist', 'http://site.com', 'a:1:{i:0;s:50:\"/media/pictures/2021-03-03-15-34-25_glory_hole.jpg\";}', '', '', '', 1, 0, 5, 1, '2021-03-03 15:34:25');
 
 -- --------------------------------------------------------
 
@@ -90,19 +90,20 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `reason` text NOT NULL,
   `propertyID` int NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `resolved` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `reports`
 --
 
-INSERT INTO `reports` (`ID`, `reporterID`, `type`, `reason`, `propertyID`, `date`) VALUES
-(1, 0, 'clinic', 'asd', 34, '2021-02-23 17:54:38'),
-(2, 37, 'clinic', 'I hate kids', 34, '2021-02-23 17:55:07'),
-(3, 37, 'clinic', 'hopcup', 34, '2021-02-23 18:00:45'),
-(4, 37, 'clinic', 'lol', 34, '2021-02-23 18:00:57'),
-(5, 37, 'clinic', 'asd', 34, '2021-02-23 18:02:36');
+INSERT INTO `reports` (`ID`, `reporterID`, `type`, `reason`, `propertyID`, `date`, `resolved`) VALUES
+(27, 0, 'user', 'user', 35, '2021-03-03 16:23:24', 1),
+(26, 0, 'review', 'nor logged in', 13, '2021-03-03 14:57:29', 0),
+(25, 42, 'review', 'teet review', 13, '2021-03-03 14:55:32', 0),
+(28, 13, 'clinic', 'too deep', 36, '2021-03-04 13:54:56', 0),
+(29, 0, 'review', 'fabulous', 24, '2021-03-04 13:55:46', 0);
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `score` int NOT NULL,
   `dateAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `reviews`
@@ -147,7 +148,8 @@ INSERT INTO `reviews` (`ID`, `review`, `clinicID`, `personID`, `score`, `dateAdd
 (20, 'I do not approve', 32, 37, 1, '2021-02-02 15:54:26'),
 (21, 'work plz', 34, 39, 5, '2021-02-02 15:54:26'),
 (22, 'Super su', 31, 46, 4, '2021-02-02 15:54:26'),
-(23, 'I do not like kids. Still a great place tho ', 34, 37, 4, '2021-02-01 15:54:26');
+(23, 'I do not like kids. Still a great place tho ', 34, 37, 4, '2021-02-01 15:54:26'),
+(24, 'Hole leads to G L O R Y!', 36, 43, 5, '2021-03-03 18:05:08');
 
 -- --------------------------------------------------------
 
@@ -211,8 +213,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`ID`, `name`, `surname`, `email`, `profilePicture`, `password`, `verified`, `hasClinic`, `role`, `dateAdded`) VALUES
-(13, 'Telpeh', 'Grendle', '', '/media/pictures/profilepicture.jpg', '$2y$10$sV2vMlFIFoZtAjuOrVVEwuFFEgar3lr4jrz1F6IdiCc9fHAIHzqVu', 1, 0, 'admin', '2020-09-07'),
-(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$FgWFb81KiJB/XMmN93YbM.jb8TeQ6xhOT2Pov9MlMfnze.W1FKvEG', 1, 0, 'user', '2020-11-11'),
+(13, 'Telpeh', 'Grendle', 'imran1701d@gmail.com', '/media/pictures/profilepicture.jpg', '$2y$10$sV2vMlFIFoZtAjuOrVVEwuFFEgar3lr4jrz1F6IdiCc9fHAIHzqVu', 1, 0, 'admin', '2020-09-07'),
+(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$FgWFb81KiJB/XMmN93YbM.jb8TeQ6xhOT2Pov9MlMfnze.W1FKvEG', 1, 1, 'user', '2020-11-11'),
 (37, 'Jean-Luc', 'Picard', 'picard@starfleet.com', '/media/pictures/2021-02-17-15-56-36_picard2.jpg', '$2y$10$rhyrz96BqyYEYtdGYKNRPOJf0ADKc28c32uDWZxDcbWuL8fvaAS8.', 1, 0, 'user', '2020-12-28'),
 (38, 'Top', 'Paris', 'tomparis@starfleet.com', '/media/pictures/2020-12-28-18-45-01_Top_Paris.jpg', '$2y$10$lz7V2EliL7oNm0YuZR9g/urlQxwcMDSgEhXREmc37OW2oAV11wsgi', 1, 0, 'user', '2020-12-28'),
 (39, 'Benjamin', 'Sisko', 'badass@starfleet.com', '/media/pictures/2020-12-28-18-47-21_benjamin_sisko.jpg', '$2y$10$XIdRCbtb5NJlWIEw766KZOfjUBaMtLmJG.bMYUnXP1RgMliyu6Pra', 1, 0, 'user', '2020-12-28'),

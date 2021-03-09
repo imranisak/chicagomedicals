@@ -63,6 +63,9 @@ if($role!='admin'){
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/tags/tags.php">Tags</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/reports/">Reports</a>
+                </li>
                 <?php if($isLoggedIn){ ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php $_SERVER['DOCUMENT_ROOT']?>/pages/users/post/logout.php">Log out</a>
