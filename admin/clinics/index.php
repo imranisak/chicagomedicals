@@ -89,10 +89,7 @@ $(".fas").click(function (){
         }
     })
 })
-function deleteClinic(ID){
-
-
-}
+<?php $databaseConnection->close(); ?>
 </script>
 </body>
 </html>

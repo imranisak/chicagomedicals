@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
+      <change afterPath="$PROJECT_DIR$/admin/users/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/users/post/deleteUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/post/deleteClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/deleteClinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/clinics/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +83,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/clinics/post" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -162,6 +166,9 @@
       <workItem from="1614863007362" duration="1150000" />
       <workItem from="1615123514713" duration="14000" />
       <workItem from="1615298928135" duration="6938000" />
+      <workItem from="1615381904499" duration="36000" />
+      <workItem from="1615824434799" duration="26000" />
+      <workItem from="1621242485702" duration="5589000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

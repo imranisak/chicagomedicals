@@ -4,8 +4,9 @@ BUGS TO KILL
 - Homepage somtimes moves when Picard is logged in...TF?!
 =====================================================
 TODO
-User, clinic and comment report
 Add date added to reviews, so they can be ordered by date - WHY did I not do this earlier!?
+"Make Admin" button in user list
+Add "my profile"
 Add payments to feature a clinic!!!
 Add profile edit
 Add profile view - if the user has clinics, link them
@@ -24,6 +25,7 @@ Schedules?
 NOT Fluff up <3
 =====================================================
 Done
+User, clinic and comment report
 Clinic reviews - 5-star system
 Add csrf stuff
 Add clinics to DB - make their table
