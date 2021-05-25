@@ -21,7 +21,10 @@ if(!$users) $msg->error("Error loading users.");
     <?php require "../../includes/header.php"; ?>
 </head>
 <body>
-<?php require "../../includes/navbar.php" ?>
+<?php require "../../includes/navbar.php";
+if($msg->hasMessages()) $msg->display();
+?>
+
 <h3>Users</h3>
 <div class="col-md-10">
     <table id="table">
@@ -58,7 +61,7 @@ if(!$users) $msg->error("Error loading users.");
 
                 $actions="<td>";
                 $actions.="<a href='/pages/users/user.php?ID=$userID' target='_blank'><i class='fas fa-user'></i></a> | ";
-                $actions.="<a href='/pages/users/post/deleteUser.php'><i class='fas fa-user-times'></i></a>";
+                $actions.="<i class='fas fa-user-times' onclick='deleteUser($userID)'></i></a>";
                 $actions.="</td>";
                 $row.=$actions;
                 $row.="</td>";
@@ -68,6 +71,9 @@ if(!$users) $msg->error("Error loading users.");
         </tbody>
     </table>
 </div>
+<form action="post/deleteUser.php" method="post" id="deleteUserForm" name="deleteUserForm">
+    <input type="hidden" value="" name="deleteUserID" id="deleteUserID">
+</form>
 <?php require "../../includes/footer.php"; ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
@@ -75,6 +81,11 @@ if(!$users) $msg->error("Error loading users.");
     $(document).ready( function () {
         $('#table').DataTable();
     } );
+
+    function deleteUser(ID){
+        $("#deleteUserID").val(ID);
+        $("#deleteUserForm").submit();
+    }
 </script>
 <?php $databaseConnection->close(); ?>
 </body>

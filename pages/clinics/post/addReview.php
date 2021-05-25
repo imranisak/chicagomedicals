@@ -54,7 +54,7 @@ if(!$clinic) {
     $msg->error("There has been an error updating the clinic score!", $goBackClinicLink);
 }
 $clinic=$clinic->fetch_assoc();
-//Counts reviws from DB, then stores them to the asociated clinic
+//Counts reviews from DB, then stores them to the associated clinic
 $SQLcountReviews=" SELECT COUNT(review) FROM reviews WHERE clinicID='$clinicID'";
 $currentNumberOfReviewsForClinic=$databaseConnection->query($SQLcountReviews);
 if(!$currentNumberOfReviewsForClinic){

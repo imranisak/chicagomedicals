@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change afterPath="$PROJECT_DIR$/admin/users/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/users/post/deleteUser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/users/post/deleteUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/clinics/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/users/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/post/addReview.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/addReview.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,6 +98,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\chichagomedicals\admin\users\post" />
       <recent name="C:\wamp64\www\chichagomedicals\pages\clinics\post" />
       <recent name="C:\wamp64\www\chichagomedicals\pages\users" />
       <recent name="C:\wamp64\www\chichagomedicals\admin\tags\post" />
@@ -169,6 +170,7 @@
       <workItem from="1615381904499" duration="36000" />
       <workItem from="1615824434799" duration="26000" />
       <workItem from="1621242485702" duration="5589000" />
+      <workItem from="1621846832161" duration="12128000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
