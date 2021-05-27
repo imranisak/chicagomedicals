@@ -19,5 +19,6 @@ class SigninCest
         $I->fillField("password_2", new \Codeception\Step\Argument\PasswordArgument("lozinka"));
         $I->click("submit");
         $I->seeInCurrentUrl("/");
+        $I->seeInDatabase('users', ['email' => 'John@doeeeeeeee.com']);
     }
 }
