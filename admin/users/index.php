@@ -83,8 +83,20 @@ if($msg->hasMessages()) $msg->display();
     } );
 
     function deleteUser(ID){
-        $("#deleteUserID").val(ID);
-        $("#deleteUserForm").submit();
+        Swal.fire({
+            title: 'Delete user?',
+            text: "Are you sure? User's pictures, clinics, comments etc. will be deleted!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete the user!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#deleteUserID").val(ID);
+                $("#deleteUserForm").submit();
+            }
+        })
     }
 </script>
 <?php $databaseConnection->close(); ?>

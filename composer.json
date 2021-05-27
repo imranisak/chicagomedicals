@@ -3,5 +3,10 @@
         "phpmailer/phpmailer": "^6.1",
         "plasticbrain/php-flash-messages": "^1.0",
         "jenssegers/blade": "^1.4"
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0"
     }
 }

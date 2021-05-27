@@ -44,8 +44,8 @@ if($_SESSION['csrf_token']==$_POST['token']) {
     $user = new user($name, $surname, $email, $password, $date, $profilePicture);
     $user->addToDatabase($databaseConnection);
     if (!$user->saved) $msg->error("An error has occurred. Please try again. If the problem keeps coming back, please contact the admin!", "../register.php");
-    $user->createVerification($databaseConnection); //Also send the verification email
-    if ($user->saved) $msg->success("Successfully registered! Please check your mail for the verification link!", "../../../index.php");
+    //$user->createVerification($databaseConnection); //Also send the verification email
+    if ($user->saved) $msg->success("Successfully registered! Please check your mail for the verification link!", "/");
     $databaseConnection->close();
 }
 else {

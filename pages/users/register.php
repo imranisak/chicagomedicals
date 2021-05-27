@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Add user</title>
+        <title>Register to Chicago Medicals</title>
         <?php require "../../includes/header.php";?>
     </head>
 
     <body>
     <?php include "../../includes/navbar.php";?>
+    <?php if (isset($msg)) $msg->display(); ?>
     <script
             src="https://www.paypal.com/sdk/js?client-id=ARddlugswaQNxof1Gj1-Tgrafo_dqqsUu8Zjxepf-ESCG7lbt46UZmGoWcgJT5_6BtAuY08Q-WVnwAmZ&vault=true">
     </script>
@@ -24,7 +25,7 @@
             </label><br><br>
             <label>Profile picture:<br>
                 <input type="file" name="file" id="picture">
-            </label><br><sub>Max file size: 1MB<br>.jpg .jpeg .png only allowed</sub><br><br>
+            </label><br><sub>Max file size: 1MB<br>.jpg .jpeg .png .jfif only allowed</sub><br><br>
             <label> Enter password:
                 <input type="password" name="password_1" placeholder="Enter password" required>
             </label><br><br>
@@ -68,7 +69,6 @@
 
         }).render('#paypal-button-container');
     </script>
-        <?php if (isset($msg)) $msg->display(); ?>
         <?php require "../../includes/footer.php";?>
     </body>
 </html>

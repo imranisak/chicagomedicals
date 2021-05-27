@@ -1,5 +1,6 @@
 vendor/
 media/
+tests/_output
 
 includes/database.php
 .idea/workspace.xml
