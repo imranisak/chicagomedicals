@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -13,6 +14,9 @@
       <change beforePath="$PROJECT_DIR$/tests/acceptance.suite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/acceptance.suite.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/acceptance/SigninCest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/acceptance/SigninCest.php" afterDir="false" />
     </list>
+=======
+    <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +154,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
+>>>>>>> Stashed changes
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -234,11 +242,15 @@
       <workItem from="1614863007362" duration="1150000" />
       <workItem from="1615123514713" duration="14000" />
       <workItem from="1615298928135" duration="6938000" />
+<<<<<<< Updated upstream
       <workItem from="1615381904499" duration="36000" />
       <workItem from="1615824434799" duration="26000" />
       <workItem from="1621242485702" duration="5589000" />
       <workItem from="1621846832161" duration="12957000" />
       <workItem from="1622101254465" duration="8534000" />
+=======
+      <workItem from="1615812416490" duration="56000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

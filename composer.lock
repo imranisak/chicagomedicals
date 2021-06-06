@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< Updated upstream
     "content-hash": "a95576e3e1276e3b331c82789ed13f1c",
+=======
+    "content-hash": "52c9ba2d3ee7e5be43da8ac00a1f144d",
+>>>>>>> Stashed changes
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -103,6 +107,7 @@
         },
         {
             "name": "illuminate/bus",
+<<<<<<< Updated upstream
             "version": "v8.43.0",
             "source": {
                 "type": "git",
@@ -113,6 +118,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/bus/zipball/2156797125702623af47983867c05cc965490c19",
                 "reference": "2156797125702623af47983867c05cc965490c19",
+=======
+            "version": "v8.34.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/bus.git",
+                "reference": "18b3d810cfe52a4fa040994e68da4f356a498e8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/bus/zipball/18b3d810cfe52a4fa040994e68da4f356a498e8a",
+                "reference": "18b3d810cfe52a4fa040994e68da4f356a498e8a",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -148,6 +165,7 @@
             ],
             "description": "The Illuminate Bus package.",
             "homepage": "https://laravel.com",
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
@@ -166,6 +184,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/collections/zipball/deccb956d38710f3f8baf36dd876c3fa1585ec22",
                 "reference": "deccb956d38710f3f8baf36dd876c3fa1585ec22",
+=======
+            "time": "2021-01-30T19:50:02+00:00"
+        },
+        {
+            "name": "illuminate/collections",
+            "version": "v8.34.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/collections.git",
+                "reference": "e18d6e4cf03dd597bc3ecd86fefc2023d0c7a5e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/e18d6e4cf03dd597bc3ecd86fefc2023d0c7a5e8",
+                "reference": "e18d6e4cf03dd597bc3ecd86fefc2023d0c7a5e8",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -202,6 +236,7 @@
             ],
             "description": "The Illuminate Collections package.",
             "homepage": "https://laravel.com",
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
@@ -220,6 +255,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/container/zipball/07342efca88cf9fff4f2fa0e3c378ea6ee86e5e2",
                 "reference": "07342efca88cf9fff4f2fa0e3c378ea6ee86e5e2",
+=======
+            "time": "2021-03-19T00:05:33+00:00"
+        },
+        {
+            "name": "illuminate/container",
+            "version": "v8.34.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/container.git",
+                "reference": "0e38ee1632d470e56aece0079e6e22d13e6bea8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/0e38ee1632d470e56aece0079e6e22d13e6bea8e",
+                "reference": "0e38ee1632d470e56aece0079e6e22d13e6bea8e",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -253,6 +304,7 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
@@ -271,6 +323,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/contracts/zipball/b9a7cf6acf1d05d863b6ef67c00cdb0e4ccea097",
                 "reference": "b9a7cf6acf1d05d863b6ef67c00cdb0e4ccea097",
+=======
+            "time": "2021-03-16T19:42:20+00:00"
+        },
+        {
+            "name": "illuminate/contracts",
+            "version": "v8.34.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/contracts.git",
+                "reference": "121cea1d8b8772bc7fee99c71ecf0f57c1d77b3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/121cea1d8b8772bc7fee99c71ecf0f57c1d77b3b",
+                "reference": "121cea1d8b8772bc7fee99c71ecf0f57c1d77b3b",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -301,6 +369,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
@@ -319,6 +388,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/events/zipball/bd2941d4d55f5d357b203dc2ed81ac5c138593dc",
                 "reference": "bd2941d4d55f5d357b203dc2ed81ac5c138593dc",
+=======
+            "time": "2021-03-12T14:45:30+00:00"
+        },
+        {
+            "name": "illuminate/events",
+            "version": "v8.34.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/events.git",
+                "reference": "0160e896c1909fa961a245d0628685321a4d58f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/0160e896c1909fa961a245d0628685321a4d58f5",
+                "reference": "0160e896c1909fa961a245d0628685321a4d58f5",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -356,6 +441,7 @@
             ],
             "description": "The Illuminate Events package.",
             "homepage": "https://laravel.com",
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
@@ -374,6 +460,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/filesystem/zipball/7c7372874615475f46d484a2190f90e8effcd8b5",
                 "reference": "7c7372874615475f46d484a2190f90e8effcd8b5",
+=======
+            "time": "2021-03-11T13:55:37+00:00"
+        },
+        {
+            "name": "illuminate/filesystem",
+            "version": "v8.34.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/filesystem.git",
+                "reference": "25e31d4f114baf1f99110bb5fc7538f26b4367cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/25e31d4f114baf1f99110bb5fc7538f26b4367cb",
+                "reference": "25e31d4f114baf1f99110bb5fc7538f26b4367cb",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -418,6 +520,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
@@ -427,6 +530,13 @@
         {
             "name": "illuminate/macroable",
             "version": "v8.43.0",
+=======
+            "time": "2021-03-21T13:46:59+00:00"
+        },
+        {
+            "name": "illuminate/macroable",
+            "version": "v8.34.0",
+>>>>>>> Stashed changes
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -472,7 +582,11 @@
         },
         {
             "name": "illuminate/pipeline",
+<<<<<<< Updated upstream
             "version": "v8.43.0",
+=======
+            "version": "v8.34.0",
+>>>>>>> Stashed changes
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -520,6 +634,7 @@
         },
         {
             "name": "illuminate/support",
+<<<<<<< Updated upstream
             "version": "v8.43.0",
             "source": {
                 "type": "git",
@@ -530,6 +645,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/support/zipball/8a2db3cb7e76fdbd28c6172492a79ab540a9b8e5",
                 "reference": "8a2db3cb7e76fdbd28c6172492a79ab540a9b8e5",
+=======
+            "version": "v8.34.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/support.git",
+                "reference": "b7b27e758b68aad44558c62e7374328835895386"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/b7b27e758b68aad44558c62e7374328835895386",
+                "reference": "b7b27e758b68aad44558c62e7374328835895386",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -580,6 +707,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
@@ -589,6 +717,13 @@
         {
             "name": "illuminate/view",
             "version": "v8.43.0",
+=======
+            "time": "2021-03-21T13:37:37+00:00"
+        },
+        {
+            "name": "illuminate/view",
+            "version": "v8.34.0",
+>>>>>>> Stashed changes
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -704,6 +839,7 @@
         },
         {
             "name": "nesbot/carbon",
+<<<<<<< Updated upstream
             "version": "2.48.1",
             "source": {
                 "type": "git",
@@ -714,6 +850,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8d1f50f1436fb4b05e7127360483dd9c6e73da16",
                 "reference": "8d1f50f1436fb4b05e7127360483dd9c6e73da16",
+=======
+            "version": "2.46.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/briannesbitt/Carbon.git",
+                "reference": "2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4",
+                "reference": "2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -779,6 +927,7 @@
                 "datetime",
                 "time"
             ],
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/briannesbitt/Carbon/issues",
                 "source": "https://github.com/briannesbitt/Carbon"
@@ -807,6 +956,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/9256f12d8fb0cd0500f93b19e18c356906cbed3d",
                 "reference": "9256f12d8fb0cd0500f93b19e18c356906cbed3d",
+=======
+            "time": "2021-02-24T17:30:44+00:00"
+        },
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "v6.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb",
+                "reference": "4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -859,6 +1024,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/PHPMailer/PHPMailer/issues",
                 "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.4.1"
@@ -870,6 +1036,9 @@
                 }
             ],
             "time": "2021-04-29T12:25:04+00:00"
+=======
+            "time": "2021-02-19T15:28:08+00:00"
+>>>>>>> Stashed changes
         },
         {
             "name": "plasticbrain/php-flash-messages",
@@ -959,10 +1128,13 @@
                 "container-interop",
                 "psr"
             ],
+<<<<<<< Updated upstream
             "support": {
                 "issues": "https://github.com/php-fig/container/issues",
                 "source": "https://github.com/php-fig/container/tree/1.1.1"
             },
+=======
+>>>>>>> Stashed changes
             "time": "2021-03-05T17:36:06+00:00"
         },
         {
@@ -1018,6 +1190,7 @@
         },
         {
             "name": "symfony/finder",
+<<<<<<< Updated upstream
             "version": "v5.2.9",
             "source": {
                 "type": "git",
@@ -1028,6 +1201,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/finder/zipball/ccccb9d48ca42757dd12f2ca4bf857a4e217d90d",
                 "reference": "ccccb9d48ca42757dd12f2ca4bf857a4e217d90d",
+=======
+            "version": "v5.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "0d639a0943822626290d169965804f79400e6a04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/0d639a0943822626290d169965804f79400e6a04",
+                "reference": "0d639a0943822626290d169965804f79400e6a04",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1058,6 +1243,7 @@
             ],
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
+<<<<<<< Updated upstream
             "support": {
                 "source": "https://github.com/symfony/finder/tree/v5.2.9"
             },
@@ -1076,6 +1262,9 @@
                 }
             ],
             "time": "2021-05-16T13:07:46+00:00"
+=======
+            "time": "2021-02-15T18:55:04+00:00"
+>>>>>>> Stashed changes
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1138,6 +1327,7 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
             "support": {
                 "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.22.1"
             },
@@ -1155,6 +1345,8 @@
                     "type": "tidelift"
                 }
             ],
+=======
+>>>>>>> Stashed changes
             "time": "2021-01-22T09:19:47+00:00"
         },
         {
@@ -1221,6 +1413,7 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
             "support": {
                 "source": "https://github.com/symfony/polyfill-php80/tree/v1.22.1"
             },
@@ -1238,10 +1431,13 @@
                     "type": "tidelift"
                 }
             ],
+=======
+>>>>>>> Stashed changes
             "time": "2021-01-07T16:49:33+00:00"
         },
         {
             "name": "symfony/translation",
+<<<<<<< Updated upstream
             "version": "v5.2.9",
             "source": {
                 "type": "git",
@@ -1252,6 +1448,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/61af68dba333e2d376a325a29c2a3f2a605b4876",
                 "reference": "61af68dba333e2d376a325a29c2a3f2a605b4876",
+=======
+            "version": "v5.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "0947ab1e3aabd22a6bef393874b2555d2bb976da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/0947ab1e3aabd22a6bef393874b2555d2bb976da",
+                "reference": "0947ab1e3aabd22a6bef393874b2555d2bb976da",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1314,6 +1522,7 @@
             ],
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
+<<<<<<< Updated upstream
             "support": {
                 "source": "https://github.com/symfony/translation/tree/v5.2.9"
             },
@@ -1332,6 +1541,9 @@
                 }
             ],
             "time": "2021-05-16T13:07:46+00:00"
+=======
+            "time": "2021-03-06T07:59:01+00:00"
+>>>>>>> Stashed changes
         },
         {
             "name": "symfony/translation-contracts",
