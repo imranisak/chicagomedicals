@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/users/post/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/users/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/AcceptanceTester.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_support/AcceptanceTester.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/FunctionalTester.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_support/FunctionalTester.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/Helper/Acceptance.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_support/Helper/Acceptance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/Helper/Functional.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_support/Helper/Functional.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/Helper/Unit.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_support/Helper/Unit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/UnitTester.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_support/UnitTester.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/_generated/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_support/_generated/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/acceptance.suite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/acceptance.suite.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/acceptance/FirstCest.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/acceptance/SigninCest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/acceptance/SigninCest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/functional.suite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functional.suite.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit.suite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit.suite.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +242,7 @@
       <workItem from="1622735612623" duration="2586000" />
       <workItem from="1623053589109" duration="5680000" />
       <workItem from="1623077849748" duration="1219000" />
-      <workItem from="1623243028313" duration="1991000" />
+      <workItem from="1623243028313" duration="6327000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
