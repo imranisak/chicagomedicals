@@ -2,11 +2,12 @@ actor: AcceptanceTester
 modules:
   enabled:
     - PhpBrowser:
-        url: http://chichagomedicals/
+        url: http://chicagomedicals/
     - \Helper\Acceptance
     - Db:
         dsn: 'mysql:host=localhost;dbname=chmeds_testing'
         user: 'root'
         password: ''
+        dump: 'tests/_data/db.sql'
         cleanup: true # run populator before each test
         populate: true # run populator before all test

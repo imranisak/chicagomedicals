@@ -50,5 +50,5 @@ if($_SESSION['csrf_token']==$_POST['token']) {
 }
 else {
     $databaseConnection->close();
-    $msg->error("Invaid token.", "/");
+    $msg->error("Invalid token.", "/pages/users/register.php");
 }

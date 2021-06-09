@@ -34,7 +34,7 @@
             </label>
             <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token']; ?>" required>
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
-            <input type="submit" value="submit" name="submit">
+            <input type="submit" value="Register!" name="submit">
         </form>
     <div id="paypal-button-container"></div>
 
