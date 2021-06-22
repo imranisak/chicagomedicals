@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 27, 2021 at 10:43 AM
+-- Generation Time: Jun 14, 2021 at 12:20 PM
 -- Server version: 8.0.21
--- PHP Version: 7.4.9
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -196,29 +196,31 @@ CREATE TABLE IF NOT EXISTS `users` (
   `verified` tinyint(1) NOT NULL DEFAULT '0',
   `hasClinic` tinyint(1) NOT NULL DEFAULT '0',
   `role` varchar(255) NOT NULL DEFAULT 'user',
+  `hasPremium` tinyint(1) NOT NULL DEFAULT '0',
   `dateAdded` date NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `name`, `surname`, `email`, `profilePicture`, `password`, `verified`, `hasClinic`, `role`, `dateAdded`) VALUES
-(13, 'Imran', 'Isak', 'imran1701d@gmail.com', '/media/pictures/profilepicture.jpg', '$2y$10$sV2vMlFIFoZtAjuOrVVEwuFFEgar3lr4jrz1F6IdiCc9fHAIHzqVu', 1, 0, 'admin', '2020-09-07'),
-(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$FgWFb81KiJB/XMmN93YbM.jb8TeQ6xhOT2Pov9MlMfnze.W1FKvEG', 1, 1, 'user', '2020-11-11'),
-(37, 'Jean-Luc', 'Picard The gread', 'picard@starfleet.com', '/media/pictures/2021-02-17-15-56-36_picard2.jpg', '$2y$10$rhyrz96BqyYEYtdGYKNRPOJf0ADKc28c32uDWZxDcbWuL8fvaAS8.', 1, 0, 'user', '2020-12-28'),
-(38, 'Top', 'Paris', 'tomparis@starfleet.com', '/media/pictures/2020-12-28-18-45-01_Top_Paris.jpg', '$2y$10$lz7V2EliL7oNm0YuZR9g/urlQxwcMDSgEhXREmc37OW2oAV11wsgi', 1, 0, 'user', '2020-12-28'),
-(39, 'Benjamin', 'Sisko', 'badass@starfleet.com', '/media/pictures/2020-12-28-18-47-21_benjamin_sisko.jpg', '$2y$10$XIdRCbtb5NJlWIEw766KZOfjUBaMtLmJG.bMYUnXP1RgMliyu6Pra', 1, 0, 'user', '2020-12-28'),
-(40, 'Safet', 'Beg', 'safet@gmail.com', '/media/pictures/2021-01-18-10-48-01_john.jpg', '$2y$10$1zGLCgI9mmGNrj3SrUBAM.Uvd/iYdYaQTtSkDA9bgibibE.8Hj0Pu', 1, 0, 'user', '2021-01-18'),
-(41, 'Edward', 'Harmon', 'EdwardSHarmon@jourrapide.com', '/media/pictures/2021-01-28-20-46-22_ce2a95e99faceaf7af19c273b10ebcc1.jpg', '$2y$10$WRMhfkk/rXqQvD9qtuBbSuK3H6QdqaSR82iuUUxwcFQh.GN6.QbuW', 1, 0, 'user', '2021-01-28'),
-(42, 'Tehana', 'Kuprešak', 'tehanakupresak@jourrapide.com', '/media/pictures/2021-01-28-21-31-50_sarah-parmenter.jpeg', '$2y$10$IqAa2cl2gyeAgYk/M5.3uOQyB1549kvLBBCHA.MsjoIX0gUK6jvnW', 1, 0, 'user', '2021-01-28'),
-(43, 'Pokemon', 'Grendle', 'telpehgrendle@teleworm.us', '/media/pictures/2021-02-17-15-53-59_2021-01-28-21-50-05_images.jpeg', '$2y$10$R5EFiLFGy7mTjvtJS.ftpOCxeNNfFCQgt9VYIJNYTUDQViOETjA96', 1, 0, 'user', '2021-01-28'),
-(45, 'Hrle', 'The Second The Glorious', 'hrle@thesecond.com', '/media/pictures/profilepicture.jpg', '$2y$10$u.JRkGQQQT0msGutBL1yT.NKCRvEdIS7iJd9nLKzXWJfQPy6cuQTG', 1, 1, 'user', '2021-01-28'),
-(46, 'Chad', 'Ivan', 'chad@ivan.com', '/media/pictures/2021-01-29-13-32-27_gigachad.jpg', '$2y$10$/LroI4dx38woq4kcShfSHuvkggKpxHR/TLEqlwk0kbpO20PV3a9UW', 1, 0, 'user', '2021-01-29'),
-(47, 'Velid', 'Tahirovic', 'vela@kuca.com', '/media/pictures/profilepicture.jpg', '$2y$10$dlr0hqLpIWmOaqw1V.ROSeJt8ECE88xdx6D8JeJwSq1HFRRwOJrL.', 1, 0, 'user', '2021-02-03'),
-(48, 'Picard', '2', 'picard2@starfleet.com', '/media/pictures/2021-02-16-16-09-44_picard2.jpg', '$2y$10$71B/ElcSREp.2yxG5fFLgumQjm2dkkn7PEUQiQASUJUbBA3mLNHK.', 0, 0, 'user', '2021-02-16');
+INSERT INTO `users` (`ID`, `name`, `surname`, `email`, `profilePicture`, `password`, `verified`, `hasClinic`, `role`, `hasPremium`, `dateAdded`) VALUES
+(13, 'Imran', 'Isak', 'imran1701d@gmail.com', '/media/pictures/profilepicture.jpg', '$2y$10$sV2vMlFIFoZtAjuOrVVEwuFFEgar3lr4jrz1F6IdiCc9fHAIHzqVu', 1, 0, 'admin', 0, '2020-09-07'),
+(35, 'Lt.', 'Worf', 'worf@starfleet.com', '/media/pictures/2020-11-11-22-25-59_wurf.jpg', '$2y$10$FgWFb81KiJB/XMmN93YbM.jb8TeQ6xhOT2Pov9MlMfnze.W1FKvEG', 1, 1, 'user', 0, '2020-11-11'),
+(37, 'Jean-Luc', 'Picard The gread', 'picard@starfleet.com', '/media/pictures/2021-02-17-15-56-36_picard2.jpg', '$2y$10$rhyrz96BqyYEYtdGYKNRPOJf0ADKc28c32uDWZxDcbWuL8fvaAS8.', 1, 0, 'user', 0, '2020-12-28'),
+(38, 'Top', 'Paris', 'tomparis@starfleet.com', '/media/pictures/2020-12-28-18-45-01_Top_Paris.jpg', '$2y$10$lz7V2EliL7oNm0YuZR9g/urlQxwcMDSgEhXREmc37OW2oAV11wsgi', 1, 0, 'user', 0, '2020-12-28'),
+(39, 'Benjamin', 'Sisko', 'badass@starfleet.com', '/media/pictures/2020-12-28-18-47-21_benjamin_sisko.jpg', '$2y$10$XIdRCbtb5NJlWIEw766KZOfjUBaMtLmJG.bMYUnXP1RgMliyu6Pra', 1, 0, 'user', 0, '2020-12-28'),
+(40, 'Safet', 'Beg', 'safet@gmail.com', '/media/pictures/2021-01-18-10-48-01_john.jpg', '$2y$10$1zGLCgI9mmGNrj3SrUBAM.Uvd/iYdYaQTtSkDA9bgibibE.8Hj0Pu', 1, 0, 'user', 0, '2021-01-18'),
+(41, 'Edward', 'Harmon', 'EdwardSHarmon@jourrapide.com', '/media/pictures/2021-01-28-20-46-22_ce2a95e99faceaf7af19c273b10ebcc1.jpg', '$2y$10$WRMhfkk/rXqQvD9qtuBbSuK3H6QdqaSR82iuUUxwcFQh.GN6.QbuW', 1, 0, 'user', 0, '2021-01-28'),
+(42, 'Tehana', 'Kuprešak', 'tehanakupresak@jourrapide.com', '/media/pictures/2021-01-28-21-31-50_sarah-parmenter.jpeg', '$2y$10$IqAa2cl2gyeAgYk/M5.3uOQyB1549kvLBBCHA.MsjoIX0gUK6jvnW', 1, 0, 'user', 0, '2021-01-28'),
+(43, 'Pokemon', 'Grendle', 'telpehgrendle@teleworm.us', '/media/pictures/2021-02-17-15-53-59_2021-01-28-21-50-05_images.jpeg', '$2y$10$R5EFiLFGy7mTjvtJS.ftpOCxeNNfFCQgt9VYIJNYTUDQViOETjA96', 1, 0, 'user', 0, '2021-01-28'),
+(45, 'Hrle', 'The Second The Glorious', 'hrle@thesecond.com', '/media/pictures/profilepicture.jpg', '$2y$10$u.JRkGQQQT0msGutBL1yT.NKCRvEdIS7iJd9nLKzXWJfQPy6cuQTG', 1, 1, 'user', 0, '2021-01-28'),
+(46, 'Chad', 'Ivan', 'chad@ivan.com', '/media/pictures/2021-01-29-13-32-27_gigachad.jpg', '$2y$10$/LroI4dx38woq4kcShfSHuvkggKpxHR/TLEqlwk0kbpO20PV3a9UW', 1, 0, 'user', 0, '2021-01-29'),
+(47, 'Velid', 'Tahirovic', 'vela@kuca.com', '/media/pictures/profilepicture.jpg', '$2y$10$dlr0hqLpIWmOaqw1V.ROSeJt8ECE88xdx6D8JeJwSq1HFRRwOJrL.', 1, 0, 'user', 0, '2021-02-03'),
+(48, 'Picard', '2', 'picard2@starfleet.com', '/media/pictures/2021-02-16-16-09-44_picard2.jpg', '$2y$10$71B/ElcSREp.2yxG5fFLgumQjm2dkkn7PEUQiQASUJUbBA3mLNHK.', 0, 0, 'user', 0, '2021-02-16'),
+(57, 'John', 'Doe', 'john@doeeeeeeee.com', '/media/pictures/2021-06-03-16-06-39_jd1.jfif', '$2y$10$c3sphT62mHU.VfOck0t5OeMt4rN1865Z7C8/sBUmh4U2L60WBpDOO', 0, 0, 'user', 0, '2021-06-03');
 
 -- --------------------------------------------------------
 

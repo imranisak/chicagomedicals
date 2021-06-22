@@ -5,17 +5,18 @@ BUGS TO KILL
 - Homepage sometimes moves when Picard is logged in...TF?!
 =====================================================
 TODO
+Add payments to feature a clinic!!!
+Payments
 On report pages, check-uncheck
+Add user's clinics on my profile/edit profile
 Add date added to reviews, so they can be ordered by date - WHY did I not do this earlier!?
 "Make Admin" button in user list
 Add "my profile" (in navbar)
-Add payments to feature a clinic!!!
 Add index.php to every folder
 Add gender selection
 Employees of a clinic
 Messages
 Share to social media
-Payments
 =====================================================
 Long TODO
 Add AdSense, Google analytics, tracking etc..
@@ -51,3 +52,13 @@ Check if user exists in DB when registering
 //TelpehGrendle@teleworm.us - lozinka - user
 //TehanaKupresak@jourrapide.com - lozinka - user
 //hrle@thesecond.com - lozinka - user
+=============================================
+ngrok http -host-header=chicagomedicals 80
+=============================================
+Card Type: Visa
+Card Number: 4032031358226115
+Expiration Date: 07/2024
+CVV: 004
+=============================================
+sb-nj43of263812@personal.example.com
+"?)%r3S:

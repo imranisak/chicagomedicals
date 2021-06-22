@@ -8,7 +8,7 @@ if(!$isLoggedIn) {
 }
 if(!isset($id) || !isset($_GET["ID"])) {
     $databaseConnection->close();
-    //$msg->error("An error has occurred. Please, try again later.", "/");
+    $msg->error("An error has occurred. Please, try again later.", "/");
 }
 if($id!=$_GET["ID"]){
     $databaseConnection->close();
@@ -33,6 +33,9 @@ $user=$user->fetch_assoc();?>
 <body>
     <?php require "../../includes/navbar.php"; ?>
     <?php if($msg->hasMessages()) $msg->display(); ?>
+    <script
+            src="https://www.paypal.com/sdk/js?client-id=ARddlugswaQNxof1Gj1-Tgrafo_dqqsUu8Zjxepf-ESCG7lbt46UZmGoWcgJT5_6BtAuY08Q-WVnwAmZ&vault=true&intent=subscription">
+    </script>
     <form action="post/editProfile.php" method="POST" enctype="multipart/form-data">
         <label> Name:
             <input type="text" name="name" placeholder="Name" required value="<?php echo $user["name"]; ?>">
@@ -53,9 +56,32 @@ $user=$user->fetch_assoc();?>
         <input type="submit" value="submit" name="submit">
     </form>
     <p>Need to change your password? <a href="/pages/users/resetPassword.php">Click here!</a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="paypal-button-container"></div>
+                <script>
+                    //paypal.Buttons().render('#paypal-button-container');
+                </script>
+            </div>
+        </div>
+    </div>
     <?php
     require "../../includes/footer.php";
     $databaseConnection->close();
     ?>
+    <script>
+        paypal.Buttons({
+
+            createSubscription: function(data, actions) {
+                return actions.subscription.create({
+                    'plan_id': 'P-03196537NY788235NMDDUH2A'
+                });
+            },
+            onApprove: function(data, actions) {
+                alert('You have successfully created subscription ' + data.subscriptionID);
+            }
+        }).render('#paypal-button-container');
+    </script>
 </body>
 </html>
