@@ -79,6 +79,14 @@ $user=$user->fetch_assoc();?>
                 });
             },
             onApprove: function(data, actions) {
+                $.ajax({
+                    method: POST,
+                    data: {
+                        userID:<?php echo $id; ?>,
+                        subscriptionID:data.subscriptionID;
+                    }
+                    url:"/payments/addUserToSubscription"
+                })
                 alert('You have successfully created subscription ' + data.subscriptionID);
             }
         }).render('#paypal-button-container');
