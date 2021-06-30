@@ -11,6 +11,7 @@
         $profilePicture=$_SESSION['profilePicture'];
         $role=$_SESSION['role'];
         $isVerified=$_SESSION['verified'];
+        $hasPremium=$_SESSION['hasPremium'];
         if($role==="admin") $isAdmin=true;
         else $isAdmin=false;
     } else{

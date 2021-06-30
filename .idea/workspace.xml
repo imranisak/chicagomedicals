@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/sessionInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sessionInfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/users/editProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/editProfile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/users/payments/addUserToSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/addUserToSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/payments/subscriptionCreated.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/subscriptionCreated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/payments/subscriptions.log" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/subscriptions.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +152,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../imraisak" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -244,6 +250,8 @@
       <workItem from="1624347147249" duration="7404000" />
       <workItem from="1624533598997" duration="2649000" />
       <workItem from="1624890807852" duration="151000" />
+      <workItem from="1624969356556" duration="957000" />
+      <workItem from="1625043964474" duration="9105000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

@@ -2,6 +2,7 @@
 require "../../includes/database.php";
 require "../../includes/flashMessages.php";
 require "../../includes/sessionInfo.php";
+require "../../includes/token.php";
 if(!$isLoggedIn) {
     $databaseConnection->close();
     $msg->error("You must be logged in to edit your profile.", "/");
@@ -56,6 +57,7 @@ $user=$user->fetch_assoc();?>
         <input type="submit" value="submit" name="submit">
     </form>
     <p>Need to change your password? <a href="/pages/users/resetPassword.php">Click here!</a></p>
+    <?php if(!$_SESSION['hasPremium']) { ?>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -66,6 +68,20 @@ $user=$user->fetch_assoc();?>
             </div>
         </div>
     </div>
+<?php }
+    else echo "You already have premium!";
+    ?>
+    <p>
+        Test values:<br>
+        =============================================<br>
+        Card Type: Visa<br>
+        Card Number: 4032031358226115<br>
+        Expiration Date: 07/2024<br>
+        CVV: 004<br>
+        =============================================<br>
+        sb-nj43of263812@personal.example.com<br>
+        "?)%r3S:<br>
+    </p>
     <?php
     require "../../includes/footer.php";
     $databaseConnection->close();
@@ -79,17 +95,34 @@ $user=$user->fetch_assoc();?>
                 });
             },
             onApprove: function(data, actions) {
-                $.ajax({
-                    method: POST,
-                    data: {
-                        userID:<?php echo $id; ?>,
-                        subscriptionID:data.subscriptionID;
-                    }
-                    url:"/payments/addUserToSubscription"
-                })
                 alert('You have successfully created subscription ' + data.subscriptionID);
+                processSubscription(data.subscriptionID);
             }
         }).render('#paypal-button-container');
+        function processSubscription(subID){
+            $.ajax({
+                method: "POST",
+                data: {
+                    userID:<?php echo $id; ?>,
+                    subscriptionID:subID,
+                    token: '<?php echo $_SESSION['csrf_token'] ?>'
+                },
+                url:"/pages/users/payments/addUserToSubscription.php",
+                success: function (data){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Premium activated!',
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: `Ok`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload();
+                        }
+                    })
+                }
+            })
+        }
     </script>
 </body>
 </html>
