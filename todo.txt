@@ -1,12 +1,12 @@
 BUGS TO KILL
-- Profile edit
 - ' in user name or surname does not work - probably in other places, too!
 - Last batch of reviews does no load...sometimes
 - Homepage sometimes moves when Picard is logged in...TF?!
 =====================================================
 TODO
+Apply premium - limit the user!
 Add payments to feature a clinic!!!
-Payments
+PayPal events - renew, expired, canceled....
 On report pages, check-uncheck
 Add user's clinics on my profile/edit profile
 "Make Admin" button in user list
@@ -25,6 +25,7 @@ Schedules?
 NOT Fluff up <3
 =====================================================
 Done
+Integrate PayPal
 Add date added to reviews, so they can be ordered by date - WHY did I not do this earlier!?
 User delete
 Add profile edit
