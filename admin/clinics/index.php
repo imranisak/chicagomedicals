@@ -53,7 +53,7 @@ else echo $databaseConnection->error;
             "<td>".$clinic['owner']."</td>";
             if($clinic['approved']) echo "<td><i class='fas fa-check'></i></td>";
             else echo "<td><i class='fas fa-times'></i></td>";
-            echo "<td><i class='fas fa-trash-alt' ID='$clinicID'></i></td>";
+            echo "<td><i class='fas fa-trash-alt deleteClinic' ID='$clinicID'></i></td>";
             "</tr>";
         }
     ?>
@@ -71,11 +71,11 @@ else echo $databaseConnection->error;
 $(document).ready( function () {
     $('#table').DataTable();
 } );
-$(".fas").click(function (){
+$(".deleteClinic").click(function (){
     var ID=$(this).attr("ID");
     //$(this).hide();
     Swal.fire({
-        title: 'Are you sure?',
+        title: 'Delete clinic?',
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
