@@ -24,7 +24,7 @@ if($isLoggedIn){
         $numberOfClinics=$numberOfClinics->num_rows;
         if($numberOfClinics>=1){
             $databaseConnection->close();
-            //$msg->warning("Free users can have only one clinic. <a href='/pages/users/editProfile.php?ID=$id'>Upgrade to premium?</a>", "/");
+            $msg->warning("Free users can have only one clinic. <a href='/pages/users/editProfile.php?ID=$id'>Upgrade to premium?</a>", "/");
         }
     }
 ?>

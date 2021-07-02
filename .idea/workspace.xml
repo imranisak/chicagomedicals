@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/clinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/clinics/post/approveOrDenyClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/post/approveOrDenyClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/addClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/post/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_data/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_data/db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/acceptance.suite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/acceptance.suite.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +245,7 @@
       <workItem from="1624969356556" duration="957000" />
       <workItem from="1625043964474" duration="9105000" />
       <workItem from="1625069329887" duration="1913000" />
-      <workItem from="1625135736276" duration="8514000" />
+      <workItem from="1625135736276" duration="8830000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
