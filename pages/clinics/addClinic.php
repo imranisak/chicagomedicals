@@ -56,10 +56,10 @@ if($isLoggedIn){
             <input type="url" name="facebook" placeholder="Facebook"><br>
             <input type="url" name="instagram" placeholder="Instagram"><br>
             <input type="url" name="twitter" placeholder="Twitter"><br>
+            <input type="file" name="file[]" id="pictureUpload" multiple required onchange="checkFiles(this.files)"><br>
             <label for="pictureUpload"><?php if(!$hasPremium) echo "Upload pictures of your clinic (10 max). Premium users can upload up to 25 pictures!"; ?>
             <?php if($hasPremium) echo "Upload pictures of your clinic (25 max)."; ?>
             </label><br>
-            <input type="file" name="file[]" id="pictureUpload" multiple required>
             <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
             <input type="submit" value="Add clinic" name="submit">
@@ -75,7 +75,38 @@ if($isLoggedIn){
         autocomplete: [<?php foreach ($tags as $tag) echo "'".ucfirst($tag['tag'])."',"; ?>]              // this is an array of autocomplete options
     });
 </script>
+<script>
+    var maxFiles=<?php if(!$hasPremium) echo 10; else echo 25; ?>;
+    var hasPremium=<?php echo $hasPremium; ?>;
+    var userID=<?php echo $id ?>;
+    function checkFiles(files) {
+        if(files.length>maxFiles) {
+            if(!hasPremium){
+                var linkPremium="/pages/users/editProfile.php?ID="+userID;
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Too many images!',
+                    text: 'Free users can only upload 10 images!',
+                    footer: '<a href='+linkPremium+'>Upgrade to premium?</a>'
+                })
+            }
+            else
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Too many images!',
+                    text: "You're allowed a maximum of 25 images per clinic!"
+                })
+            }
 
+            let list = new DataTransfer;
+            for(let i=0; i<maxFiles; i++)
+                list.items.add(files[i])
+
+            document.getElementById('pictureUpload').files = list.files
+        }
+    }
+</script>
 <?php require "../../includes/footer.php" ?>
 </body>
 </html>

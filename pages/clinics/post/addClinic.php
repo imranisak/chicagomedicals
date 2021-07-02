@@ -58,10 +58,23 @@ if(isset($_POST['submit'])){
     if(isset($_POST['twitter'])) $clinicTwitter=filter_var($_POST['twitter'], FILTER_SANITIZE_URL);
     else $clinicTwitter="";
     //Images
+    if(!$hasPremium){
+        $numberOfImages=count(array_filter($_FILES['file']['name']));
+        if($numberOfImages>10){
+            $databaseConnection->close();
+            $msg->warning("Free users can upload 10 images maximum. <a>Upgrade to premium?</a>", "../addClinic");
+        }
+        else{
+            if($numberOfImages>25){
+                $databaseConnection->close();
+                $msg->warning("You are allowed to add 25 images to your clinic maximum.", "../addClinic");
+            }
+        }
+    }
     if(!multipleFileUpload($msg, "image")) $msg->error("Must select at least one image, or invalid image name!");
     else $images=multipleFileUpload($msg, "image");
     $images=serialize($images);//Converts the image array to json so it can be saved to the database
-    if($msg->hasErrors()) $msg->error("An error has occured!", '../addClinic'); //If there are no errors, go back
+    if($msg->hasErrors()) $msg->error("An error has occurred!", '../addClinic'); //If there are no errors, go back
     $clinicServices=strtolower($clinicServices);
     $clinic=new clinic($clinicName, $clinicOwner, $clinicOwnerID, $clinicEmail, $clinicAddress, $clinicZIPcode, $clinicServices, $clinicWebsite, $images, $clinicFacebook, $clinicTwitter, $clinicInstagram);
     $clinicAdded=$clinic->addToDatabase($databaseConnection);
@@ -70,11 +83,11 @@ if(isset($_POST['submit'])){
         //$clinic->sendNotificationToOwner($email, $name, $mail);//$ownerEmail, $owner, $mail
         //$clinic->sendNotificationToAdmin("info@imranisak.com", $mail);//TODO - figure out how to load ALL admin mails ;-;
         $databaseConnection->close();
-        $msg->success("Your clinic has been submitted for review. We will let you know by mail if it has been approved - usually within 24h.", "../addClinic.php");
+        $msg->success("Your clinic has been submitted for review. We will let you know by mail if it has been approved - usually within 24h.", "");
     }
     else{
         //$databaseConnection->close();
-        $msg->error("An error has occured. Please try again. If the error persists, please report this error to admin - ".$databaseConnection->error, "../addClinic.php");
+        $msg->error("An error has occurred. Please try again. If the error persists, please report this error to admin - ".$databaseConnection->error, "../addClinic.php");
     }
 }
 else{
