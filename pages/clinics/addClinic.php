@@ -11,7 +11,22 @@ if(!$isVerified) $msg->warning("You must first verify your profile before adding
 $SQLgetTags="SELECT * from tags ORDER BY tag ASC";
 $tags=$databaseConnection->query($SQLgetTags);
 //If it is a free users, and already has a clinic, redirect to payment page
+//var_dump($_SESSION);
 if($isLoggedIn){
+    if(!$hasPremium || $hasPremium=="0"){
+        echo "User has no premium!";
+        $SQLloadUserClinics="SELECT * FROM clinics WHERE ownerID='$id'";
+        $numberOfClinics=$databaseConnection->query($SQLloadUserClinics);
+        if(!$numberOfClinics){
+            $databaseConnection->close();
+            $msg->error("Error loading user's clinics.", "/");
+        }
+        $numberOfClinics=$numberOfClinics->num_rows;
+        if($numberOfClinics>=1){
+            $databaseConnection->close();
+            //$msg->warning("Free users can have only one clinic. <a href='/pages/users/editProfile.php?ID=$id'>Upgrade to premium?</a>", "/");
+        }
+    }
 ?>
 <html>
 <head>
@@ -26,7 +41,7 @@ if($isLoggedIn){
 </head>
 <body>
 <?php require "../../includes/navbar.php" ?>
-<?php if($msg->hasMessages()) $msg->display() ?>
+<?php if($msg->hasMessages()) $msg->display(); ?>
 <h1>Add a clinic</h1>
 <h3>The clinic you add will be linked to your account, and you will be added as the owner!</h3>
     <form action="post/addClinic.php" method="post" enctype='multipart/form-data'>
@@ -41,7 +56,9 @@ if($isLoggedIn){
             <input type="url" name="facebook" placeholder="Facebook"><br>
             <input type="url" name="instagram" placeholder="Instagram"><br>
             <input type="url" name="twitter" placeholder="Twitter"><br>
-            <label for="pictureUpload">Upload pictures of your clinic (10 max)</label><br>
+            <label for="pictureUpload"><?php if(!$hasPremium) echo "Upload pictures of your clinic (10 max). Premium users can upload up to 25 pictures!"; ?>
+            <?php if($hasPremium) echo "Upload pictures of your clinic (25 max)."; ?>
+            </label><br>
             <input type="file" name="file[]" id="pictureUpload" multiple required>
             <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>

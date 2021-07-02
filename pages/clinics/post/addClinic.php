@@ -14,6 +14,19 @@ require "../../../classes/clinic.php";
 if(!$isVerified) $msg->warning("You must first verify your profile before adding a clinic.", "/");
 if($_SESSION['csrf_token']!=$_POST['token']) $msg->error('Invalid token.', '/');
 if(!$isLoggedIn) $msg->error("You must be logged in to submit a clinic!", "/");
+if(!$hasPremium || $hasPremium=="0"){
+    $SQLloadUserClinics="SELECT * FROM clinics WHERE ownerID='$id'";
+    $numberOfClinics=$databaseConnection->query($SQLloadUserClinics);
+    if(!$numberOfClinics){
+        $databaseConnection->close();
+        $msg->error("Error loading user's clinics.", "/");
+    }
+    $numberOfClinics=$numberOfClinics->num_rows;
+    if($numberOfClinics>=1){
+        $databaseConnection->close();
+        $msg->warning("Free users can have only one clinic. <a href='/pages/users/editProfile.php?ID=$id'>Upgrade to premium?</a>", "/");
+    }
+}
 $clinicOwner=$name." ".$surname;
 $clinicOwnerID=$id;
 if(isset($_POST['submit'])){
@@ -54,8 +67,8 @@ if(isset($_POST['submit'])){
     $clinicAdded=$clinic->addToDatabase($databaseConnection);
     if($clinicAdded===true){
         if(!isset($mail)) $mail=new PHPMailer(true);
-        $clinic->sendNotificationToOwner($email, $name, $mail);//$ownerEmail, $owner, $mail
-        $clinic->sendNotificationToAdmin("info@imranisak.com", $mail);//TODO - figure out how to load ALL admin mails ;-;
+        //$clinic->sendNotificationToOwner($email, $name, $mail);//$ownerEmail, $owner, $mail
+        //$clinic->sendNotificationToAdmin("info@imranisak.com", $mail);//TODO - figure out how to load ALL admin mails ;-;
         $databaseConnection->close();
         $msg->success("Your clinic has been submitted for review. We will let you know by mail if it has been approved - usually within 24h.", "../addClinic.php");
     }

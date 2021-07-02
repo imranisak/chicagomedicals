@@ -83,7 +83,7 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
         }
          if(!$clinicIsApproved) {
         echo "<p>This clinic has not yet been approved, and is not publiclly visible!</p>" ?>
-        <?php //yes, the csrf token in visible in the link - but since it is randomlly generated with every load, it should not be a problem...right? ?>
+        <?php //yes, the csrf token in visible in the link - but since it is randomly generated with every load, it should not be a problem...right? ?>
         <a href="post/approveOrDenyClinic.php?token=<?php echo $token ?>&ID=<?php echo $clinicID ?>&action=approve"><button class="btn btn-success">Approve</button></a><span><button class="btn btn-danger" style="margin-left: 10px;" id="denyButton">Deny</button></span>
         <form style="display: none" id="reasonForDenial" method="POST" action="post/approveOrDenyClinic.php">
             <textarea name="reasonForDenial" rows='10' cols='30'></textarea><br>

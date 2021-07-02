@@ -25,7 +25,7 @@ $msg->display();
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token']; ?>" required>
-        <input type="submit">
+        <input type="submit" value="submit" name="submit">
     </form>
     <a href="resetPassword.php">Forgot password?</a>
     <?php include "../../includes/footer.php";?>

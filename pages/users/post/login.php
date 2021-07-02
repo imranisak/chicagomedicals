@@ -12,7 +12,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
         $password = $_POST['password'];
         $password = filterInput($password);
     } else $msg->error("Please enter password!", '../login.php');
-    $sql = "SELECT id, name, surname, password, email, profilePicture, role, verified FROM users WHERE email='$email' LIMIT 1";
+    $sql = "SELECT id, name, surname, password, email, profilePicture, role, verified, hasPremium FROM users WHERE email='$email' LIMIT 1";
     $user = $databaseConnection->query($sql);
     if ($user->num_rows > 0) {
         while ($row = $user->fetch_assoc()) {
@@ -30,7 +30,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
                 $location = $_SERVER['DOCUMENT_ROOT'] . '/index.php';
                 $databaseConnection->close();
                 header("Location: /index.php");
-            } else $msg->error("Incorect password!", "../login.php");
+            } else $msg->error("Incorrect password!", "../login.php");
         }
     } else  $msg->warning("Not a valid email! <a href='/pages/users/register.php'>Plz register</a>", "../login.php");
 }
