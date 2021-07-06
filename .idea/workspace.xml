@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change beforePath="$PROJECT_DIR$/pages/users/post/resetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/resetPassword.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/resetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/resetPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/clinics/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +246,7 @@
       <workItem from="1625043964474" duration="9105000" />
       <workItem from="1625069329887" duration="1913000" />
       <workItem from="1625135736276" duration="11820000" />
-      <workItem from="1625570703100" duration="1346000" />
+      <workItem from="1625570703100" duration="2099000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

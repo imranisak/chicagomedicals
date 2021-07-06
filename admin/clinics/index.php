@@ -48,7 +48,7 @@ else echo $databaseConnection->error;
     <?php 
         foreach($clinics as $clinic){
             $clinicID=$clinic['ID'];
-            echo "<tr>"."<td>"."<a href='/admin/clinics/clinic?ID=".$clinic['ID']."'>".
+            echo "<tr>"."<td>"."<a href='/admin/clinics/clinic.php?ID=".$clinic['ID']."'>".
             $clinic['name']."</a></td>".
             "<td>".$clinic['owner']."</td>";
             if($clinic['approved']) echo "<td><i class='fas fa-check'></i></td>";
