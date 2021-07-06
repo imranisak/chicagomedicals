@@ -10,9 +10,6 @@
     <body>
     <?php include "../../includes/navbar.php";?>
     <?php if (isset($msg)) $msg->display(); ?>
-    <script
-            src="https://www.paypal.com/sdk/js?client-id=ARddlugswaQNxof1Gj1-Tgrafo_dqqsUu8Zjxepf-ESCG7lbt46UZmGoWcgJT5_6BtAuY08Q-WVnwAmZ&vault=true">
-    </script>
         <form action="post/register.php" method="POST" enctype="multipart/form-data">
             <label> Name:
                 <input type="text" name="name" placeholder="Name" required autocomplete="given-name">
@@ -36,38 +33,7 @@
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
             <input type="submit" value="submit" name="submit">
         </form>
-    <div id="paypal-button-container"></div>
 
-    <script>
-        paypal.Buttons({
-
-            createSubscription: function(data, actions) {
-
-                return actions.subscription.create({
-
-                    'plan_id': 'P-2G481811JL2768614MANKLFI'
-
-                });
-
-            },
-
-
-            onApprove: function(data, actions) {
-                alert('You have successfully created subscription ' + data.subscriptionID);
-            },
-            onCancel: function (data) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Canceled',
-                    text: 'You have canceled the creation of your subscription.'
-                })
-            },
-            onError: function (err) {
-                console.error('error from the onError callback', err);
-            }
-
-
-        }).render('#paypal-button-container');
     </script>
         <?php require "../../includes/footer.php";?>
     </body>
