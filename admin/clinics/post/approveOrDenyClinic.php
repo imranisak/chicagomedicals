@@ -34,7 +34,7 @@ if($_GET['action']=='approve'){
 		$mail->addAddress($ownerEmail);
 		$mail->Subject='Clinic approved!';
 		$mail->Body=file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/clinicApprovedNotification.html");
-		//$mail->send();
+		$mail->send();
 		//Updates user info
         $SQLupdateUserInfo="UPDATE users SET hasClinic = 1 WHERE ID='$ownerID'";
         if(!$databaseConnection->query($SQLupdateUserInfo)){
@@ -73,7 +73,7 @@ if($_GET['action']=='approve'){
 			$mail->addAddress($ownerEmail);
 			$mail->Subject='Your clinic was not approved on Chicago Medicals!';
 			$mail->Body=$mailContent;
-			//$mail->send();
+			$mail->send();
 			$databaseConnection->close();
 			$msg->success("Clinic has been declined, and removed from database.", "/admin/clinics/");
 		}
