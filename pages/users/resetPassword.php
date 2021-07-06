@@ -25,7 +25,6 @@ $_SESSION['goBack']='/pages/users/resetPassword.php';
     <?php if (isset($msg)) {
         $msg->display();
     } ?>
-    <!-- TODO INCLUDE RECAPTCHA -->
     <?php include '../../includes/footer.php';?>
 </body>
 </html>

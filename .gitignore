@@ -3,6 +3,7 @@ media/
 tests/_output
 
 includes/database.php
+includes/sendMail.php
 .idea/workspace.xml
 .idea/workspace.xml
 .idea/workspace.xml
