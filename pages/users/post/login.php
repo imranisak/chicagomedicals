@@ -12,7 +12,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
         $password = $_POST['password'];
         $password = filterInput($password);
     } else $msg->error("Please enter password!", '../login.php');
-    $sql = "SELECT id, name, surname, password, email, profilePicture, role, verified, hasPremium FROM users WHERE email='$email' LIMIT 1";
+    $sql = "SELECT id, name, surname, password, email, profilePicture, role, verified, hasPremium, hasClinic FROM users WHERE email='$email' LIMIT 1";
     $user = $databaseConnection->query($sql);
     if ($user->num_rows > 0) {
         while ($row = $user->fetch_assoc()) {
@@ -27,6 +27,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
                 $_SESSION['isLoggedIn'] = true;
                 $_SESSION['verified'] = $row['verified'];
                 $_SESSION['hasPremium'] = $row['hasPremium'];
+                $_SESSION['hasClinic'] = $row['hasClinic'];
                 $location = $_SERVER['DOCUMENT_ROOT'] . '/index.php';
                 $databaseConnection->close();
                 header("Location: /index.php");

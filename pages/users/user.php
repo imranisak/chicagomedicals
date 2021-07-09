@@ -125,7 +125,7 @@ if ($msg->hasMessages()) $msg->display(); ?>
                         if(data=="true") {//<---Don't ask
                             Swal.fire(
                                 'Reported!',
-                                'The clinic has been reported. <br> Thank you for your feedback.',
+                                'The user has been reported. <br> Thank you for your feedback.',
                                 'success'
                             )
                         }

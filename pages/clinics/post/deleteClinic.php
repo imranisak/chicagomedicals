@@ -38,7 +38,7 @@ if(!$deletedReports) errorRedirect("Error deleting reports", $databaseConnection
 //Removed PayPal subscription! (to be added)
 
 
-//Deletes the clinic itself
+//Deletes the clinic itself, Check if the user has any more clinics
 $SQLdeleteClinic="DELETE FROM clinics WHERE id='$clinicID'";
 $deletedClinic=$databaseConnection->query($SQLdeleteClinic);
 if(!$deletedClinic) errorRedirect("Error deleting clinic", $databaseConnection, $msg);

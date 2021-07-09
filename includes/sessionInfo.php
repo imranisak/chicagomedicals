@@ -12,6 +12,7 @@
         $role=$_SESSION['role'];
         $isVerified=$_SESSION['verified'];
         $hasPremium=$_SESSION['hasPremium'];
+        $hasClinics=$_SESSION['hasClinic'];
         if($role==="admin") $isAdmin=true;
         else $isAdmin=false;
     } else{

@@ -21,7 +21,11 @@ if(!$user){
     $databaseConnection->close();
     $msg->error("Error loading your profile. Please, try again.", "/");
 }
-$user=$user->fetch_assoc();?>
+$user=$user->fetch_assoc();
+$SQLloadUserClinics="SELECT name, ID FROM clinics WHERE ownerID='$id'";
+$userClinics=$databaseConnection->query($SQLloadUserClinics);
+if(!$userClinics) $msg->warning("Error loading user clinics!");
+?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -57,6 +61,16 @@ $user=$user->fetch_assoc();?>
         <input type="submit" value="submit" name="submit">
     </form>
     <p>Need to change your password? <a href="/pages/users/resetPassword.php">Click here!</a></p>
+    <?php if($hasClinics){?>
+    <p>Here are your clinics:</p><br>
+    <?php foreach ($userClinics as $userClinic){
+        $clinicIDtemp=$userClinic['ID'];
+        $clinicNameTemp=$userClinic['name'];
+        echo "<a href='/pages/clinics/clinic.php?ID=$clinicIDtemp' target='_blank'>$clinicNameTemp</a><br>";
+    }
+    ?>
+    <?php }?>
+
     <?php if(!$_SESSION['hasPremium']) { ?>
     <div class="container">
         <div class="row">
@@ -69,7 +83,7 @@ $user=$user->fetch_assoc();?>
         </div>
     </div>
 <?php }
-    else echo "You already have premium!";
+    else echo "<b>You already have premium!</b>";
     ?>
     <p>
         Test values:<br>
