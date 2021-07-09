@@ -2,8 +2,11 @@
 if($role!='admin'){
 ?>
 <!-- USER NAVBAR-->
+<DIV STYLE="text-align: center; background-color: red;">
+    <h3>THIS APP IS STILL IN THE EARLY TESTING PHASE - NOT FOR USE...</h3>
+    <p style="margin:0px;">That said, you can take it for a spin if you want - if you find bugs - and you most likely will - send me a mail to <a href="mailto:info@imranisak.com">info@imranisak.com</a></p>
+</DIV>
 <div>
-  <div class="row">
     <div class="col-md-10 offset-md-1">
       <!--These DIVs are closed in the footer-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,9 +29,16 @@ if($role!='admin'){
                 </div>
             </li>
           <?php if($isLoggedIn){ ?>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php $_SERVER['DOCUMENT_ROOT']?>/pages/users/post/logout.php">Log out</a>
-            </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" d>
+                      <img src="<?php echo $profilePicture; ?>" width="40" height="40">
+                      <?php echo $name." ".$surname; ?>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/pages/users/editProfile.php?ID=<?php echo $id ?>">Edit profile</a>
+                      <a class="dropdown-item" href="/pages/users/post/logout.php">Log out</a>
+                  </div>
+              </li>
           <?php 
           }
           else { ?>
