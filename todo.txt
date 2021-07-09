@@ -1,7 +1,6 @@
 BUGS TO KILL
 - ' in user name or surname does not work - probably in other places, too!
 - Last batch of reviews does no load...sometimes
-- Homepage sometimes moves when Picard is logged in...TF?!
 - Mail from server gets YEETED to spam
 =====================================================
 TODO
