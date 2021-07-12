@@ -69,8 +69,11 @@ if(!$userClinics) $msg->warning("Error loading user clinics!");
         echo "<a href='/pages/clinics/clinic.php?ID=$clinicIDtemp' target='_blank'>$clinicNameTemp</a><br>";
     }
     ?>
-    <?php }?>
+    <?php }
+    else{?>
+    <b>You have no approved clinics!</b><br>
 
+    <?php }?>
     <?php if(!$_SESSION['hasPremium']) { ?>
     <div class="container">
         <div class="row">
