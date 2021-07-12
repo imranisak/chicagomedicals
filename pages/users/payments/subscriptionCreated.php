@@ -31,5 +31,4 @@ else{
 }
 //Update user info (set hasPremium to 1)
 //This bit here is done from the user edit page, an AJAX request is sent.
-
-//Send email to user
+//Email is also sent there

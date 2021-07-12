@@ -1,6 +1,7 @@
 <?php
 require "../../../includes/sessionInfo.php";
 require "../../../includes/flashMessages.php";
+require "../../../includes/sendMail.php";
 //Checks
 if($_SESSION['csrf_token']!=$_POST['token']) echo "Invalid token!";
 if(!$isLoggedIn) $msg->error("Nope!", "/");
@@ -27,3 +28,10 @@ if(!$updateUser){
 }
 else $_SESSION['hasPremium']=1;
 $databaseConnection->close();
+//Send a mail to the user
+$ownerEmail=$_SESSION['email'];
+if(!isset($mail)) $mail=new PHPMailer(true);
+$mail->addAddress($ownerEmail);
+$mail->Subject='Premium activated on Chicago Medicals!';
+$mail->Body=file_get_contents($_SERVER['DOCUMENT_ROOT']."/includes/emails/premiumActivated.html");
+$mail->send();
