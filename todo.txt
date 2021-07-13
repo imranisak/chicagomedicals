@@ -7,12 +7,10 @@ TODO
 ALL OF THE WEBHOOKZZ!!!11!1!!!
 Add payments to feature a clinic!!!
 On report pages, check-uncheck
-Add user's clinics on my profile/edit profile
 "Make Admin" button in user list
-Add "my profile" (in navbar)
 Add index.php to every folder
 Add gender selection
-Employees of a clinic
+Employees of a clinic - premium only
 Messages
 Share to social media
 =====================================================
@@ -24,6 +22,9 @@ Schedules?
 NOT Fluff up <3
 =====================================================
 Done
+Add "my profile" (in navbar)
+
+Add user's clinics on my profile/edit profile
 Send Email to user when premium is activated
 When deleting clinics, make sure the user has no clinics left, so the "hasClinics" attribute can be set to 0
 Clinic delete...when did I make that?

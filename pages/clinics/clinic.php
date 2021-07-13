@@ -148,9 +148,10 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
             <br>
             <buton class="btn btn-danger reportClinicButton <?php echo $clinicID; ?>">Report clinic</buton>
         </div>
+        <!--Info on right side-->
         <div class="col-md-7">
             <h1><?php echo $clinicName ?></h1>
-            <?php if(isset($id) && $isLoggedIn) if($id==$clinic['ownerID']) echo "<a href='/pages/clinics/editClinic.php?ID=".$clinic['ID']."'>Edit clinic</a>" ?>
+            <?php if(isset($id) && $isLoggedIn) if($id==$clinic['ownerID']) echo "<button class='btn btn-primary'><a href='/pages/clinics/editClinic.php?ID=".$clinic['ID']." ' style='color: white'>Edit clinic</a></button>" ?>
             <p>Name: <?php echo $clinicName ?></p>
             <p>Owner: <a href="/pages/users/user.php?ID=<?php echo $ownerID ?>"><?php echo $owner ?></a></p>
             <p>Address: <?php echo $address ?></p>
@@ -164,10 +165,6 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
         </div>
     </div>
 </div>
-<?php
-    //$images=substr($images, 1, -1);
-    //$images=explode(", ", $images);?>
-<!--End of images-->
 <?php
 //Loads reviews
 if($isLoggedIn){
