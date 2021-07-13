@@ -44,7 +44,7 @@ if($isLoggedIn){
 <?php if($msg->hasMessages()) $msg->display(); ?>
 <h1>Add a clinic</h1>
 <h3>The clinic you add will be linked to your account, and you will be added as the owner!</h3>
-    <form action="post/addClinic.php" method="post" enctype='multipart/form-data'>
+    <form action="post/addClinic.php" method="post" enctype='multipart/form-data' ID="addClinicForm">
         <div class="form-group">
             <input type="text" name="clinicName" placeholder="Clinic name" required><br>
             <input type="text" name="clinicAddress" placeholder="Clinic Address" required><br>
@@ -60,11 +60,42 @@ if($isLoggedIn){
             <label for="pictureUpload"><?php if(!$hasPremium) echo "Upload pictures of your clinic (10 max). Premium users can upload up to 25 pictures!"; ?>
             <?php if($hasPremium) echo "Upload pictures of your clinic (25 max)."; ?>
             </label><br>
+            <?php if($hasPremium) echo "<button class='btn btn-primary' id='addEmployeeButton' type='button'>Add an employee to your clinic!</button>";
+            else echo "<b>Premium users can add employees to their clinics.</b><br><a href='/pages/users/editProfile.php?ID=$id'>Get premium?</a>";
+            ?>
+            <div id="addEmployeeBox" class="col-md-2" style="margin: 10px 0px 10px -10px"></div>
             <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
             <input type="submit" value="Add clinic" name="submit">
         </div>
     </form>
+<!--Add employee button-->
+<script>
+    var numberOfEmployees=0;
+    //This function here is fired up when the user clicks the Add employee button.
+    $("#addEmployeeButton").click(function (e) {
+        $("#addEmployeeButton").attr("disabled", "disabled");
+        e.preventDefault();
+        $("#addEmployeeBox").append("<input type='text' name='employee" + numberOfEmployees + "Name' placeholder='Employee name' class='form-control'><br>" +
+            "<input type='text' name='employee" + numberOfEmployees + "Surname' placeholder='Employee surname' class='form-control'><br>" +
+            "<input type='text' name='employee" + numberOfEmployees + "Title' placeholder='Employee title' class='form-control'><br>" +
+            "<textarea name='employee" + numberOfEmployees + "Bio' placeholder='Short bio' class='form-control'></textarea><br>" +
+            "<label>Profile picture:<br> <input id='employeePicture' type='file' name='employee" + numberOfEmployees + "Picture' accept='image/jpg, image/png, image/jfif, image/gif, image/jpeg' > </label><br><sub>Max file size: 1MB</sub><br><br>" +
+            "<button class='btn btn-success' type='button' onclick='saveEmployee();'>Save employee!</button>");
+    });
+    //This function here fires up when the user clicks "Save employee"
+    function saveEmployee(){
+        $("#addEmployeeButton").removeAttr("disabled");
+        var inputs=$("#addEmployeeBox > input").attr("hidden", "true");
+        var textArea=$("#addEmployeeBox > textarea").attr("hidden", "true");
+        $("#addClinicForm").append(inputs);
+        $("#addClinicForm").append(textArea);
+        var fileUpload=$("#addEmployeeBox > #employeePicture");
+        $("#addClinicForm").append(fileUpload);
+
+    }
+</script>
+<!--Tagator-->
 <script>
     $('#tags').tagator({
         prefix: 'tagator_',           // CSS class prefix
@@ -75,6 +106,7 @@ if($isLoggedIn){
         autocomplete: [<?php foreach ($tags as $tag) echo "'".ucfirst($tag['tag'])."',"; ?>]              // this is an array of autocomplete options
     });
 </script>
+<!--Image check-->
 <script>
     var maxFiles=<?php if(!$hasPremium) echo 10; else echo 25; ?>;
     var hasPremium=<?php echo $hasPremium; ?>;

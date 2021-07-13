@@ -1,4 +1,5 @@
 BUGS TO KILL
+- Increase picture limit to 25 for premium users on clinic edit
 - ' in user name or surname does not work - probably in other places, too!
 - Last batch of reviews does no load...sometimes
 - Mail from server gets YEETED to spam

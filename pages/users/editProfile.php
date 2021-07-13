@@ -72,7 +72,6 @@ if(!$userClinics) $msg->warning("Error loading user clinics!");
     <?php }
     else{?>
     <b>You have no approved clinics!</b><br>
-
     <?php }?>
     <?php if(!$_SESSION['hasPremium']) { ?>
     <div class="container">
@@ -87,6 +86,7 @@ if(!$userClinics) $msg->warning("Error loading user clinics!");
     </div>
 <?php }
     else echo "<b>You already have premium!</b>";
+    echo "<a href='/pages/employee/addEmployee.php'>Click here to add employees to your clinic</a>";
     ?>
     <p>
         Test values:<br>
