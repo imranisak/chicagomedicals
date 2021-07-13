@@ -14,7 +14,6 @@ $tags=$databaseConnection->query($SQLgetTags);
 //var_dump($_SESSION);
 if($isLoggedIn){
     if(!$hasPremium || $hasPremium=="0"){
-        echo "User has no premium!";
         $SQLloadUserClinics="SELECT * FROM clinics WHERE ownerID='$id'";
         $numberOfClinics=$databaseConnection->query($SQLloadUserClinics);
         if(!$numberOfClinics){
@@ -63,6 +62,7 @@ if($isLoggedIn){
             <?php if($hasPremium) echo "<button class='btn btn-primary' id='addEmployeeButton' type='button'>Add an employee to your clinic!</button>";
             else echo "<b>Premium users can add employees to their clinics.</b><br><a href='/pages/users/editProfile.php?ID=$id'>Get premium?</a>";
             ?>
+            <div id="employees" class="col-md-3"></div>
             <div id="addEmployeeBox" class="col-md-2" style="margin: 10px 0px 10px -10px"></div>
             <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
@@ -76,12 +76,13 @@ if($isLoggedIn){
     $("#addEmployeeButton").click(function (e) {
         $("#addEmployeeButton").attr("disabled", "disabled");
         e.preventDefault();
-        $("#addEmployeeBox").append("<input type='text' name='employee" + numberOfEmployees + "Name' placeholder='Employee name' class='form-control'><br>" +
-            "<input type='text' name='employee" + numberOfEmployees + "Surname' placeholder='Employee surname' class='form-control'><br>" +
+        $("#addEmployeeBox").append("<input type='text' id='employeeName' name='employee" + numberOfEmployees + "Name' placeholder='Employee name' class='form-control'><br>" +
+            "<input type='text' id='employeeSurname' name='employee" + numberOfEmployees + "Surname' placeholder='Employee surname' class='form-control'><br>" +
             "<input type='text' name='employee" + numberOfEmployees + "Title' placeholder='Employee title' class='form-control'><br>" +
             "<textarea name='employee" + numberOfEmployees + "Bio' placeholder='Short bio' class='form-control'></textarea><br>" +
-            "<label>Profile picture:<br> <input id='employeePicture' type='file' name='employee" + numberOfEmployees + "Picture' accept='image/jpg, image/png, image/jfif, image/gif, image/jpeg' > </label><br><sub>Max file size: 1MB</sub><br><br>" +
-            "<button class='btn btn-success' type='button' onclick='saveEmployee();'>Save employee!</button>");
+            "<label>Profile picture:<br> <input id='employeePicture' type='file' name='file' accept='image/jpg, image/png, image/jfif, image/gif, image/jpeg' > </label><br><sub>Max file size: 1MB</sub><br><br>" +
+            "<button class='btn btn-success' type='button' onclick='saveEmployee();'>Save employee!</button>" +
+            "<button class='btn btn-danger' type='button' onclick='cancelEmployee();'>Cancel</button>");
     });
     //This function here fires up when the user clicks "Save employee"
     function saveEmployee(){
@@ -90,9 +91,32 @@ if($isLoggedIn){
         var textArea=$("#addEmployeeBox > textarea").attr("hidden", "true");
         $("#addClinicForm").append(inputs);
         $("#addClinicForm").append(textArea);
-        var fileUpload=$("#addEmployeeBox > #employeePicture");
-        $("#addClinicForm").append(fileUpload);
+        //Image upload
+        var file_data = $('#employeePicture').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        form_data.append('submit', true);
+        $.ajax({
+            url: '/pages/employee/post/uploadPicture.php',
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'POST',
+            success: function(data){
+                $("#addClinicForm").append("<input type='hidden' name='employee"+numberOfEmployees+"Picture' value='"+data+"'>");
+                var nameOfEmployee=$("#employeeName").val();
+                $("#employees").append("<p>"+nameOfEmployee+"<i class='fas fa-trash-alt' style='display: inline; margin-left:10px'></i></p>");
+                $("#addEmployeeBox").text("");
+                numberOfEmployees++;
+            }
+        });
 
+    }
+    function cancelEmployee(){
+        $("#addEmployeeButton").removeAttr("disabled");
+        $("#addEmployeeBox").text("");
     }
 </script>
 <!--Tagator-->

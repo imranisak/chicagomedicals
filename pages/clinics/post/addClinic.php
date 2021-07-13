@@ -1,4 +1,6 @@
 <?php
+echo $_POST['employee1Name'];
+die();
 require "../../../includes/database.php";
 require "../../../includes/flashMessages.php";
 require "../../../includes/sendMail.php";

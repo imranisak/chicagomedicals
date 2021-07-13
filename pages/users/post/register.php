@@ -21,7 +21,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
     $checkMailInDatabaseSQL = "SELECT email FROM users WHERE email='$email'";
     $emailsInDatabase = $databaseConnection->query($checkMailInDatabaseSQL);
     if ($emailsInDatabase->num_rows != 0) $msg->error('Email in use.', '../register.php');
-/////////////////////////
+    /////////////////////////
     if (isset($_POST['name']) && $_POST['name'] != "") $name = filterInput($_POST['name']);
     else $msg->error('Name missing', "/pages/users/register.php");
 
@@ -39,7 +39,7 @@ if($_SESSION['csrf_token']==$_POST['token']) {
     /*echo $_SERVER['DOCUMENT_ROOT'].$profilePicture;
     die();*/
     if ($msg->hasMessages($msg::ERROR)) $msg->error("An error has happened. Please try again", "/pages/users/register.php");
-//////////////////////////
+    //////////////////////////
     $date = Date("Y-m-d");
     $user = new user($name, $surname, $email, $password, $date, $profilePicture);
     $user->addToDatabase($databaseConnection);
