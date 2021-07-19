@@ -66,7 +66,7 @@ if($isLoggedIn){
             <div id="addEmployeeBox" class="col-md-2" style="margin: 10px 0px 10px -10px"></div>
             <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
-            <input type="submit" value="Add clinic" name="submit">
+            <button type="submit" value="Add clinic" name="submit" class="btn btn-success">Add clinic</button>
         </div>
     </form>
 <!--Add employee button-->
@@ -86,6 +86,7 @@ if($isLoggedIn){
     });
     //This function here fires up when the user clicks "Save employee"
     function saveEmployee(){
+        var nameOfEmployee=$("#employeeName").val();
         $("#addEmployeeButton").removeAttr("disabled");
         var inputs=$("#addEmployeeBox > input").attr("hidden", "true");
         var textArea=$("#addEmployeeBox > textarea").attr("hidden", "true");
@@ -105,9 +106,9 @@ if($isLoggedIn){
             data: form_data,
             type: 'POST',
             success: function(data){
+                var employeeID="employee"+numberOfEmployees;
                 $("#addClinicForm").append("<input type='hidden' name='employee"+numberOfEmployees+"Picture' value='"+data+"'>");
-                var nameOfEmployee=$("#employeeName").val();
-                $("#employees").append("<p>"+nameOfEmployee+"<i class='fas fa-trash-alt' style='display: inline; margin-left:10px'></i></p>");
+                $("#employees").append("<p id='"+employeeID+"'>"+nameOfEmployee+"<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployee("+employeeID+")'></i></p>");
                 $("#addEmployeeBox").text("");
                 numberOfEmployees++;
             }
@@ -117,6 +118,22 @@ if($isLoggedIn){
     function cancelEmployee(){
         $("#addEmployeeButton").removeAttr("disabled");
         $("#addEmployeeBox").text("");
+    }
+    function deleteEmployee(employeeID){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Remove employee you just added?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                alert(employeeID);
+                //$("[name="+employeeNameTemp+"]").remove();
+            }
+        })
     }
 </script>
 <!--Tagator-->

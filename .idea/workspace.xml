@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change afterPath="$PROJECT_DIR$/pages/employee/post/uploadPicture.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/fileUpload.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/fileUpload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/addClinic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/addClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/post/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

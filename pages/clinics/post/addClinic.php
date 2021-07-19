@@ -1,5 +1,5 @@
 <?php
-echo $_POST['employee1Name'];
+echo $_POST['employee2Name'];
 die();
 require "../../../includes/database.php";
 require "../../../includes/flashMessages.php";
