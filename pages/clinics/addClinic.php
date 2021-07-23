@@ -65,6 +65,8 @@ if($isLoggedIn){
             <div id="employees" class="col-md-3"></div>
             <div id="addEmployeeBox" class="col-md-2" style="margin: 10px 0px 10px -10px"></div>
             <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
+            <input type="hidden" name="numberOfEmployees" value="0" ID="numberOfEmployees">
+            <input type="hidden" name="employeeIncrement" value="0" ID="employeeIncrement">
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
             <button type="submit" value="Add clinic" name="submit" class="btn btn-success">Add clinic</button>
         </div>
@@ -115,8 +117,10 @@ if($isLoggedIn){
                 $("#addClinicForm").append("<input type='hidden' id='employee"+employeeIncrement+"Picture' name='employee"+employeeIncrement+"Picture' value='"+data+"'>");
                 $("#employees").append("<p id='"+employeeID+"'>"+nameOfEmployee+"<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployee("+employeeID+")'></i></p>");
                 $("#addEmployeeBox").text("");
+                $("#employeeIncrement").val(employeeIncrement);
                 numberOfEmployees++;
                 employeeIncrement++
+                $("#numberOfEmployees").val(numberOfEmployees);
             }
         });
 
@@ -154,6 +158,7 @@ if($isLoggedIn){
                    }
                 });
                 numberOfEmployees--;
+                $("#numberOfEmployees").val(numberOfEmployees);
             }
         })
     }
