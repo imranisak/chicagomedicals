@@ -102,7 +102,8 @@ if(isset($_POST['submit'])){
                     //Pic
                     if(isset($_POST['employee'.$i.'Picture'])) $employeePicture=filter_var($_POST['employee'.$i.'Picture']);
                     else $employeePicture="/media/pictures/profilepicture.jpg";
-                    $SQLsaveEmployee="INSERT INTO employees (clinicID, name, surname, picture, title, bio) VALUE ('$clinicID', '$employeeName', '$employeeSurname', '$employeePicture', '$employeeTitle', '$employeeBio')";
+                    //die(var_dump($_REQUEST));
+                    $SQLsaveEmployee="INSERT INTO employees (clinicID, name, surname, picture, title, bio) VALUES ('$clinicID', '$employeeName', '$employeeSurname', '$employeePicture', '$employeeTitle', '$employeeBio')";
                     $employee=$databaseConnection->query($SQLsaveEmployee);
                     if(!$employee) $msg->error("Error saving employee ".$employeeName);
                 }
