@@ -76,7 +76,7 @@ if($isLoggedIn){
     $("#addEmployeeButton").click(function (e) {
         $("#addEmployeeButton").attr("disabled", "disabled");
         e.preventDefault();
-        $("#addEmployeeBox").append("<input type='text' id='employee" + employeeIncrement + "Name' name='employee" + employeeIncrement + "Name' placeholder='Employee name' class='form-control'><br>" +
+        $("#addEmployeeBox").append("<input type='text' id='employee" + employeeIncrement + "Name' name='employee" + employeeIncrement + "Name' placeholder='Employee name (required)' class='form-control'><br>" +
             "<input type='text' id='employee" + employeeIncrement + "Surname' name='employee" + employeeIncrement + "Surname' placeholder='Employee surname' class='form-control'><br>" +
             "<input type='text' id='employee" + employeeIncrement + "Title' name='employee" + numberOfEmployees + "Title' placeholder='Employee title' class='form-control'><br>" +
             "<textarea id='employee" + employeeIncrement + "Bio' name='employee" + employeeIncrement + "Bio' placeholder='Short bio' class='form-control'></textarea><br>" +
@@ -87,6 +87,10 @@ if($isLoggedIn){
     //This function here fires up when the user clicks "Save employee"
     function saveEmployee(employeeNumber){
         var nameOfEmployee=$("#employee"+employeeNumber+"Name").val();
+        if (nameOfEmployee=="") {
+            $("#employee"+employeeNumber+"Name").attr("style", "border: 3px solid red;");
+            return 0;
+        }
         $("#addEmployeeButton").removeAttr("disabled");
         var inputs=$("#addEmployeeBox > input").attr("hidden", "true");
         var textArea=$("#addEmployeeBox > textarea").attr("hidden", "true");
