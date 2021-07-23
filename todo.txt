@@ -16,6 +16,7 @@ Messages
 Share to social media
 =====================================================
 Long TODO
+Add "about us" page, or WHAT IS
 Add AdSense, Google analytics, tracking etc..
 Add Google signin - maybe even Facebook?
 Detailed analytics for premium users

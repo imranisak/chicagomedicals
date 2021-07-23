@@ -71,22 +71,22 @@ if($isLoggedIn){
     </form>
 <!--Add employee button-->
 <script>
-    var numberOfEmployees=0;
+    var numberOfEmployees=0, employeePicutre="", employeeIncrement=0;
     //This function here is fired up when the user clicks the Add employee button.
     $("#addEmployeeButton").click(function (e) {
         $("#addEmployeeButton").attr("disabled", "disabled");
         e.preventDefault();
-        $("#addEmployeeBox").append("<input type='text' id='employeeName' name='employee" + numberOfEmployees + "Name' placeholder='Employee name' class='form-control'><br>" +
-            "<input type='text' id='employeeSurname' name='employee" + numberOfEmployees + "Surname' placeholder='Employee surname' class='form-control'><br>" +
-            "<input type='text' name='employee" + numberOfEmployees + "Title' placeholder='Employee title' class='form-control'><br>" +
-            "<textarea name='employee" + numberOfEmployees + "Bio' placeholder='Short bio' class='form-control'></textarea><br>" +
+        $("#addEmployeeBox").append("<input type='text' id='employee" + employeeIncrement + "Name' name='employee" + employeeIncrement + "Name' placeholder='Employee name' class='form-control'><br>" +
+            "<input type='text' id='employee" + employeeIncrement + "Surname' name='employee" + employeeIncrement + "Surname' placeholder='Employee surname' class='form-control'><br>" +
+            "<input type='text' id='employee" + employeeIncrement + "Title' name='employee" + numberOfEmployees + "Title' placeholder='Employee title' class='form-control'><br>" +
+            "<textarea id='employee" + employeeIncrement + "Bio' name='employee" + employeeIncrement + "Bio' placeholder='Short bio' class='form-control'></textarea><br>" +
             "<label>Profile picture:<br> <input id='employeePicture' type='file' name='file' accept='image/jpg, image/png, image/jfif, image/gif, image/jpeg' > </label><br><sub>Max file size: 1MB</sub><br><br>" +
-            "<button class='btn btn-success' type='button' onclick='saveEmployee();'>Save employee!</button>" +
+            "<button class='btn btn-success' type='button' onclick='saveEmployee("+employeeIncrement+");'>Save employee!</button>" +
             "<button class='btn btn-danger' type='button' onclick='cancelEmployee();'>Cancel</button>");
     });
     //This function here fires up when the user clicks "Save employee"
-    function saveEmployee(){
-        var nameOfEmployee=$("#employeeName").val();
+    function saveEmployee(employeeNumber){
+        var nameOfEmployee=$("#employee"+employeeNumber+"Name").val();
         $("#addEmployeeButton").removeAttr("disabled");
         var inputs=$("#addEmployeeBox > input").attr("hidden", "true");
         var textArea=$("#addEmployeeBox > textarea").attr("hidden", "true");
@@ -106,19 +106,23 @@ if($isLoggedIn){
             data: form_data,
             type: 'POST',
             success: function(data){
-                var employeeID="employee"+numberOfEmployees;
-                $("#addClinicForm").append("<input type='hidden' name='employee"+numberOfEmployees+"Picture' value='"+data+"'>");
+                var employeeID=numberOfEmployees;
+                employeePicutre=data;
+                $("#addClinicForm").append("<input type='hidden' id='employee"+employeeIncrement+"Picture' name='employee"+employeeIncrement+"Picture' value='"+data+"'>");
                 $("#employees").append("<p id='"+employeeID+"'>"+nameOfEmployee+"<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployee("+employeeID+")'></i></p>");
                 $("#addEmployeeBox").text("");
                 numberOfEmployees++;
+                employeeIncrement++
             }
         });
 
     }
+    //Empties the box where the user inputs employee data
     function cancelEmployee(){
         $("#addEmployeeButton").removeAttr("disabled");
         $("#addEmployeeBox").text("");
     }
+    //Removes the employee the user has just saved.
     function deleteEmployee(employeeID){
         Swal.fire({
             title: 'Are you sure?',
@@ -130,8 +134,22 @@ if($isLoggedIn){
             confirmButtonText: 'Yes!'
         }).then((result) => {
             if (result.isConfirmed) {
-                alert(employeeID);
-                //$("[name="+employeeNameTemp+"]").remove();
+                $("#"+employeeID).remove();
+                //Removes the hidden values from the form
+                $("#employee"+employeeID+"Name").remove();
+                $("#employee"+employeeID+"Surname").remove();
+                $("#employee"+employeeID+"Title").remove();
+                $("#employee"+employeeID+"Bio").remove();
+                $("#employee"+employeeID+"Picture").remove();
+                $.ajax({
+                   url:"/pages/employee/post/removePicture",
+                   type: "POST",
+                   data: {picture:employeePicutre},
+                   success:function (data){
+                       //alert(data);
+                   }
+                });
+                numberOfEmployees--;
             }
         })
     }
