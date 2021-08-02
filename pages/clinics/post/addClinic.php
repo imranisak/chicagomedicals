@@ -77,42 +77,7 @@ if(isset($_POST['submit'])){
     $clinic=new clinic($clinicName, $clinicOwner, $clinicOwnerID, $clinicEmail, $clinicAddress, $clinicZIPcode, $clinicServices, $clinicWebsite, $images, $clinicFacebook, $clinicTwitter, $clinicInstagram);
     $clinicAdded=$clinic->addToDatabase($databaseConnection);
     if($clinicAdded===true){//Why'd I put this here like this?
-        if($hasPremium) {
-            //This bit here saves the employees
-            //Gets the ID of the clinic that was just saved
-            $clinicID = $databaseConnection->insert_id;
-            if (isset($_POST['numberOfEmployees'])) $numberOfEmployees = filter_var($_POST['numberOfEmployees'], FILTER_SANITIZE_NUMBER_INT);
-            if ($numberOfEmployees > 100 || $numberOfEmployees < 0) {
-                $databaseConnection->close();
-                $msg->error("What are you doing?", "../addClinic.php");
-            }
-            if (isset($_POST['employeeIncrement'])) $employeeIncrement = filter_var($_POST['employeeIncrement'], FILTER_SANITIZE_NUMBER_INT);
-            if ($employeeIncrement > 0 || $employeeIncrement < 100) {
-                for ($i = 0; $i <= $employeeIncrement; $i++) {
-                    if (isset($_POST['employee' . $i . 'Name'])) {
-                        //Name
-                        $employeeName = filter_var($_POST['employee' . $i . 'Name'], FILTER_SANITIZE_STRING);
-                        //Surname
-                        if (isset($_POST['employee' . $i . 'Surname'])) $employeeSurname = filter_var($_POST['employee' . $i . 'Surname']);
-                        else $employeeSurname = "";
-                        //Title
-                        if (isset($_POST['employee' . $i . 'Title'])) $employeeTitle = filter_var($_POST['employee' . $i . 'Title']);
-                        else $employeeTitle = "";
-                        //Bio
-                        if (isset($_POST['employee' . $i . 'Bio'])) $employeeBio = filter_var($_POST['employee' . $i . 'Bio']);
-                        else $employeeBio = "";
-                        //Pic
-                        if (isset($_POST['employee' . $i . 'Picture'])) $employeePicture = filter_var($_POST['employee' . $i . 'Picture']);
-                        else $employeePicture = "/media/pictures/profilepicture.jpg";
-                        //Save the employee
-                        $SQLsaveEmployee = "INSERT INTO employees (clinicID, name, surname, picture, title, bio) VALUES ('$clinicID', '$employeeName', '$employeeSurname', '$employeePicture', '$employeeTitle', '$employeeBio')";
-                        $employee = $databaseConnection->query($SQLsaveEmployee);
-                        if (!$employee) $msg->error("Error saving employee " . $employeeName);
-                    }
-                }
-            }
-        }
-        else $msg->warning("What are you doing? Employees not added!");
+        saveEmployees($databaseConnection, $hasPremium, $msg);
         //And this bit here send mails!
         if(!isset($mail)) $mail=new PHPMailer(true);
         $clinic->sendNotificationToOwner($email, $name, $mail);//$ownerEmail, $owner, $mail

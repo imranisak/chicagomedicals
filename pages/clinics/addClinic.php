@@ -29,6 +29,7 @@ if($isLoggedIn){
 ?>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="../../includes/style.css"/>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -63,10 +64,10 @@ if($isLoggedIn){
             else echo "<b>Premium users can add employees to their clinics.</b><br><a href='/pages/users/editProfile.php?ID=$id'>Get premium?</a>";
             ?>
             <div id="employees" class="col-md-3"></div>
-            <div id="addEmployeeBox" class="col-md-2" style="margin: 10px 0px 10px -10px"></div>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
+            <div id="addEmployeeBox" class="col-md-2"></div>
             <input type="hidden" name="numberOfEmployees" value="0" ID="numberOfEmployees">
             <input type="hidden" name="employeeIncrement" value="0" ID="employeeIncrement">
+            <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
             <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
             <button type="submit" value="Add clinic" name="submit" class="btn btn-success">Add clinic</button>
         </div>

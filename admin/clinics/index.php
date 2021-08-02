@@ -73,7 +73,6 @@ $(document).ready( function () {
 } );
 $(".deleteClinic").click(function (){
     var ID=$(this).attr("ID");
-    //$(this).hide();
     Swal.fire({
         title: 'Delete clinic?',
         text: "You won't be able to revert this!",

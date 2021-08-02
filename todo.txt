@@ -1,5 +1,5 @@
 BUGS TO KILL
-- Increase picture limit to 25 for premium users on clinic edit
+- IMPORTANT -  add validation on file upload!
 - ' in user name or surname does not work - probably in other places, too!
 - Last batch of reviews does no load...sometimes
 - Mail from server gets YEETED to spam
@@ -17,6 +17,7 @@ Messages
 Share to social media
 =====================================================
 Long TODO
+Add a script that runs every 24h to delete files not in use
 Add "about us" page, or WHAT IS
 Add AdSense, Google analytics, tracking etc..
 Add Google signin - maybe even Facebook?

@@ -276,7 +276,6 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
                             'token': '<?php echo $_SESSION['csrf_token']; ?>'
                         },
                         success: function(data){
-                            //console.log(data);
                             if(data=="true") {//<---Don't ask
                                 Swal.fire(
                                     'Reported!',

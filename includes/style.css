@@ -167,3 +167,7 @@ ul.swiper-wrapper {
 .infoOnProfileView{
     font-weight: bold;
 }
+
+#addEmployeeBox {
+    margin: 10px 0px 10px -10px;
+}

@@ -30,9 +30,10 @@ $images=unserialize($clinic['images']);
 //Loads the tags
 $SQLloadTags="SELECT * FROM tags ORDER BY tag ASC";
 $tags=$databaseConnection->query($SQLloadTags); 
-//Takes the loaded images and turns them into an array
-//$images=substr($images, 1, -1);
-//$images=explode(", ", $images);
+//Loads the employees
+$SQLloadEmployees="SELECT * FROM employees WHERE clinicID='$clinicID'";
+$employees=$databaseConnection->query($SQLloadEmployees);
+if(!$employees) $employees="<b>Error loading employees!</b>";
 //Go back, used if recaptcha fails
 $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
 ?>
@@ -48,7 +49,7 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
 <?php require "../../includes/navbar.php"; ?>
 <h3>Editing <?php echo $clinicName; ?></h3>
 <?php if($msg->hasMessages()) $msg->display(); ?>
-<form action="post/editClinic.php" method="post" enctype='multipart/form-data'>
+<form action="post/editClinic.php" method="post" enctype='multipart/form-data' id="editClinicForm">
     <input type="hidden" name="clinicID" required value="<?php echo $clinicID; ?>"><br>
     <input type="text" name="clinicName" placeholder="Clinic name" required value="<?php echo $clinicName; ?>"><br>
     <input type="text" name="clinicAddress" placeholder="Clinic Address" required  value="<?php echo $address ?>"><br>
@@ -64,6 +65,14 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
     <input type="file" name="file[]" id="pictureUpload" multiple>
     <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
     <input type="hidden" name="imagesToRemove" value="" id="imagesToRemoveInput">
+    <!--Employees-->
+    <?php if($hasPremium) echo "<br><button class='btn btn-primary' id='addEmployeeButton' type='button'>Add an employee to your clinic!</button>";
+    else echo "<b>Premium users can add employees to their clinics.</b><br><a href='/pages/users/editProfile.php?ID=$id'>Get premium?</a>";
+    ?>
+    <div id="employees" class="col-md-3"></div>
+    <div id="addEmployeeBox" class="col-md-2"></div>
+    <input type="hidden" name="numberOfEmployees" value="0" ID="numberOfEmployees">
+    <input type="hidden" name="employeeIncrement" value="0" ID="employeeIncrement">
     <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
     <input type="submit" value="Save changes" name="submit">
 </form>
@@ -75,6 +84,132 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
 <?php
 foreach($images as $image) echo "<img src=".$image." style='width:200px;' class='imagePreview'><br><br>";?>
 <buton class="btn btn-danger" id="deleteClinicButton">Delete clinic</buton>
+
+<!---Employees view-->
+<?php if($hasPremium){ ?>
+<p>These are the employees of your clinic:</p>
+    <?php
+    if($employees){
+        foreach ($employees as $employee) {
+            $employeeID=$employee['ID'];
+            echo "<p>".$employee['name']." ".$employee['surname']."<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i></p><br>";
+        }
+    }
+    ?>
+<?php } ?>
+
+<!--SCRIPTS-->
+
+<!--Deletes an employee from the database-->
+<script>
+    function deleteEmployeeFromDatabase(employeeID, clinicID){
+        $.ajax({
+            url: "/pages/employee/post/deleteEmployee.php",
+            type: "POST",
+            data:{
+                'employeeID':employeeID,
+                'clinicID':clinicID
+            },
+            success : function(data){
+                alert(data);
+            }
+        })
+    }
+</script>
+
+<!--Add employee button-->
+<script>
+    var numberOfEmployees=0, employeePicutre="", employeeIncrement=0;
+    //This function here is fired up when the user clicks the Add employee button.
+    $("#addEmployeeButton").click(function (e) {
+        $("#addEmployeeButton").attr("disabled", "disabled");
+        e.preventDefault();
+        $("#addEmployeeBox").append("<input type='text' id='employee" + employeeIncrement + "Name' name='employee" + employeeIncrement + "Name' placeholder='Employee name (required)' class='form-control'><br>" +
+            "<input type='text' id='employee" + employeeIncrement + "Surname' name='employee" + employeeIncrement + "Surname' placeholder='Employee surname' class='form-control'><br>" +
+            "<input type='text' id='employee" + employeeIncrement + "Title' name='employee" + numberOfEmployees + "Title' placeholder='Employee title' class='form-control'><br>" +
+            "<textarea id='employee" + employeeIncrement + "Bio' name='employee" + employeeIncrement + "Bio' placeholder='Short bio' class='form-control'></textarea><br>" +
+            "<label>Profile picture:<br> <input id='employeePicture' type='file' name='file' accept='image/jpg, image/png, image/jfif, image/gif, image/jpeg' > </label><br><sub>Max file size: 1MB</sub><br><br>" +
+            "<button class='btn btn-success' type='button' onclick='saveEmployee("+employeeIncrement+");'>Save employee!</button>" +
+            "<button class='btn btn-danger' type='button' onclick='cancelEmployee();'>Cancel</button>");
+    });
+    //This function here fires up when the user clicks "Save employee"
+    function saveEmployee(employeeNumber){
+        var nameOfEmployee=$("#employee"+employeeNumber+"Name").val();
+        if (nameOfEmployee=="") {
+            $("#employee"+employeeNumber+"Name").attr("style", "border: 3px solid red;");
+            return 0;
+        }
+        $("#addEmployeeButton").removeAttr("disabled");
+        var inputs=$("#addEmployeeBox > input").attr("hidden", "true");
+        var textArea=$("#addEmployeeBox > textarea").attr("hidden", "true");
+        $("#editClinicForm").append(inputs);
+        $("#editClinicForm").append(textArea);
+        //Image upload
+        var file_data = $('#employeePicture').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        form_data.append('submit', true);
+        $.ajax({
+            url: '/pages/employee/post/uploadPicture.php',
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'POST',
+            success: function(data){
+                var employeeID=numberOfEmployees;
+                employeePicutre=data;
+                $("#editClinicForm").append("<input type='hidden' id='employee"+employeeIncrement+"Picture' name='employee"+employeeIncrement+"Picture' value='"+data+"'>");
+                $("#employees").append("<p id='"+employeeID+"'>"+nameOfEmployee+"<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployee("+employeeID+")'></i></p>");
+                $("#addEmployeeBox").text("");
+                $("#employeeIncrement").val(employeeIncrement);
+                numberOfEmployees++;
+                employeeIncrement++
+                $("#numberOfEmployees").val(numberOfEmployees);
+            }
+        });
+
+    }
+    //Empties the box where the user inputs employee data
+    function cancelEmployee(){
+        $("#addEmployeeButton").removeAttr("disabled");
+        $("#addEmployeeBox").text("");
+    }
+    //Removes the employee the user has just saved.
+    function deleteEmployee(employeeID){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Remove employee you just added?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#"+employeeID).remove();
+                //Removes the hidden values from the form
+                $("#employee"+employeeID+"Name").remove();
+                $("#employee"+employeeID+"Surname").remove();
+                $("#employee"+employeeID+"Title").remove();
+                $("#employee"+employeeID+"Bio").remove();
+                $("#employee"+employeeID+"Picture").remove();
+                $.ajax({
+                    url:"/pages/employee/post/removePicture",
+                    type: "POST",
+                    data: {picture:employeePicutre},
+                    success:function (data){
+                        //alert(data);
+                    }
+                });
+                numberOfEmployees--;
+                $("#numberOfEmployees").val(numberOfEmployees);
+            }
+        })
+    }
+</script>
+
 <!--Tagator script-->
 <script>
     $('#tags').tagator({
