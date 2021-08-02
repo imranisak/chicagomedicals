@@ -151,7 +151,7 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
         <!--Info on right side-->
         <div class="col-md-7">
             <h1><?php echo $clinicName ?></h1>
-            <?php if(isset($id) && $isLoggedIn) if($id==$clinic['ownerID']) echo "<button class='btn btn-primary'><a href='/pages/clinics/editClinic.php?ID=".$clinic['ID']." ' style='color: white'>Edit clinic</a></button>" ?>
+            <?php if(isset($id) && $isLoggedIn) if($id==$clinic['ownerID']) echo "<a href='/pages/clinics/editClinic.php?ID=".$clinic['ID']." ' style='color: white'><button class='btn btn-primary'>Edit clinic</button></a>" ?>
             <p>Name: <?php echo $clinicName ?></p>
             <p>Owner: <a href="/pages/users/user.php?ID=<?php echo $ownerID ?>"><?php echo $owner ?></a></p>
             <p>Address: <?php echo $address ?></p>

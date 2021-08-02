@@ -5,6 +5,7 @@ BUGS TO KILL
 - Mail from server gets YEETED to spam
 =====================================================
 TODO
+"Add employee" on clinic edit - also, employee delete, and edit!
 ALL OF THE WEBHOOKZZ!!!11!1!!!
 Add payments to feature a clinic!!!
 On report pages, check-uncheck
