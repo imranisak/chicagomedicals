@@ -1,22 +1,46 @@
 <?php
 require "../../../includes/sessionInfo.php";
-require "../../../includes/flashMessages.php";
+
+if(!isset($_POST['clinicID']) || !isset($_POST['employeeID'])) die();
 if(!$isLoggedIn) die();
-if(!isset($_POST['employeeID']) || !isset($_POST['clinicID'])) die();
+if(!$hasPremium) die();
+//Check ownership of clinic
+require "../../../includes/database.php";
 $clinicID=filter_var($_POST['clinicID'], FILTER_SANITIZE_NUMBER_INT);
 $employeeID=filter_var($_POST['employeeID'], FILTER_SANITIZE_NUMBER_INT);
-require "../../../includes/database.php";
-$SQLcheckClinicOwner="SELECT ownerID from clinics WHERE ownerID='$id' AND ID='$clinicID'";
-$checkClinicOwner=$databaseConnection->query($SQLcheckClinicOwner);
-if(!$checkClinicOwner){
+$SQLloadClinic="SELECT ID from clinics WHERE ownerID='$id' AND ID='$clinicID'";
+$clinic=$databaseConnection->query($SQLloadClinic);
+if(!$clinic){
     $databaseConnection->close();
-    echo "Error checking clinic owner!";
-}
-$checkClinicOwner=$checkClinicOwner->fetch_row();
-$clinicOwner=$checkClinicOwner['ownerID'];
-if($clinicOwner!=$id){
-    $databaseConnection->close();
-    echo "You can only edit your own employees!";
+    echo "Error checking owner info!";
     die();
 }
-else echo "You are the owner!";
+if(!$clinic->num_rows || $clinic->num_rows<=0){
+    $databaseConnection->close();
+    echo "err_ownership";
+    die();
+}
+//Delete picture - and maybe related files in the future
+$SQLlooadEmployeePicture="SELECT picture FROM employees WHERE ID='$employeeID'";
+$employeePicture=$databaseConnection->query($SQLlooadEmployeePicture);
+if(!$employeePicture){
+    $databaseConnection->close();
+    echo "err_loadingPicture";
+    die();
+}
+$employeePicture=$employeePicture->fetch_assoc();
+$employeePicture['picture'];
+//Don't delete the pic if it's the default one, otherwise, everyone will have a bad time
+if(!$employeePicture=="/media/pictures/profilepicture.jpg")  if(file_exists($employeePicture)) unlink($_SERVER['DOCUMENT_ROOT'].$employeePicture);
+
+//Delete from DB
+$SQLremoveEmployee="DELETE FROM employees WHERE ID='$employeeID'";
+$deletedEmployee=$databaseConnection->query($SQLremoveEmployee);
+if(!$deletedEmployee) {
+    $databaseConnection->close();
+    echo "err_deleteUser";
+    die();
+}
+//Return success
+echo "success";
+die();

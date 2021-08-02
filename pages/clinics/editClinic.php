@@ -61,7 +61,9 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
     <input type="url" name="facebook" placeholder="Facebook"  value="<?php echo $facebook ?>"><br>
     <input type="url" name="instagram" placeholder="Instagram"  value="<?php echo $instagram ?>"><br>
     <input type="url" name="twitter" placeholder="Twitter"  value="<?php echo $twitter ?>"><br>
-    <label for="pictureUpload">Upload pictures of your clinic (10 max)</label><br>
+    <?php if(!$hasPremium){ ?><label for="pictureUpload">Upload pictures of your clinic (10 max) - premium users can upload up to 25 pictures</label><br>
+    <?php } else {?><label for="pictureUpload">Upload pictures of your clinic (25 max)</label><br>
+    <?php } ?>
     <input type="file" name="file[]" id="pictureUpload" multiple>
     <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
     <input type="hidden" name="imagesToRemove" value="" id="imagesToRemoveInput">
@@ -80,40 +82,75 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
     <input type="hidden" name="clinicID" value="<?php echo $_GET['ID'] ?>" required>
     <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
 </form>
-<p>These are your current images. Click on them to remove them. Click again to undo.</p>
-<?php
-foreach($images as $image) echo "<img src=".$image." style='width:200px;' class='imagePreview'><br><br>";?>
-<buton class="btn btn-danger" id="deleteClinicButton">Delete clinic</buton>
 
-<!---Employees view-->
+<!---Employees view (list)-->
 <?php if($hasPremium){ ?>
-<p>These are the employees of your clinic:</p>
+    <p>These are the employees of your clinic:</p>
     <?php
     if($employees){
         foreach ($employees as $employee) {
             $employeeID=$employee['ID'];
-            echo "<p>".$employee['name']." ".$employee['surname']."<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i></p><br>";
+            echo "<p id='employee".$employeeID."' onclick=loadEmployee(".$employeeID.")>".$employee['name']." ".$employee['surname']."<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i></p><br>";
         }
     }
     ?>
 <?php } ?>
 
+<p>These are your current images. Click on them to remove them. Click again to undo.</p>
+<?php
+foreach($images as $image) echo "<img src=".$image." style='width:200px;' class='imagePreview'><br><br>";?>
+<buton class="btn btn-danger" id="deleteClinicButton">Delete clinic</buton>
+
 <!--SCRIPTS-->
+
+<!--Load the employee / view employee-->
+<script>
+    function loadEmployee(ID){
+        $.ajax({
+            url:"/pages/employee/loadEmployee.php",
+            type:"POST",
+            data: {'ID': ID},
+            success : function (data){
+                alert(data);
+            }
+        })
+    }
+</script>
 
 <!--Deletes an employee from the database-->
 <script>
     function deleteEmployeeFromDatabase(employeeID, clinicID){
-        $.ajax({
-            url: "/pages/employee/post/deleteEmployee.php",
-            type: "POST",
-            data:{
-                'employeeID':employeeID,
-                'clinicID':clinicID
-            },
-            success : function(data){
-                alert(data);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This will remove your employee from your clinic, including their potential files",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "/pages/employee/post/deleteEmployee.php",
+                    type: "POST",
+                    data:{
+                        'employeeID':employeeID,
+                        'clinicID':clinicID
+                    },
+                    success : function(data){
+                        if(data==="success") {
+                            Swal.fire({title: 'Employee deleted', icon: 'success'});
+                            $("#employee"+employeeID).remove();
+                        }
+                        else{
+                            Swal.fire({title: 'An error has occurred', icon:'error'});
+                            console.log(data);
+                        }
+                    }
+                })
             }
         })
+
     }
 </script>
 
@@ -176,7 +213,7 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
         $("#addEmployeeButton").removeAttr("disabled");
         $("#addEmployeeBox").text("");
     }
-    //Removes the employee the user has just saved.
+    //Removes the employee the user has just saved - NOT from the database, but from the form
     function deleteEmployee(employeeID){
         Swal.fire({
             title: 'Are you sure?',
@@ -223,6 +260,7 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
     $('#tags').val(<?php echo "'".$services."',";  ?>);
     $('#tags').tagator('refresh');
 </script>
+
 <!--This bit here is responsible for adding/selecting images that will be removed-->
 <script type="text/javascript">
     $(document).ready(function(){
@@ -246,6 +284,7 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
         });
     })
 </script>
+
 <!--This bit here yeets the clinic through the window-->
 <script>
     $("#deleteClinicButton").click(function(){
