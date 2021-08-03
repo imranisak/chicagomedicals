@@ -1,7 +1,7 @@
 <?php
 //Load employee, from its ID
-if(isset($_GET['ID'])) $employeeID=filter_var($_GET['ID'], FILTER_SANITIZE_NUMBER_INT);
-else die();
+if(isset($_POST['ID'])) $employeeID=filter_var($_POST['ID'], FILTER_SANITIZE_NUMBER_INT);
+else die("no ID");
 
 require "../../includes/database.php";
 $SQLloadEmployee="SELECT * FROM employees WHERE ID='$employeeID'";

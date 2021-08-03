@@ -1,5 +1,6 @@
 BUGS TO KILL
 - IMPORTANT -  add validation on file upload!
+- When deleting employee, images does not get deleted
 - ' in user name or surname does not work - probably in other places, too!
 - Last batch of reviews does no load...sometimes
 - Mail from server gets YEETED to spam

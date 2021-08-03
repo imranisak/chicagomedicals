@@ -34,6 +34,7 @@ $tags=$databaseConnection->query($SQLloadTags);
 $SQLloadEmployees="SELECT * FROM employees WHERE clinicID='$clinicID'";
 $employees=$databaseConnection->query($SQLloadEmployees);
 if(!$employees) $employees="<b>Error loading employees!</b>";
+if ($employees->num_rows<=0) $employees=false;
 //Go back, used if recaptcha fails
 $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
 ?>
@@ -84,16 +85,36 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
 </form>
 
 <!---Employees view (list)-->
-<?php if($hasPremium){ ?>
-    <p>These are the employees of your clinic:</p>
-    <?php
-    if($employees){
-        foreach ($employees as $employee) {
-            $employeeID=$employee['ID'];
-            echo "<p id='employee".$employeeID."' onclick=loadEmployee(".$employeeID.")>".$employee['name']." ".$employee['surname']."<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i></p><br>";
-        }
-    }
-    ?>
+<?php if($hasPremium && $employees){ ?>
+    <div class="col-md-5">
+        <p>These are the employees of your clinic:</p>
+        <table id="employeeTable">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+        <?php
+            foreach ($employees as $employee) {
+                $employeeID=$employee['ID'];
+                echo "
+                    <tr id='employee".$employeeID."Row'>
+                        <td>
+                            <p id='employee".$employeeID."' onclick=loadEmployee(".$employeeID.")>".$employee['name']." ".$employee['surname']."</p>
+                        </td>
+                        <td>
+                            <i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i>
+                        </td>
+                    </tr>
+                ";
+                //echo "<p id='employee".$employeeID."' onclick=loadEmployee(".$employeeID.")>".$employee['name']." ".$employee['surname']."<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i></p><br>";
+            }
+        ?>
+            </tbody>
+        </table>
+    </div>
 <?php } ?>
 
 <p>These are your current images. Click on them to remove them. Click again to undo.</p>
@@ -107,11 +128,17 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
 <script>
     function loadEmployee(ID){
         $.ajax({
-            url:"/pages/employee/loadEmployee.php",
-            type:"POST",
-            data: {'ID': ID},
-            success : function (data){
-                alert(data);
+            url: "/pages/employee/loadEmployee.php",
+            type: "post",
+            data: {'ID' : ID},
+            success : function(data){
+                employee=JSON.parse(data);
+                console.log(employee);
+                Swal.fire({
+                    title : employee.name+" "+employee.surname+" - "+employee.title,
+                    imageUrl : employee.picture,
+                    html: employee.bio,
+                })
             }
         })
     }
@@ -140,7 +167,7 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
                     success : function(data){
                         if(data==="success") {
                             Swal.fire({title: 'Employee deleted', icon: 'success'});
-                            $("#employee"+employeeID).remove();
+                            $("#employee"+employeeID+"Row").remove();
                         }
                         else{
                             Swal.fire({title: 'An error has occurred', icon:'error'});
@@ -161,7 +188,8 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
     $("#addEmployeeButton").click(function (e) {
         $("#addEmployeeButton").attr("disabled", "disabled");
         e.preventDefault();
-        $("#addEmployeeBox").append("<input type='text' id='employee" + employeeIncrement + "Name' name='employee" + employeeIncrement + "Name' placeholder='Employee name (required)' class='form-control'><br>" +
+        $("#addEmployeeBox").append("<b>Don't forget to save your clinic when you finish adding your employees!</b>"+
+            "<input type='text' id='employee" + employeeIncrement + "Name' name='employee" + employeeIncrement + "Name' placeholder='Employee name (required)' class='form-control'><br>" +
             "<input type='text' id='employee" + employeeIncrement + "Surname' name='employee" + employeeIncrement + "Surname' placeholder='Employee surname' class='form-control'><br>" +
             "<input type='text' id='employee" + employeeIncrement + "Title' name='employee" + numberOfEmployees + "Title' placeholder='Employee title' class='form-control'><br>" +
             "<textarea id='employee" + employeeIncrement + "Bio' name='employee" + employeeIncrement + "Bio' placeholder='Short bio' class='form-control'></textarea><br>" +
@@ -309,5 +337,12 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
 $databaseConnection->close();
 require "../../includes/footer.php";
 ?>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+<script>
+    $(document).ready( function () {
+        $('#employeeTable').DataTable();
+    } );
+</script>
 </body>
 </html>
