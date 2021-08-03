@@ -7,7 +7,7 @@
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/editClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/editClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/employee/loadEmployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/employee/loadEmployee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/employee/post/deleteEmployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/employee/post/deleteEmployee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +262,7 @@
       <workItem from="1627029017408" duration="6564000" />
       <workItem from="1627890976472" duration="10021000" />
       <workItem from="1627916375456" duration="716000" />
-      <workItem from="1627978737998" duration="3014000" />
+      <workItem from="1627978737998" duration="4127000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

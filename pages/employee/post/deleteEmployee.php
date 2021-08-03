@@ -29,9 +29,9 @@ if(!$employeePicture){
     die();
 }
 $employeePicture=$employeePicture->fetch_assoc();
-$employeePicture['picture'];
+$employeePicture=$employeePicture['picture'];
 //Don't delete the pic if it's the default one, otherwise, everyone will have a bad time
-if(!$employeePicture=="/media/pictures/profilepicture.jpg")  if(file_exists($employeePicture)) unlink($_SERVER['DOCUMENT_ROOT'].$employeePicture);
+if($employeePicture!="/media/pictures/profilepicture.jpg") if(file_exists($_SERVER['DOCUMENT_ROOT'].$employeePicture)) unlink($_SERVER['DOCUMENT_ROOT'].$employeePicture);
 
 //Delete from DB
 $SQLremoveEmployee="DELETE FROM employees WHERE ID='$employeeID'";
