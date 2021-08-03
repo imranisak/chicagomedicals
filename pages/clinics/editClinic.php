@@ -73,18 +73,18 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
     else echo "<b>Premium users can add employees to their clinics.</b><br><a href='/pages/users/editProfile.php?ID=$id'>Get premium?</a>";
     ?>
     <div id="employees" class="col-md-3"></div>
-    <div id="addEmployeeBox" class="col-md-2"></div>
+    <div id="addEmployeeBox" class="col-md-3"></div>
     <input type="hidden" name="numberOfEmployees" value="0" ID="numberOfEmployees">
     <input type="hidden" name="employeeIncrement" value="0" ID="employeeIncrement">
     <div class="g-recaptcha" data-sitekey="6LfzjcAZAAAAABoWk_NvnAVnGzhHdJ8xOKIuVYYr"></div>
-    <input type="submit" value="Save changes" name="submit">
+    <input type="submit" value="Save changes" name="submit" class="btn btn-success">
 </form>
 <form action="post/deleteClinic.php" id="deleteClinicForm" method="post">
     <input type="hidden" name="clinicID" value="<?php echo $_GET['ID'] ?>" required>
     <input type="hidden" name="token" value="<?php echo $_SESSION['csrf_token'];?>" required>
 </form>
 
-<!---Employees view (list)-->
+<!---Employees view (table)-->
 <?php if($hasPremium && $employees){ ?>
     <div class="col-md-5">
         <p>These are the employees of your clinic:</p>
@@ -105,17 +105,48 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
                             <p id='employee".$employeeID."' onclick=loadEmployee(".$employeeID.")>".$employee['name']." ".$employee['surname']."</p>
                         </td>
                         <td>
-                            <i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i>
+                            <i class='fas fa-trash-alt' style='display: inline; color: red;' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i>
+                            |
+                            <i class='fas fa-edit' onclick='editEmployee(".$employeeID.")'></i>
                         </td>
                     </tr>
                 ";
-                //echo "<p id='employee".$employeeID."' onclick=loadEmployee(".$employeeID.")>".$employee['name']." ".$employee['surname']."<i class='fas fa-trash-alt' style='display: inline; color: red; margin-left:10px' onclick='deleteEmployeeFromDatabase(".$employeeID.",".$clinicID.")'></i></p><br>";
             }
         ?>
             </tbody>
         </table>
     </div>
 <?php } ?>
+
+<!--Edit employee form-->
+<div class="col-md-3" id="editEmployeeBox">
+    <form action="/pages/employee/post/editEmployee.php" method="post">
+        <div class="form-group">
+            <label for="name">Employee name</label>
+            <input type="text" class="form-control" id="editEmployeeName"  placeholder="Employee name" name="editEmployeeName" required>
+        </div>
+        <div class="form-group">
+            <label for="surname">Employee surname</label>
+            <input type="text" class="form-control" id="editEmployeeSurname" placeholder="Employee surname" name="editEmployeeSurname">
+        </div>
+        <div class="form-group">
+            <label for="title">Employee title</label>
+            <input type="text" class="form-control" id="editEmployeeTitle" placeholder="Employee title" name="editEmployeeTitle">
+        </div>
+        <div class="form-group">
+            <label for="bio">Employee bio</label>
+            <textarea class="form-control" id="editEmployeeBio" rows="3" placeholder="Bio" name="editEmployeeBio"></textarea>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="picture">Profile picture</label>
+                <input type="file" class="form-control-file" id="picture">
+            </div>
+        </form>
+        <button type="submit" class="btn btn-success">Update employee</button><br>
+        <button type="button" class="btn btn-danger">Cancel edit</button>
+    </form>
+</div>
 
 <p>These are your current images. Click on them to remove them. Click again to undo.</p>
 <?php
@@ -124,6 +155,29 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
 
 <!--SCRIPTS-->
 
+<!--Edit employee-->
+<script>
+    function editEmployee(ID){
+        //var data=loadEmployee(ID, true);
+        $.ajax({
+            url: "/pages/employee/loadEmployee.php",
+            type: "post",
+            data: {'ID' : ID},
+            success :  function(data){
+                employee=JSON.parse(data);
+                $("#editEmployeeName").val(employee.name);
+                $("#editEmployeeSurname").val(employee.surname);
+                $("#editEmployeeTitle").val(employee.title);
+                $("#editEmployeeBio").val(employee.bio)
+            }
+        })
+    }
+
+    function cancelEdit(){
+        
+    }
+</script>
+
 <!--Load the employee / view employee-->
 <script>
     function loadEmployee(ID){
@@ -131,16 +185,18 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
             url: "/pages/employee/loadEmployee.php",
             type: "post",
             data: {'ID' : ID},
-            success : function(data){
+            success :  function(data){
                 employee=JSON.parse(data);
-                console.log(employee);
-                Swal.fire({
-                    title : employee.name+" "+employee.surname+" - "+employee.title,
-                    imageUrl : employee.picture,
-                    html: employee.bio,
-                })
+                    Swal.fire({
+                        title: employee.name + " " + employee.surname + " - " + employee.title,
+                        imageUrl: employee.picture,
+                        html: employee.bio,
+                    })
             }
         })
+    }
+    function processEmployee(data, edit){
+
     }
 </script>
 
