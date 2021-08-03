@@ -120,32 +120,6 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
 
 <!--Edit employee form-->
 <div class="col-md-3" id="editEmployeeBox">
-    <form action="/pages/employee/post/editEmployee.php" method="post">
-        <div class="form-group">
-            <label for="name">Employee name</label>
-            <input type="text" class="form-control" id="editEmployeeName"  placeholder="Employee name" name="editEmployeeName" required>
-        </div>
-        <div class="form-group">
-            <label for="surname">Employee surname</label>
-            <input type="text" class="form-control" id="editEmployeeSurname" placeholder="Employee surname" name="editEmployeeSurname">
-        </div>
-        <div class="form-group">
-            <label for="title">Employee title</label>
-            <input type="text" class="form-control" id="editEmployeeTitle" placeholder="Employee title" name="editEmployeeTitle">
-        </div>
-        <div class="form-group">
-            <label for="bio">Employee bio</label>
-            <textarea class="form-control" id="editEmployeeBio" rows="3" placeholder="Bio" name="editEmployeeBio"></textarea>
-        </div>
-        <form>
-            <div class="form-group">
-                <label for="picture">Profile picture</label>
-                <input type="file" class="form-control-file" id="picture">
-            </div>
-        </form>
-        <button type="submit" class="btn btn-success">Update employee</button><br>
-        <button type="button" class="btn btn-danger">Cancel edit</button>
-    </form>
 </div>
 
 <p>These are your current images. Click on them to remove them. Click again to undo.</p>
@@ -158,7 +132,36 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
 <!--Edit employee-->
 <script>
     function editEmployee(ID){
-        //var data=loadEmployee(ID, true);
+        let token = "<?php echo $_SESSION['csrf_token'];?>";
+        let clinicID = "<?php echo $clinicID;?>";
+        $("#editEmployeeBox").html("");
+        $("#editEmployeeBox").append("<form action='/pages/employee/post/editEmployee.php' method='post'> " +
+        "<div class='form-group'> " +
+            "<label for='name'>Employee name</label>" +
+            "<input type='text' class='form-control' id='editEmployeeName'  placeholder='Employee name' name='editEmployeeName' required> " +
+        "</div> " +
+        "<div class='form-group'>" +
+            "<label for='surname'>Employee surname</label> " +
+            "<input type='text' class='form-control' id='editEmployeeSurname' placeholder='Employee surname' name='editEmployeeSurname'> " +
+        "</div> " +
+        "<div class='form-group'> " +
+            "<label for='title'>Employee title</label> " +
+            "<input type='text' class='form-control' id='editEmployeeTitle' placeholder='Employee title' name='editEmployeeTitle'> " +
+        "</div> " +
+        "<div class='form-group'>" +
+            "<label for='bio'>Employee bio</label>" +
+            "<textarea class='form-control' id='editEmployeeBio' rows='3' placeholder='Bio' name='editEmployeeBio'></textarea> " +
+        "</div>" +
+        "<div class='form-group'> " +
+            "<label for='picture'>Profile picture</label>" +
+            "<input type='file' class='form-control-file' id='picture'> " +
+        "</div>" +
+            "<input type='hidden' id='editEmployeeID' name='editEmployeeID' required> " +
+            "<input type='hidden' id='editEmployeeClinicID' name='editEmployeeClinicID' value="+clinicID+" required> " +
+            "<input type='hidden' name='token' value='"+token+"' required> " +
+            "<button type='submit' class='btn btn-success'>Update employee</button><br>" +
+            "<button type='button' class='btn btn-danger' onclick='cancelEdit()'>Cancel edit</button>" +
+            "</form>");
         $.ajax({
             url: "/pages/employee/loadEmployee.php",
             type: "post",
@@ -168,13 +171,18 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
                 $("#editEmployeeName").val(employee.name);
                 $("#editEmployeeSurname").val(employee.surname);
                 $("#editEmployeeTitle").val(employee.title);
-                $("#editEmployeeBio").val(employee.bio)
+                $("#editEmployeeBio").val(employee.bio);
+                $("#editEmployeeID").val(employee.ID);
             }
         })
     }
 
     function cancelEdit(){
-        
+        $("#editEmployeeName").val("");
+        $("#editEmployeeSurname").val("");
+        $("#editEmployeeTitle").val("");
+        $("#editEmployeeBio").val("");
+        $("#editEmployeeBox").html("");
     }
 </script>
 

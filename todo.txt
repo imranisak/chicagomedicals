@@ -1,4 +1,5 @@
 BUGS TO KILL
+- Add csfr to employee delete
 - IMPORTANT -  add validation on file upload!
 - ' in user name or surname does not work - probably in other places, too!
 - Last batch of reviews does no load...sometimes
