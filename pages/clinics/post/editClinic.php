@@ -5,10 +5,10 @@ require '../../../includes/sessionInfo.php';
 require '../../../includes/recaptcha.php';
 require '../../../includes/fileUpload.php';
 require '../../../includes/functions.php';
-//Bunch of checks - if the clinic exists, if the user is the owner, and if the CSFR token is OK, and loads the clinc
+//Bunch of checks - if the clinic exists, if the user is the owner, and if the CSFR token is OK, and loads the clinic
 if(!$isLoggedIn) $msg->error("You must be logged in to edit a clinic!", "/pages/clinics");
 if(isset($_POST['clinicID'])) $clinicID=$_POST['clinicID'];
-else $msg->error("An error has occured!", "/pages/clinics");
+else $msg->error("An error has occurred!", "/pages/clinics");
 $SQLloadClinic="SELECT * FROM clinics WHERE ID=$clinicID";
 $clinic=$databaseConnection->query($SQLloadClinic);
 if(mysqli_num_rows($clinic)==0) $msg->error("Clinic does not exist!", "/pages/clinics");
@@ -61,20 +61,20 @@ if(isset($_POST['submit'])){
                 } 
             }
     }
-    //Takes the uploaded images and stores them in the array - if any are uploade
+    //Takes the uploaded images and stores them in the array - if any are upload
     $uploadedImages=multipleFileUpload($msg, "image");
     if($uploadedImages) foreach($uploadedImages as $image) array_push($imagesAlreadyUploaded, $image);
     $imagesAlreadyUploaded=serialize($imagesAlreadyUploaded);
 	$SQLupdateClinic="UPDATE clinics SET name='$clinicName', email='$clinicEmail', address='$clinicAddress', zip='$clinicZIPcode', services='$clinicServices', website='$clinicWebsite', images='$imagesAlreadyUploaded', facebook='$clinicFacebook', instagram='$clinicInstagram', twitter='$clinicTwitter' WHERE ID=$clinicID ";
 	//Saves employees
 	saveEmployees($databaseConnection, $hasPremium, $msg, $clinicID);
-	if($msg->hasErrors()) $msg->error("An error has occured!", "/pages/clinics/editClinic.php?ID='$clinicID'");
+	if($msg->hasErrors()) $msg->error("An error has occurred!", "/pages/clinics/editClinic.php?ID='$clinicID'");
 	if($databaseConnection->query($SQLupdateClinic)){
 		$databaseConnection->close();
-		$msg->success("Clinic updated.", "/pages/clinics/editclinic.php?ID='$clinicID'");
+		$msg->success("Clinic updated.", "/pages/clinics/editClinic.php?ID='$clinicID'");
 	}
 	else{
 		//$databaseConnection->close();
-		$msg->error("An error has occured. Please, try again. If the issue keeps coming back, please contact admin! - ".$databaseConnection->error, "/pages/clinics/editclinic.php?ID='$clinicID'");
+		$msg->error("An error has occurred. Please, try again. If the issue keeps coming back, please contact admin! - ".$databaseConnection->error, "/pages/clinics/editClinic.php?ID='$clinicID'");
 	}
 }
