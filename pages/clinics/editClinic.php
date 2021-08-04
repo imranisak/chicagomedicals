@@ -119,8 +119,7 @@ $_SESSION['goBack']="/pages/clinics/editclinic.php?ID=".$clinicID;
 <?php } ?>
 
 <!--Edit employee form-->
-<div class="col-md-3" id="editEmployeeBox">
-</div>
+<div class="col-md-3" id="editEmployeeBox"></div>
 
 <p>These are your current images. Click on them to remove them. Click again to undo.</p>
 <?php
@@ -153,8 +152,8 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
             "<textarea class='form-control' id='editEmployeeBio' rows='3' placeholder='Bio' name='editEmployeeBio'></textarea> " +
         "</div>" +
         "<div class='form-group'> " +
-            "<label for='picture'>Profile picture</label>" +
-            "<input type='file' class='form-control-file' id='picture'> " +
+            "<label for='picture'>Profile picture (leave empty if you don't want to change it)</label>" +
+            "<input type='file' name='file' class='form-control-file' id='picture'> " +
         "</div>" +
             "<input type='hidden' id='editEmployeeID' name='editEmployeeID' required> " +
             "<input type='hidden' id='editEmployeeClinicID' name='editEmployeeClinicID' value="+clinicID+" required> " +
