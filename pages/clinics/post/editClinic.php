@@ -66,8 +66,9 @@ if(isset($_POST['submit'])){
     if($uploadedImages) foreach($uploadedImages as $image) array_push($imagesAlreadyUploaded, $image);
     $imagesAlreadyUploaded=serialize($imagesAlreadyUploaded);
 	$SQLupdateClinic="UPDATE clinics SET name='$clinicName', email='$clinicEmail', address='$clinicAddress', zip='$clinicZIPcode', services='$clinicServices', website='$clinicWebsite', images='$imagesAlreadyUploaded', facebook='$clinicFacebook', instagram='$clinicInstagram', twitter='$clinicTwitter' WHERE ID=$clinicID ";
+	//Saves employees
 	saveEmployees($databaseConnection, $hasPremium, $msg, $clinicID);
-	if($msg->hasErrors()) $msg->error("An error has occured!", "/pages/clinics/editclinic.php?ID='$clinicID'");
+	if($msg->hasErrors()) $msg->error("An error has occured!", "/pages/clinics/editClinic.php?ID='$clinicID'");
 	if($databaseConnection->query($SQLupdateClinic)){
 		$databaseConnection->close();
 		$msg->success("Clinic updated.", "/pages/clinics/editclinic.php?ID='$clinicID'");
