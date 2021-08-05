@@ -2,6 +2,7 @@
 require "../../../includes/database.php";
 require "../../../includes/sessionInfo.php";
 require "../../../includes/flashMessages.php";
+require "../../../includes/functions.php";
 function errorRedirect($message, $databaseConnection, $msg){
     $databaseConnection->close();
     if($isAdmin) $msg->error($message, "/admin/clinics");
@@ -37,6 +38,8 @@ $deletedReports=$databaseConnection->query($SQLdeleteFromReports);
 if(!$deletedReports) errorRedirect("Error deleting reports", $databaseConnection, $msg);
 //Removed PayPal subscription! (to be added)
 
+//Deletes the employees
+if(!deleteEmployees($databaseConnection, $msg, $clinicID)) $msg->error("Error deleting employees!");
 
 //Deletes the clinic itself, Check if the user has any more clinics
 $SQLdeleteClinic="DELETE FROM clinics WHERE id='$clinicID'";

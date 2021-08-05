@@ -8,7 +8,7 @@ function filterInput($input){
 }
 
 function whitespace($input){
-    //Removes whiespaces
+    //Removes whitespaces
     if (!preg_match("/^[a-zA-Z-' ]*$/",$input)) return true;
     else return false;
 }
@@ -52,4 +52,28 @@ function saveEmployees($databaseConnection, $hasPremium, $msg, $clinicID=0){
             }
         }
     }
+}
+
+/**
+ * @param object $databaseConnection Database connection
+ * @param object $msg Flash Message
+ * @param integer $clinicID Employee UD
+ * @return bool
+ */
+function deleteEmployees($databaseConnection, $msg, $clinicID){
+    $SQLloadEmployeeImages="SELECT picture FROM employees WHERE clinicID='$clinicID'";
+    $employeeImages=$databaseConnection->query($SQLloadEmployeeImages);
+    if(!$employeeImages) $msg->error("Error loading employee images!");
+    if($employeeImages->num_rows!=0 && $employeeImages->num_rows>=0){
+        foreach ($employeeImages as $employeeImage) {
+            $employeeImage=$employeeImage['picture'];
+            if($employeeImage!="/media/pictures/profilepicture.jpg"){
+                if(file_exists($_SERVER['DOCUMENT_ROOT'].$employeeImage)) unlink($_SERVER['DOCUMENT_ROOT'].$employeeImage);
+            }
+        }
+    }
+    $SQLdeleteEmployees="DELETE FROM employees WHERE clinicID='$clinicID'";
+    $deleteEmployees=$databaseConnection->query($SQLdeleteEmployees);
+    if(!$deleteEmployees) return false;
+    else return true;
 }

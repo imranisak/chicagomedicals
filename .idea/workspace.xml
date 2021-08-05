@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/clinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/clinics/post/addTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/post/addTag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/clinics/post/approveOrDenyClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clinics/post/approveOrDenyClinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/sessionInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sessionInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/editClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/editClinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/post/deleteClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/deleteClinic.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +264,7 @@
       <workItem from="1627916375456" duration="716000" />
       <workItem from="1627978737998" duration="9327000" />
       <workItem from="1627993522492" duration="3745000" />
-      <workItem from="1628154873754" duration="7812000" />
+      <workItem from="1628154873754" duration="8521000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
