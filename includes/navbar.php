@@ -10,7 +10,7 @@ if($role!='admin'){
     <div class="col-md-10 offset-md-1">
       <!--These DIVs are closed in the footer-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/"><img src="/media/pictures/logo_200x100.png" id="logo"></a>
+      <a class="navbar-brand" href="/"><img src="/media/logo_200x100.png" id="logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -55,7 +55,7 @@ if($role!='admin'){
     <?php } else{ ?>
         <!-- ADMIN NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/admin"><img src="/media/pictures/logo_200x100.png" id="logo"></a>
+        <a class="navbar-brand" href="/admin"><img src="/media/logo_200x100.png" id="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
