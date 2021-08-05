@@ -202,9 +202,6 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
             }
         })
     }
-    function processEmployee(data, edit){
-
-    }
 </script>
 
 <!--Deletes an employee from the database-->

@@ -1,5 +1,7 @@
 <?php
 if (!session_id()) @session_start();
+require "../../../includes/sessionInfo.php";
+if(!$isAdmin) die();
 if($_POST['token']==$_SESSION['csrf_token']){
 	require "../../../includes/database.php";
 	require "../../../includes/flashMessages.php";

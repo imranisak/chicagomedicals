@@ -60,11 +60,23 @@ if($_GET['action']=='approve'){
 		$clinicImages=$clinicImages[0];
 		$clinicImages=unserialize($clinicImages);
 		//Deletes the uploaded images
-		foreach($clinicImages as $clinicImage){
-			if(!unlink($_SERVER['DOCUMENT_ROOT'].$clinicImage)) {
-				$msg->error("Error deleting clinic images");
-			}
-		}
+		foreach($clinicImages as $clinicImage) if(file_exists($_SERVER['DOCUMENT_ROOT'].$clinicImage)) unlink($_SERVER['DOCUMENT_ROOT'].$clinicImage);
+		//Deletes the employees
+        $SQLloadEmployeeImages="SELECT picture FROM employees WHERE clinicID='$clinicID'";
+        $employeeImages=$databaseConnection->query($SQLloadEmployeeImages);
+        if(!$employeeImages) $msg->error("Error loading employee images!");
+        if($employeeImages->num_rows!=0 && $employeeImages->num_rows>=0){
+            foreach ($employeeImages as $employeeImage) {
+                $employeeImage=$employeeImage['picture'];
+                if($employeeImage!="/media/pictures/profilepicture.jpg"){
+                    if(file_exists($_SERVER['DOCUMENT_ROOT'].$employeeImage)) unlink($_SERVER['DOCUMENT_ROOT'].$employeeImage);
+                }
+            }
+        }
+        $SQLdeleteEmployees="DELETE FROM employees WHERE clinicID='$clinicID'";
+        $deleteEmployees=$databaseConnection->query($SQLdeleteEmployees);
+        if(!$deleteEmployees) $msg->error("Error deleting employees!"); 
+		//Deletes the clinic itself
 		$SQLremoveClinic="DELETE FROM clinics WHERE ID = $clinicID";
 		if($msg->hasErrors()) $msg->error("An error has occurred!", "/admin/clinics/index.php");
 		if($databaseConnection->query($SQLremoveClinic)){

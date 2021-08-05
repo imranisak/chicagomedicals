@@ -27,7 +27,11 @@ $userInputTemp=explode(",", $userInput[0]);
 $userInput=$userInputTemp;
 $notInDB=[];
 foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($notInDB, $input);
-
+//Loads employees
+$SQLloadEmployees="SELECT * FROM employees WHERE clinicID='$clinicID'";
+$employees=$databaseConnection->query($SQLloadEmployees);
+if(!$employees) $msg->error("Error loading employees");
+//$employees=$employees->fetch_assoc();
 ?>
 <html lang="en">
 <head>
@@ -82,7 +86,7 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
             foreach ($notInDB as $input) echo "<a class='addTagToDatabse' href='#'>".$input."</a><br>";
         }
          if(!$clinicIsApproved) {
-        echo "<p>This clinic has not yet been approved, and is not publiclly visible!</p>" ?>
+        echo "<p>This clinic has not yet been approved, and is not publicly visible!</p>" ?>
         <?php //yes, the csrf token in visible in the link - but since it is randomly generated with every load, it should not be a problem...right? ?>
         <a href="post/approveOrDenyClinic.php?token=<?php echo $token ?>&ID=<?php echo $clinicID ?>&action=approve"><button class="btn btn-success">Approve</button></a><span><button class="btn btn-danger" style="margin-left: 10px;" id="denyButton">Deny</button></span>
         <form style="display: none" id="reasonForDenial" method="POST" action="post/approveOrDenyClinic.php">
@@ -96,6 +100,34 @@ foreach($userInput as $input) if(!in_array($input, $allServices)) array_push($no
         <?php 
 }
 ?>
+<div class="employees">
+    <?php
+    foreach ($employees as $employee){
+        $employeeID=$employee['ID'];
+        echo "<p onclick='loadEmployee($employeeID)'>".$employee['name']." - ".$employee['surname']."</p>";
+    }
+    ?>
+</div>
+
+<!--Load the employee / view employee-->
+<script>
+    function loadEmployee(ID){
+        $.ajax({
+            url: "/pages/employee/loadEmployee.php",
+            type: "post",
+            data: {'ID' : ID},
+            success :  function(data){
+                employee=JSON.parse(data);
+                Swal.fire({
+                    title: employee.name + " " + employee.surname + " - " + employee.title,
+                    imageUrl: employee.picture,
+                    html: employee.bio,
+                })
+            }
+        })
+    }
+</script>
+
 <!--Images and gallery-->
 <?php
     //$images=substr($images, 1, -1);
