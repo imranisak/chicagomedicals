@@ -52,7 +52,11 @@ else $employeeTitle="";
 if(isset($_POST['editEmployeeBio'])) $employeeBio=filter_var($_POST['editEmployeeBio'], FILTER_SANITIZE_STRING);
 else $employeeBio="";
 if(!is_uploaded_file($_FILES['file']['tmp_name'])) $employeeImage=$employeeClinic['picture'];
-else $employeeImage=proccessFile($msg, "image");
+else {
+    $employeeImage=$employeeClinic['picture'];
+    if(file_exists($_SERVER['DOCUMENT_ROOT'].$employeeImage)) unlink($_SERVER['DOCUMENT_ROOT'].$employeeImage);
+    $employeeImage = proccessFile($msg, "image");
+}
 //Saves employee
 $SQLeditEmployee="UPDATE employees SET name='$employeeName', surname='$employeeSurname', bio='$employeeBio', title='$employeeTitle', picture='$employeeImage' WHERE ID='$employeeID'";
 $updateEmployee=$databaseConnection->query($SQLeditEmployee);
