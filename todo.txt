@@ -6,14 +6,13 @@ BUGS TO KILL
 - Mail from server gets YEETED to spam
 =====================================================
 TODO
-"Add employee" on clinic edit - also, employee delete, and edit!
+Add employee view on clinic view
 ALL OF THE WEBHOOKZZ!!!11!1!!!
 Add payments to feature a clinic!!!
 On report pages, check-uncheck
 "Make Admin" button in user list
 Add index.php to every folder
 Add gender selection
-Employees of a clinic - premium only
 Messages
 Share to social media
 =====================================================
@@ -27,6 +26,8 @@ Schedules?
 NOT Fluff up <3
 =====================================================
 Done
+"Add employee" on clinic edit - also, employee delete, and edit!
+Employees of a clinic - premium only
 Add "my profile" (in navbar)
 Add user's clinics on my profile/edit profile
 Send Email to user when premium is activated
