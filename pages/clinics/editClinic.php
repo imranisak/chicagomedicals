@@ -134,7 +134,7 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
         let token = "<?php echo $_SESSION['csrf_token'];?>";
         let clinicID = "<?php echo $clinicID;?>";
         $("#editEmployeeBox").html("");
-        $("#editEmployeeBox").append("<form action='/pages/employee/post/editEmployee.php' method='post'> " +
+        $("#editEmployeeBox").append("<form action='/pages/employee/post/editEmployee.php' method='post' enctype='multipart/form-data'> " +
         "<div class='form-group'> " +
             "<label for='name'>Employee name</label>" +
             "<input type='text' class='form-control' id='editEmployeeName'  placeholder='Employee name' name='editEmployeeName' required> " +
@@ -158,7 +158,7 @@ foreach($images as $image) echo "<img src=".$image." style='width:200px;' class=
             "<input type='hidden' id='editEmployeeID' name='editEmployeeID' required> " +
             "<input type='hidden' id='editEmployeeClinicID' name='editEmployeeClinicID' value="+clinicID+" required> " +
             "<input type='hidden' name='token' value='"+token+"' required> " +
-            "<button type='submit' class='btn btn-success'>Update employee</button><br>" +
+            "<input type='submit' class='btn btn-success' value='Update employee'><br>" +
             "<button type='button' class='btn btn-danger' onclick='cancelEdit()'>Cancel edit</button>" +
             "</form>");
         $.ajax({

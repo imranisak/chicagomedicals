@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
     $imagesAlreadyUploaded=serialize($imagesAlreadyUploaded);
 	$SQLupdateClinic="UPDATE clinics SET name='$clinicName', email='$clinicEmail', address='$clinicAddress', zip='$clinicZIPcode', services='$clinicServices', website='$clinicWebsite', images='$imagesAlreadyUploaded', facebook='$clinicFacebook', instagram='$clinicInstagram', twitter='$clinicTwitter' WHERE ID=$clinicID ";
 	//Saves employees
-	saveEmployees($databaseConnection, $hasPremium, $msg, $clinicID);
+	saveEmployees($databaseConnection, $hasPremium, $msg, $clinicID);//I have absolutely no idea how it fetches the uploaded picture, and it scares me
 	if($msg->hasErrors()) $msg->error("An error has occurred!", "/pages/clinics/editClinic.php?ID='$clinicID'");
 	if($databaseConnection->query($SQLupdateClinic)){
 		$databaseConnection->close();

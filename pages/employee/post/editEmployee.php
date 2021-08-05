@@ -19,10 +19,10 @@ if(!$clinic){
 }
 if(!$clinic->num_rows || $clinic->num_rows<=0){
     $databaseConnection->close();
-    $msg->error("STOP! You can only edit your own employees!", "/");
+    $msg->error("STOP! You can only edit your own employees! - clinic check", "/pages/clinics/editClinic.php?ID=".$clinicID);
 }
 //Checks if employee belongs to clinic
-$SQLloadEmployeeClinic="SELECT ID, picture from employees WHERE clinicID='$clinicID'";//Also loads picture, so I don't have to send another query down the line.
+$SQLloadEmployeeClinic="SELECT ID, picture from employees WHERE clinicID='$clinicID' AND ID='$employeeID'";//Also loads picture, so I don't have to send another query down the line.
 $employeeClinic=$databaseConnection->query($SQLloadEmployeeClinic);
 if(!$employeeClinic){
     echo $databaseConnection->error;
@@ -34,9 +34,10 @@ if(!$employeeClinic){
     $databaseConnection->close();
     $msg->error("An error happened.", "/pages/clinics/editClinic.php?ID=".$clinicID);
 }
-if(!$employeeClinic|| !in_array($employeeID, $employeeClinic)){
+//die(var_dump($employeeClinic));
+if(!$employeeClinic || !in_array($employeeID, $employeeClinic)){
     $databaseConnection->close();
-    $msg->error("STOP! You can only edit your own employees!");
+    $msg->error("STOP! You can only edit your own employees! - employee check", "/pages/clinics/editClinic.php?ID=".$clinicID);
 }
 //Loads submitted employee data
 if(isset($_POST['editEmployeeName']) && $_POST['editEmployeeName']!="") $employeeName=filter_var($_POST['editEmployeeName'], FILTER_SANITIZE_STRING);
@@ -50,8 +51,16 @@ if(isset($_POST['editEmployeeTitle'])) $employeeTitle=filter_var($_POST['editEmp
 else $employeeTitle="";
 if(isset($_POST['editEmployeeBio'])) $employeeBio=filter_var($_POST['editEmployeeBio'], FILTER_SANITIZE_STRING);
 else $employeeBio="";
-if(is_uploaded_file($_FILES['file']['tmp_name'])) $employeeImage=proccessFile($msg, "image");
-else $employeeImage=$employeeClinic['picture'];
-die($employeeImage);
-
+if(!is_uploaded_file($_FILES['file']['tmp_name'])) $employeeImage=$employeeClinic['picture'];
+else $employeeImage=proccessFile($msg, "image");
 //Saves employee
+$SQLeditEmployee="UPDATE employees SET name='$employeeName', surname='$employeeSurname', bio='$employeeBio', title='$employeeTitle', picture='$employeeImage' WHERE ID='$employeeID'";
+$updateEmployee=$databaseConnection->query($SQLeditEmployee);
+if(!$updateEmployee){
+    $databaseConnection->close();
+    $msg->error("Error updating employee, please try again. If the error keeps coming back, contact admin.", "/pages/clinics/editClinic.php?ID=".$clinicID);
+}
+else{
+    $databaseConnection->close();
+    $msg->success("Employee updated!", "/pages/clinics/editClinic.php?ID=".$clinicID);
+}

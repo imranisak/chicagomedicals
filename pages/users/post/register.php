@@ -36,8 +36,6 @@ if($_SESSION['csrf_token']==$_POST['token']) {
     } else $msg->error('Password missing');
     if (!is_uploaded_file($_FILES['file']['tmp_name'])) $profilePicture = "/media/pictures/profilepicture.jpg";
     else $profilePicture = proccessFile($msg, "image");
-    /*echo $_SERVER['DOCUMENT_ROOT'].$profilePicture;
-    die();*/
     if ($msg->hasMessages($msg::ERROR)) $msg->error("An error has happened. Please try again", "/pages/users/register.php");
     //////////////////////////
     $date = Date("Y-m-d");

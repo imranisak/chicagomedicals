@@ -8,7 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/fileUpload.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/fileUpload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clinics/editClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/editClinic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/clinics/post/editClinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/post/editClinic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/employee/post/editEmployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/employee/post/editEmployee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/post/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +162,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -265,6 +267,7 @@
       <workItem from="1627916375456" duration="716000" />
       <workItem from="1627978737998" duration="9327000" />
       <workItem from="1627993522492" duration="3745000" />
+      <workItem from="1628154873754" duration="2849000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
