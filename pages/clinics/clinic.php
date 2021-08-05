@@ -27,9 +27,13 @@ $instagram=$clinic['instagram'];
 $images=unserialize($clinic['images']);
 $clinicIsApproved=$clinic['approved'];
 $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
+
+$SQLloadEmployees="SELECT * FROM employees WHERE clinicID='$clinicID'";
+$employees=$databaseConnection->query($SQLloadEmployees);
+if(!$employees) $msg->error("Error loading employees!");
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $clinicName ?></title>
@@ -162,6 +166,13 @@ $_SESSION['goBack']="/pages/clinics/clinic?ID=".$clinicID;
             <p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
             <p>Instagram: <?php echo "<a href='".$instagram."' target='_blank'>".$instagram."</a>" ?></p>
             <p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
+            <h3>Employees of the clinic:</h3>
+            <?php
+                foreach ($employees as $employee){
+                    $employeeID=$employee['ID'];
+                    echo "<p onclick='loadEmployee($employeeID)'>".$employee['name']." ".$employee['surname']."</p>";
+                }
+            ?>
         </div>
     </div>
 </div>
@@ -204,6 +215,25 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
         </div>
     </div>
 
+    <!--Load the employee / view employee-->
+    <script>
+        function loadEmployee(ID){
+            $.ajax({
+                url: "/pages/employee/loadEmployee.php",
+                type: "post",
+                data: {'ID' : ID},
+                success :  function(data){
+                    employee=JSON.parse(data);
+                    Swal.fire({
+                        title: employee.name + " " + employee.surname + " - " + employee.title,
+                        imageUrl: employee.picture,
+                        html: employee.bio,
+                    })
+                }
+            })
+        }
+    </script>
+
     <!--This bit here loads the reviews-->
     <script>
         var clinicID=<?php echo $clinicID;?>;
@@ -245,7 +275,6 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
 
         function reportReview(data){
             var input=data.substring(1);
-            console.log(input);
         }
 
         function report(reportType, ID){
