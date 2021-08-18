@@ -171,3 +171,20 @@ ul.swiper-wrapper {
 #addEmployeeBox {
     margin: 10px 0px 10px -10px;
 }
+.employees{
+
+}
+.employeeSliderBox{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.employeeSliderBox>img{
+    width: 10rem;
+}
+
+.employeeSliderBoxContainer{
+    min-width: 200px;
+}

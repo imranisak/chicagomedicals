@@ -56,14 +56,17 @@ if(!$employees) $msg->error("Error loading employees!");
 
     <!-- UI JS file -->
     <script src="/includes/photoswipe/photoswipe-ui-default.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/includes/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="/includes/slick/slick-theme.css">
 </head>
 <body>
 	<?php include "../../includes/navbar.php" ?>
     <?php if($msg->hasMessages()) $msg->display(); ?>
-    <!--Images and gallery-->
 <div class="container">
     <div class="row">
         <!--SLIDER-->
+        <!--Images and gallery-->
         <div class="col-md-5">
                 <div class="swiper-container col-md-12">
                     <!-- Additional required wrapper -->
@@ -166,18 +169,35 @@ if(!$employees) $msg->error("Error loading employees!");
             <p>Facebook: <?php echo "<a href='".$facebook."' target='_blank'>".$facebook."</a>" ?></p>
             <p>Instagram: <?php echo "<a href='".$instagram."' target='_blank'>".$instagram."</a>" ?></p>
             <p>Twitter: <?php echo "<a href='".$twitter."' target='_blank'>".$twitter."</a>" ?></p>
+        </div>
+    </div>
+</div>
+<!--Employees-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
             <h3>Employees of the clinic:</h3>
+            <div class='employees'>
             <?php
-                foreach ($employees as $employee){
-                    $employeeID=$employee['ID'];
-                    echo "<p onclick='loadEmployee($employeeID)'>".$employee['name']." ".$employee['surname']."</p>";
-                }
+            foreach ($employees as $employee){
+                $employeeID=$employee['ID'];
+                //echo "<p onclick='loadEmployee($employeeID)'>".$employee['name']." ".$employee['surname']."</p>";
+                echo "
+                    <div class='employeeSliderBoxContainer'>
+                        <div class='employeeSliderBox'>
+                            <img src='".$employee['picture']."' alt='".$employee['name']."'>
+                            <h3>".$employee['name']."</h3>
+                        </div>
+                    </div>
+                ";
+            }
             ?>
+            </div>
         </div>
     </div>
 </div>
 <?php
-//Loads reviews
+//Loads reviewes
 if($isLoggedIn){
 $SQLcountReviews="SELECT COUNT(review) FROM reviews WHERE clinicID=$clinicID AND personID=$id";
 $numberOfReviewsFromThisPersonForThisClinic=$databaseConnection->query($SQLcountReviews);
@@ -233,7 +253,6 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
             })
         }
     </script>
-
     <!--This bit here loads the reviews-->
     <script>
         var clinicID=<?php echo $clinicID;?>;
@@ -266,7 +285,6 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
     </script>
     <!--This bit here is responsible for clinic / review reporting-->
     <script>
-
         $(".reportClinicButton").click(function (){
             var selectedElementClass=$(this).attr("class");
             var clinicID=selectedElementClass.split(" ").pop();
@@ -308,7 +326,7 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
                             if(data=="true") {//<---Don't ask
                                 Swal.fire(
                                     'Reported!',
-                                    'The clinic has been reported. <br> Thank you for your feedback.',
+                                    'The content has been reported. <br> Thank you for your feedback.',
                                     'success'
                                 )
                             }
@@ -358,7 +376,49 @@ else echo "<h3>You must be logged in to submit a review!</h3>";
 $databaseConnection->close();
 require "../../includes/footer.php"
 ?>
+    <script type="text/javascript" src="/includes/slick/slick.min.js"></script>
     <script src="/includes/gallery.js"></script>
+    <script>
+        $(document).ready(function (){
+            $('.employees').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            });
+            $('.slick-next').css('background-color', 'red');
+            $('.slick-prev').css('background-color', 'red');
+        });
 
+    </script>
 </body>
 </html>

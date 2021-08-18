@@ -1,5 +1,6 @@
 BUGS TO KILL
-- Add csfr to employee delete
+- Disable enter on clinic add / edit
+- Add csfr to employee delete (why tho)
 - IMPORTANT -  add validation on file upload!
 - ' in user name or surname does not work - probably in other places, too!
 - Last batch of reviews does no load...sometimes
