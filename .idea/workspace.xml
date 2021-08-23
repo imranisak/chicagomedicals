@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat_i" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/users/payments/getToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/users/payments/subscriptionInfo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clinics/clinic.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clinics/clinic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,6 +270,7 @@
       <workItem from="1628177342711" duration="526000" />
       <workItem from="1628177949745" duration="1048000" />
       <workItem from="1629294359019" duration="5877000" />
+      <workItem from="1629705950112" duration="10035000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>
