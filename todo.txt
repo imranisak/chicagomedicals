@@ -7,7 +7,7 @@ BUGS TO KILL
 - Mail from server gets YEETED to spam
 =====================================================
 TODO
-Add employee view on clinic view
+create a function to check if user has premium - avoid using session!
 ALL OF THE WEBHOOKZZ!!!11!1!!!
 Add payments to feature a clinic!!!
 On report pages, check-uncheck
@@ -27,6 +27,7 @@ Schedules?
 NOT Fluff up <3
 =====================================================
 Done
+Add employee view on clinic view
 "Add employee" on clinic edit - also, employee delete, and edit!
 Employees of a clinic - premium only
 Add "my profile" (in navbar)

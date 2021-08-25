@@ -152,9 +152,11 @@ function loadBearerToken($db){
         if($secondsWhenTheTokenExpires<=time()){
             generateBearerToken($db);
             loadBearerToken($db);
-            echo "new token generated!";
             $SQLloadToken="SELECT * FROM options WHERE `option`='bearerToken'";
             $token=$db->query($SQLloadToken);
+            if(!$token){
+                return false;
+            }
             $tokenArray=$token->fetch_assoc();
             $tokenArray=unserialize($tokenArray['value']);
             $token=$tokenArray['token'];
@@ -178,5 +180,3 @@ function loadBearerToken($db){
     }
     else return false;
 }
-
-//TODO - create a function to check if user has premium - avoid using seesion!

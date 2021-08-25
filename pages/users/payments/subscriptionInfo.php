@@ -8,7 +8,6 @@ $subscription='I-ASB67NCUH41D';
 //echo loadBearerToken($databaseConnection);
 $token=loadBearerToken($databaseConnection);
 curl_setopt($ch, CURLOPT_URL, "https://api-m.sandbox.paypal.com/v1/billing/subscriptions/I-ASB67NCUH41D");
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     "Content-Type: application/json",
