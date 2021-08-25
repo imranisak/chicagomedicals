@@ -21,7 +21,7 @@ if(empty($result))die("Error: No response.");
 else
 {
     $json = json_decode($result);
-    if(!empty($json->error) && $json->error) echo "Whoops";
+    if(!empty($json->error) && $json->error) echo $json->error;
     else var_dump($json);
 }
 $databaseConnection->close();

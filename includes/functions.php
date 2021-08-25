@@ -153,6 +153,11 @@ function loadBearerToken($db){
             generateBearerToken($db);
             loadBearerToken($db);
             echo "new token generated!";
+            $SQLloadToken="SELECT * FROM options WHERE `option`='bearerToken'";
+            $token=$db->query($SQLloadToken);
+            $tokenArray=$token->fetch_assoc();
+            $tokenArray=unserialize($tokenArray['value']);
+            $token=$tokenArray['token'];
         }
         $key=",>47P2'v<7X5=YqHU=PUhz4xGN,KhLVv";
         $decoded = base64_decode($token);
