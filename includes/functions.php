@@ -179,4 +179,32 @@ function loadBearerToken($db){
     else return false;
 }
 
-//TODO - create a function to check if user has premium - avoid using seesion!
+
+/**
+ * @param object $db The database - of course
+ * @param string $subscription ID of the subscription I-XXXXXXXXXXXX
+ * @param string $token The bearer token
+ * @param string $action What to do (suspend, activate, delete etc...)
+ */
+function subscriptionAction($db, $subscription, $token, $action){
+    if($action=='') $url="https://api-m.sandbox.paypal.com/v1/billing/subscriptions/".$subscription;
+    else $url="https://api-m.sandbox.paypal.com/v1/billing/subscriptions/".$subscription."/".$action;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        "Content-Type: application/json",
+        "Authorization: Bearer ".$token
+    ));
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+    if(empty($result))die("Error: No response.");
+    else
+    {
+        $json = json_decode($result);
+        if(!empty($json->error) && $json->error) echo $json->error;
+        return $json;
+    }
+}
