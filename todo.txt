@@ -1,4 +1,5 @@
 BUGS TO KILL
+- !Important - check when subscriptions are not being saved to DB
 - Disable enter on clinic add / edit
 - Add csfr to employee delete (why tho)
 - IMPORTANT -  add validation on file upload!
@@ -8,6 +9,7 @@ BUGS TO KILL
 =====================================================
 TODO
 Create a function to check if user has premium - avoid using seesion!
+Add a login window using swal, login with AJAX
 ALL OF THE WEBHOOKZZ!!!11!1!!!
 Add payments to feature a clinic!!!
 On report pages, check-uncheck
@@ -27,6 +29,7 @@ Schedules?
 NOT Fluff up <3
 =====================================================
 Done
+Cancel subscription when profile gets deleted
 Add employee view on clinic view
 "Add employee" on clinic edit - also, employee delete, and edit!
 Employees of a clinic - premium only
