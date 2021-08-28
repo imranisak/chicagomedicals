@@ -12,9 +12,9 @@ $fp = file_put_contents( 'subscriptions.log', $req_dump );
 
 //Gather data
 $jsonFormated=json_decode($req_dump, true);
-$resources=$jsonFormated['resource'];
-$subscriptionID=$resources['id'];
-$startTime=$resources['start_time'];
+$resources=filter_var($jsonFormated['resource'], FILTER_SANITIZE_STRING);
+$subscriptionID=filter_var($resources['id'], FILTER_SANITIZE_STRING);
+$startTime=filter_var($resources['start_time'], FILTER_SANITIZE_STRING);
 //Save subscription
 $SQLinsertSubsscription="INSERT INTO subscriptions (subscriptionID, dateCreted) VALUES ('$subscriptionID', '$startTime')";
 $insertSubscription=$databaseConnection->query($SQLinsertSubsscription);
