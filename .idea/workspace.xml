@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e82822-d127-451b-ba88-063881b15fd7" name="Default Changelist" comment="Partially finished clinic adding">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat.values.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2cad7b3-5451-4bce-9a28-780ab5b95a62/entities/entities.dat_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/users/post/deleteUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users/post/deleteUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/payments/getToken.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/payments/subscriptionInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/subscriptionInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/users/payments/subscriptions.log" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/subscriptions.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/payments/subscriptionInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/subscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/post/deleteUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/payments/cancelSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,6 +278,7 @@
       <workItem from="1629705950112" duration="10035000" />
       <workItem from="1629730206021" duration="1312000" />
       <workItem from="1629803054372" duration="7159000" />
+      <workItem from="1630065147767" duration="5274000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic admin stuff.">
       <created>1605562840798</created>

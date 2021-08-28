@@ -3,6 +3,7 @@ require "../../../includes/database.php";
 require "../../../includes/sessionInfo.php";
 require "../../../includes/flashMessages.php";
 require "../../../includes/token.php";
+require "../../../includes/functions.php";
 if(!$isAdmin){
     $databaseConnection->close();
     $msg->error("Must be logged in as admin!", "/");
@@ -123,6 +124,17 @@ $deleteReports=$databaseConnection->query($SQLdeleteReports);
 if(!$deleteReports) $msg->error("Error deleting reports!");
 
 //Cancel PayPal subscription - if any
+$SQLloadSubscriptions="SELECT subscriptionID FROM subscriptions WHERE userID='$userID' LIMIT 1";
+$subscription=$databaseConnection->query($SQLloadSubscriptions);
+if(!$subscription) $msg->error("Error checking subscriptions!");
+else{
+    if($subscription->num_rows>=0){
+        $subscription=$subscription->fetch_assoc();
+        $subscription=$subscription['subscriptionID'];
+        $token=loadBearerToken($databaseConnection);
+        subscriptionAction($databaseConnection, $subscription, $token, 'cancel');
+    }
+}
 
 //Delete user's profile picture
 $SQLloadUserPicture="SELECT profilePicture FROM users WHERE id='$userID'";

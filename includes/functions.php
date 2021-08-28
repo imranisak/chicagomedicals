@@ -152,11 +152,9 @@ function loadBearerToken($db){
         if($secondsWhenTheTokenExpires<=time()){
             generateBearerToken($db);
             loadBearerToken($db);
+            echo "new token generated!";
             $SQLloadToken="SELECT * FROM options WHERE `option`='bearerToken'";
             $token=$db->query($SQLloadToken);
-            if(!$token){
-                return false;
-            }
             $tokenArray=$token->fetch_assoc();
             $tokenArray=unserialize($tokenArray['value']);
             $token=$tokenArray['token'];
@@ -179,4 +177,41 @@ function loadBearerToken($db){
         return $plain;
     }
     else return false;
+}
+
+
+/**
+ * @param object $db The database - of course - you can use to update subscription info in your DB, if needed
+ * @param string $subscription ID of the subscription I-XXXXXXXXXXXX
+ * @param string $token The bearer token
+ * @param string $action What to do (suspend, activate, cancel etc...)
+ * @return mixed JSON if succeeded, otherwise the error
+ */
+function subscriptionAction($db, $subscription, $token, $action){
+    $post=true;
+    if($action=='') {
+        $url = "https://api-m.sandbox.paypal.com/v1/billing/subscriptions/" . $subscription;
+        $post=false;
+    }
+    else $url="https://api-m.sandbox.paypal.com/v1/billing/subscriptions/".$subscription."/".$action;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, $post);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        "Content-Type: application/json",
+        "Authorization: Bearer ".$token
+    ));
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+    //return $result;
+    if(empty($result) && $action=='')die("Error: No response.");
+    else
+    {
+        $json = json_decode($result);
+        if(!empty($json->error) && $json->error) return $json->error;
+        return $json;
+    }
 }
